@@ -55,12 +55,6 @@
 				</tree>
 			</field>
 		</record>
-		
-        
-        <!-- <menuitem action="action_view_maintenance_form" icon="STOCK_JUSTIFY_FILL" id="menu_maintenance"  parent="menu_mrp_manufacturing"/>
- -->
-
-
 	</data>
 </odoo>
 

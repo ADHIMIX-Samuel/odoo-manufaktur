@@ -22,6 +22,7 @@
     'data': [
         'view/maintenance_view.xml',
         'menu.xml',
+        'data/ir_sequence.xml',
         
         
     ],
