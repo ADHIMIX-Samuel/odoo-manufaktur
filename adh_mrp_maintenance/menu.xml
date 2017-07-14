@@ -1,0 +1,29 @@
+<openerp>
+	<data>
+		<record id="action_view_maintenance_form" model="ir.actions.act_window">
+            <field name="name">Maintenance</field>
+            <field name="res_model">adhimix.mrp.maintenance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+            	<p class="oe_view_nocontent_create">
+            		Click to add a data
+            	</p>
+            </field>
+        </record>
+
+		<menuitem id="menu_mrp_maintenance"
+		            name="Maintenance"
+		            parent="mrp.menu_mrp_root"
+		            sequence="15"/>
+		<menuitem id="menu_mrp_maintenance_list"
+				name="Maintenance List"
+				action="action_view_maintenance_form"
+				parent="menu_mrp_maintenance"
+				sequence="15"/>
+
+
+	</data>
+</openerp>
