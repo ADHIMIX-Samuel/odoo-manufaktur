@@ -1,0 +1,63 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_info_pasar_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.info.pasar.form</field>
+			<field name="model">adhimix.mrp.info.pasar</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Daftar Informasi Target Pasar"> 
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal_informasi"/>
+								<field name="nama_pelanggan"/>
+								<field name="nama_spesifikasi_produk"/>
+							</group>
+							<group>
+								<field name="tanggal_dibutuhkan"/>
+								<field name="lokasi"/>
+								<field name="volume"/>
+								<field name="status"/>
+							</group>
+							<group string="Contact Person">
+								<field name="nama" class="oe_inline"/>
+								<field name="telepon" class="oe_inline"/>
+							</group>
+							<group string="Sumber Informasi">
+								<field name="sumber_informasi_dari" />
+								<field name="sumber_informasi_cara" />
+							</group>
+							<group string="Target Pasar">
+								<field name="tanggal"/>
+								<field name="ya"/>
+								<field name="tidak"/>	
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_info_pasar_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.info.pasar.tree</field>
+			<field name="model">adhimix.mrp.info.pasar</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Daftar Informasi Target Pasar">
+					<field name="name"/>
+						<field name="tanggal_informasi"/>
+						<field name="nama_pelanggan"/>
+						<field name="nama_spesifikasi_produk"/>
+						<field name="volume"/>
+						<field name="tanggal_dibutuhkan"/>
+						<field name="lokasi"/>
+						<field name="tanggal"/>
+				</tree>
+			</field>
+		</record>
+					
+
+	</data>
+</odoo>
