@@ -1,0 +1,78 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_klaim" model="ir.ui.view">
+			<field name="name">adhimix.mrp.klaim.form</field>
+			<field name="model">adhimix.mrp.klaim</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Daftar Komplain/Klaim">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="nama_pelanggan"/>
+								<field name="no_komplain"/>
+								<field name="nama_pelapor"/>
+								<field name="no_telp"/>
+								<field name="uraian"/>
+								<field name="Komplain_klaim"/>
+							</group>
+							<group>
+								<field name="komplain"/>
+								<field name="klaim"/>
+								<field name="jenis_komplain"/>
+								<field name="tanggal"/>
+								<field name="jabatan"/>
+								<field name="status"/>
+								<field name="bagian_yang_menangani"/>
+								<field name="company_id"/>
+							</group>
+							<group string="Analisa Atas Komplain/Klaim">
+								<field name="analisa_atas_komplain"/>
+								<field name="realisasi_hasil_komplain"/>
+							</group>
+							<group string="Penyebab Yang Paling Mungkin">
+								<field name="penyebab_yg_paling_mungkin"/>
+							</group>
+							<group string="Upaya Tindakan Koreksi">
+								<field name="upaya_tindakan"/>
+							</group>
+							<group string="Rencana Selesai">
+								<field name="rencana_selesai"/>
+								<field name="petugas"/>
+								<field name="selesai_tanggal"/>
+							</group>
+							<group string="Tanggal Pemberitahuan Penanganan">
+								<field name="tanggal_pemberitahuan_penanganan"/>
+							</group>
+							<group string="Dinyatakan Selesai">
+								<field name="dinyatakan_selesai"/>
+								<field name="jabatan"/>
+								<field name="tanggal"/>							
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_klaim_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.klaim.tree</field>
+			<field name="model">adhimix.mrp.klaim</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Daftar Komplain/Klaim">
+					<field name="name"/>
+					<field name="tanggal"/>
+					<field name="no_komplain"/>
+					<field name="tanggal_penerimaan"/>
+					<field name="nama_pelanggan"/>
+					<field name="jenis_komplain"/>
+					<field name="status"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
+
