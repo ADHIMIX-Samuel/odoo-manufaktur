@@ -19,6 +19,7 @@ class adhimix_mrp_info_pasar(models.Model):
 	ya = fields.Boolean(string="Ya")
 	tidak = fields.Boolean(string="Tidak")
 	tanggal = fields.Date(string="Tanggal")
+	company_id = fields.Many2one(comodel_name="res.company",string="Company")
 
 
 

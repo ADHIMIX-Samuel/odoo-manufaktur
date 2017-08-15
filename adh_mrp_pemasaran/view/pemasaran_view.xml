@@ -20,6 +20,7 @@
 								<field name="lokasi"/>
 								<field name="volume"/>
 								<field name="status"/>
+								<field name="company_id"/>
 							</group>
 							<group string="Contact Person">
 								<field name="nama" class="oe_inline"/>
