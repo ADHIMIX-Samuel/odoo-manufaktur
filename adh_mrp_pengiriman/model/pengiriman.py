@@ -20,22 +20,28 @@ class adh_mrp_pengiriman(models.Model):
 	# 										inverse_name="reference",string="Inspeksi Pengiriman Aksesoris Drum Mixer")
 
 
-class adh_mrp_pengiriman_detail_uraian(models.Model):
-	_name ="adhimix.mrp.pengiriman.detail.uraian"
-
-	reference = fields.Many2one(comodel_name = "adhimix.mrp.pengiriman",string="Uraian")
+#==================================== Contoh dari Samuel ===============================================================#
+class adh_mrp_pengiriman_detail(models.Model):
+	_name ="adhimix.mrp.pengiriman.detail"
+	
+	reference = fields.Many2one(comodel_name = "adhimix.mrp.pengiriman",string="Reference")
+	uraian_id = fields.Many2one("adhimix.mrp.pengiriman.detail.uraian", string="Uraian")
+	kriteria_id = fields.Many2one("adhimix.mrp.pengiriman.detail.kriteria", string="Reference")
 	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
 	hasil_2 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 2")
 	keterangan = fields.Char(string="Keterangan")
-	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Kriteria")
+	
+	
+class adh_mrp_pengiriman_detail_uraian(models.Model):
+	_name ="adhimix.mrp.pengiriman.detail.uraian"
+
+	name = fields.Char(string="Uraian")	
 
 class adh_mrp_pengiriman_detail_kriteria(models.Model):
-	_name ="adhimix.mrp.pengiriman.detail.kriteria"
-	_inherit ="adhimix.mrp.pengiriman"
+	_name ="adhimix.mrp.pengiriman.detail.kriteria"	
 
-	kriteria = fields.Char(string="Kriteria")
-
-	
+	name = fields.Char(string="Kriteria")
+#==================================== Contoh dari Samuel ===============================================================#
 
 
 class adh_mrp_pengiriman_produk_silo(models.Model):
