@@ -10,50 +10,36 @@
 					<sheet>
 						<group>
 							<group>
-								<field name="name"/>
+								<field name="no_dokumen"/>
+								<field name="name"/>								
+							</group>
+							<group>
 								<field name="tanggal_efektif"/>
 								<field name="company_id"/>
-							</group>
-							<group string="Tipe Alat Angkut">
-								<field name="kriteria_tipe_alat_angkut"/>
-								<field name="hasil_pemeriksaan_tipe_alat_angkut_i"/>
-								<field name="hasil_pemeriksaan_tipe_alat_angkut_ii"/>
-								<field name="keterangan_tipe_alat_angkut"/>
-							</group>
-							<group string="Dimensi Alat Angkut">
-								<field name="kriteria_dimensi_alat_angkut"/>
-								<field name="hasil_pemeriksaan_dimensi_alat_angkut_i"/>
-								<field name="hasil_pemeriksaan_dimensi_alat_angkut_ii"/>
-								<field name="keterangan_dimensi_alat_angkut"/>
-							</group>
-							<group string="Kelengkapan Surat Alat Angkut">
-								<field name="kriteria_kelengkapan_surat_alat_angkut"/>
-								<field name="hasil_pemeriksaan_kelengkapan_surat_alat_angkut_i"/>
-								<field name="hasil_pemeriksaan_kelengkapan_surat_alat_angkut_ii"/>
-								<field name="keterangan_kelengkapan_surat_alat_angkut"/>
-							</group>
-							<group string="Kondisi Ban">
-								<field name="kriteria_kondisi_ban"/>
-								<field name="hasil_pemeriksaan_kondisi_ban_i"/>
-								<field name="hasil_pemeriksaan_kondisi_ban_ii"/>
-								<field name="keterangan_kondisi_ban"/>
-							</group>
-							<group string="Kondisi Alat Pengikat Produk">
-								<field name="kriteria_kondisi_alat_pengikat_produk"/>
-								<field name="hasil_pemeriksaan_kondisi_alat_pengikat_produk_i"/>
-								<field name="hasil_pemeriksaan_kondisi_alat_pengikat_produk_ii"/>
-								<field name="keterangan_kondisi_alat_pengikat_produk"/>
-							</group>
-							<group string="Kondisi Ikatan Produk Di Atas Truk">
-								<field name="kriteria_kondisi_ikatan_produk_diatas_truk"/>
-								<field name="hasil_pemeriksaan_kondisi_ikatan_produk_diatas_truk_i"/>
-								<field name="hasil_pemeriksaan_kondisi_ikatan_produk_diatas_truk_ii"/>
-								<field name="keterangan_kondisi_ikatan_produk_ikatan_diatas_truk"/>
-							</group>											
+							</group>								
 						</group>
 						<group>
 							<notebook>
-								<page string="Produk Silo">
+								<page string="Inspeksi Pengiriman Produk">
+									<group>
+										<field name="uraian_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="reference"/>
+												<field name="kriteria_id"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>- 
+								<!-- <field name="name" position="after">
+									<field name="kriteria"/>
+								</field> -->
+
+								<!-- <page string="Produk Silo">
 									<group>
 										<field name="inspeksi_pengiriman_produk_silo_ids" nolabel="1">
 											<form string="Produk Silo">
@@ -126,16 +112,16 @@
 															<field name="hasil_pemeriksaan_pipa_input_semen_silo_i"/>
 															<field name="keterangan_pipa_input_semen_silo"/>
 														</group>
-													</group>
-														<tree>
+													</group> -->
+														<!-- <tree> -->
 															<!-- <field name="reference"/> -->
 															<!-- <field name="kriteria"/>
 															<field name="toleransi_tabung_silo"/>
 															<field name="hasil_pemeriksaan_tabung_silo_i"/>
 															<field name="hasil_pemeriksaan_tabung_silo_ii"/>
 															<field name="keterangan_tabung_silo"/> -->
-														</tree>
-												</sheet>
+														<!-- </tree> -->
+												<!-- </sheet>
 											</form>
 										</field>
 									</group>
@@ -179,14 +165,14 @@
 															<field name="keterangan_pintu_cold_bin"/>
 														</group>
 													</group>
-														<tree>
+														<tree> -->
 															<!-- <field name="reference"/> -->
 															<!-- <field name="kriteria"/>
 															<field name="toleransi_tabung_silo"/>
 															<field name="hasil_pemeriksaan_tabung_silo_i"/>
 															<field name="hasil_pemeriksaan_tabung_silo_ii"/>
 															<field name="keterangan_tabung_silo"/> -->
-														</tree>
+														<!-- </tree>
 												</sheet>
 											</form>
 										</field>
@@ -245,14 +231,14 @@
 															<field name="keterangan_main_hole"/>
 														</group>
 													</group>
-															<tree>
+															<tree> -->
 																<!-- <field name="uraian"/>
 																<field name="kriteria"/>
 																<field name="toleransi"/>
 																<field name="hasil_pemeriksaan_i"/>
 																<field name="hasil_pemeriksaan_ii"/>
 																<field name="keterangan"/> -->									
-															</tree>
+															<!-- </tree>
 												</sheet>
 											</form>
 										</field>
@@ -275,22 +261,21 @@
 															<field name="hasil_pemeriksaan_kondisi_produk_ii"/>
 															<field name="keterangan_kondisi_produk"/>
 														</group>
-														<tree>
+														<tree> -->
 															<!-- <field name="uraian"/>
 															<field name="kriteria"/>
 															<field name="toleransi"/>
 															<field name="hasil_pemeriksaan_i"/>
 															<field name="hasil_pemeriksaan_ii"/>
 															<field name="keterangan"/> -->
-														</tree>
+														<!-- </tree>
 													</group>
 												</sheet>
 											</form>
 										</field>
 									</group>
-								</page>
-							</notebook>
-						</group>
+								</page> -->
+						
 					</sheet>
 				</form>
 			</field>

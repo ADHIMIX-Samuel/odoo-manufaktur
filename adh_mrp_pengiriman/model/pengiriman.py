@@ -3,49 +3,39 @@ from odoo import api,fields,models,_
 class adh_mrp_pengiriman(models.Model):
 	_name = "adhimix.mrp.pengiriman"
 
-	name = fields.Char(string="No Dokumen")
+	name = fields.Char(string="Uraian")
+	no_dokumen = fields.Char(string="No Dokumen")
 	tanggal_efektif = fields.Date(string="Tanggal Efektif")
-	company_id = fields.Many2one(comodel_name="res.company",string="Company")
+	company_id = fields.Many2one(comodel_name ="res.company",string="Company")
+	uraian_ids = fields.One2many(comodel_name ="adhimix.mrp.pengiriman.detail.uraian",inverse_name ="reference",string="Uraian")
+	# kriteria_ids = fields.One2many(comodel_name ="adhimix.mrp.pengiriman.detail.uraian",inverse_name ="kriteria_id")
 
-	kriteria_tipe_alat_angkut = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_tipe_alat_angkut_i = fields.Text(string="Hasil Pemeriksaan I")
-	hasil_pemeriksaan_tipe_alat_angkut_ii = fields.Text(string="Hasil Pemeriksaan II")
-	keterangan_tipe_alat_angkut = fields.Text(string="Keterangan")
+	# inspeksi_pengiriman_produk_silo_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.silo",
+	# 										inverse_name="reference",string="Insepeksi Pengiriman Produk Silo")
+	# inspeksi_pengiriman_produk_cold_bin_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.cold.bin",
+	# 										inverse_name="reference",string="Inspeksi Pengiriman Produk Cold Bin")
+	# inspeksi_pengiriman_produk_silo_mobile_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.silo.mobile",
+	# 										inverse_name="reference",string="Inspeksi Pengiriman Produk Silo Mobile")
+	# inspeksi_pengiriman_aksesoris_drum_mixer_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.aksesoris.drum.mixer",
+	# 										inverse_name="reference",string="Inspeksi Pengiriman Aksesoris Drum Mixer")
 
-	kriteria_dimensi_alat_angkut = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_dimensi_alat_angkut_i = fields.Text(string="Hasil Pemeriksaan I")
-	hasil_pemeriksaan_dimensi_alat_angkut_ii = fields.Text(string="Hasil Pemeriksaan  II")
-	keterangan_dimensi_alat_angkut = fields.Text(string="Keterangan")
 
-	kriteria_kelengkapan_surat_alat_angkut = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_kelengkapan_surat_alat_angkut_i = fields.Text(string="Hasil Pemeriksaan   I")
-	hasil_pemeriksaan_kelengkapan_surat_alat_angkut_ii = fields.Text(string="Hasil Pemeriksaan  II")
-	keterangan_kelengkapan_surat_alat_angkut = fields.Text(string="Keterangan")
+class adh_mrp_pengiriman_detail_uraian(models.Model):
+	_name ="adhimix.mrp.pengiriman.detail.uraian"
 
-	kriteria_kondisi_ban = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_kondisi_ban_i = fields.Text(string="Hasil Pemeriksaan  I")
-	hasil_pemeriksaan_kondisi_ban_ii = fields.Text(string="Hasil Pemeriksaan  II")
-	keterangan_kondisi_ban = fields.Text(string="Keterangan")
+	reference = fields.Many2one(comodel_name = "adhimix.mrp.pengiriman",string="Uraian")
+	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
+	hasil_2 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 2")
+	keterangan = fields.Char(string="Keterangan")
+	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Kriteria")
 
-	kriteria_kondisi_alat_pengikat_produk = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_kondisi_alat_pengikat_produk_i = fields.Text(string="Hasil Pemeriksaan I")
-	hasil_pemeriksaan_kondisi_alat_pengikat_produk_ii =fields.Text(string="Hasil Pemeriksaan  II")
-	keterangan_kondisi_alat_pengikat_produk = fields.Text(string="Keterangan")
+class adh_mrp_pengiriman_detail_kriteria(models.Model):
+	_name ="adhimix.mrp.pengiriman.detail.kriteria"
+	_inherit ="adhimix.mrp.pengiriman"
+
+	kriteria = fields.Char(string="Kriteria")
+
 	
-	kriteria_kondisi_ikatan_produk_diatas_truk = fields.Char(string="Kriteria")
-	hasil_pemeriksaan_kondisi_ikatan_produk_diatas_truk_i = fields.Text(string="Hasil Pemeriksaan I")
-	hasil_pemeriksaan_kondisi_ikatan_produk_diatas_truk_ii = fields.Text(string="Hasil Pemeriksaan II")
-	keterangan_kondisi_ikatan_produk_ikatan_diatas_truk = fields.Text(string="Keterangan")
-
-	inspeksi_pengiriman_produk_silo_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.silo",
-											inverse_name="reference",string="Insepeksi Pengiriman Produk Silo")
-	inspeksi_pengiriman_produk_cold_bin_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.cold.bin",
-											inverse_name="reference",string="Inspeksi Pengiriman Produk Cold Bin")
-	inspeksi_pengiriman_produk_silo_mobile_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.silo.mobile",
-											inverse_name="reference",string="Inspeksi Pengiriman Produk Silo Mobile")
-	inspeksi_pengiriman_aksesoris_drum_mixer_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.aksesoris.drum.mixer",
-											inverse_name="reference",string="Inspeksi Pengiriman Aksesoris Drum Mixer")
-
 
 
 class adh_mrp_pengiriman_produk_silo(models.Model):
