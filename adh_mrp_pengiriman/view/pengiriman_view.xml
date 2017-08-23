@@ -6,25 +6,25 @@
 			<field name="type">form</field>
 			<field name="priority" eval="8"/>
 			<field name="arch" type="xml">
-				<form string="Insepeksi Kesiapan Produk">
+				<form string="Insepeksi Pengiriman Produk">
 					<sheet>
 						<group>
 							<group>
-								<field name="no_dokumen"/>
-								<field name="name"/>								
+								<field name="name"/>
+								<field name="tanggal_efektif"/>								
 							</group>
 							<group>
-								<field name="tanggal_efektif"/>
 								<field name="company_id"/>
 							</group>								
 						</group>
 						<group>
 							<notebook>
-								<page string="Inspeksi Pengiriman Produk">
+								<page string="Produk">
 									<group>
 										<field name="uraian_ids" nolabel="1">
-											<tree editable="bottom">
-												<field name="reference"/>
+											<tree string="Pengiriman Produk" editable="bottom">
+												<field name="no"/>
+												<field name="uraian_id"/>
 												<field name="kriteria_id"/>
 												<field name="hasil_1"/>
 												<field name="hasil_2"/>
@@ -33,249 +33,70 @@
 										</field>
 									</group>
 								</page>
-							</notebook>
-						</group>- 
-								<!-- <field name="name" position="after">
-									<field name="kriteria"/>
-								</field> -->
-
-								<!-- <page string="Produk Silo">
+								<page string="Produk Silo">
 									<group>
-										<field name="inspeksi_pengiriman_produk_silo_ids" nolabel="1">
-											<form string="Produk Silo">
-												<sheet>
-													<group>
-														<group>
-															<field name="reference"/>
-															<field name="tanggal_efektif"/>
-														</group>
-														<group string="Tabung Silo">
-															<field name="kriteria_tabung_silo"/>
-															<field name="toleransi_tabung_silo"/>
-															<field name="hasil_pemeriksaan_tabung_silo_i"/>
-															<field name="hasil_pemeriksaan_tabung_silo_ii"/>
-															<field name="keterangan_tabung_silo"/>
-														</group>
-														<group string="Bagian Dalam Silo">
-															<field name="kriteria_bagian_dalam_silo"/>
-															<field name="toleransi_bagian_dalam_silo"/>
-															<field name="hasil_pemeriksaan_bagian_dalam_silo_i"/>
-															<field name="hasil_pemeriksaan_bagian_dalam_silo_ii"/>
-															<field name="keterangan_bagian_dalam_silo"/>
-														</group>
-														<group string="Kaki Silo">
-															<field name="kriteria_kaki_silo"/>
-															<field name="toleransi_kaki_silo"/>
-															<field name="hasil_pemeriksaan_kaki_silo_i"/>
-															<field name="hasil_pemeriksaan_kaki_silo_ii"/>
-															<field name="keterangan_kaki_silo"/>
-														</group>
-														<group string="Air Nozzel">
-															<field name="kriteria_air_nozel"/>
-															<field name="toleransi_air_nozel"/>
-															<field name="hasil_pemeriksaan_air_nozel_i"/>
-															<field name="hasil_pemeriksaan_air_nozel_ii"/>
-															<field name="keterangan_air_nozel"/>
-														</group>
-														<group string="Lubang Outter Semen">
-															<field name="kriteria_lubang_outer_semen"/>
-															<field name="toleransi_lubang_outer_semen"/>
-															<field name="hasil_pemeriksaan_lubang_outer_semen_i"/>
-															<field name="hasil_pemeriksaan_lubang_outer_semen_ii"/>
-															<field name="keterangan_lubang_outer_semen"/>
-														</group>
-														<group string="Main Hole">
-															<field name="kriteria_main_hole"/>
-															<field name="toleransi_main_hole"/>
-															<field name="hasil_pemeriksaan_main_hole_i"/>
-															<field name="hasil_pemeriksaan_main_hole_ii"/>
-															<field name="keterangan_main_hole"/>
-														</group>
-														<group string="Lubang Baut Main Hole">
-															<field name="kriteria_lubang_baut_main_hole"/>
-															<field name="toleransi_lubang_baut_main_hole"/>
-															<field name="hasil_pemeriksaan_lubang_baut_main_hole_i"/>
-															<field name="hasil_pemeriksaan_lubang_baut_main_hole_ii"/>
-															<field name="keterangan_lubang_baut_main_hole"/>
-														</group>
-														<group string="Jumlah Mur &#38; Baut">
-															<field name="kriteria_jumlah_mur_dan_baut"/>
-															<field name="toleransi_jumlah_mur_dan_baut"/>
-															<field name="hasil_pemeriksaan_jumlah_mur_dan_baut_i"/>
-															<field name="hasil_pemeriksaan_jumlah_mur_dan_baut_ii"/>
-															<field name="keterangan_jumlah_mur_dan_baut"/>
-														</group>
-														<group string="Pipa Input Semen Silo">
-															<field name="kriteria_pipa_input_semen_silo"/>
-															<field name="toleransi_pipa_input_semen_silo"/>
-															<field name="hasil_pemeriksaan_pipa_input_semen_silo_i"/>
-															<field name="hasil_pemeriksaan_pipa_input_semen_silo_i"/>
-															<field name="keterangan_pipa_input_semen_silo"/>
-														</group>
-													</group> -->
-														<!-- <tree> -->
-															<!-- <field name="reference"/> -->
-															<!-- <field name="kriteria"/>
-															<field name="toleransi_tabung_silo"/>
-															<field name="hasil_pemeriksaan_tabung_silo_i"/>
-															<field name="hasil_pemeriksaan_tabung_silo_ii"/>
-															<field name="keterangan_tabung_silo"/> -->
-														<!-- </tree> -->
-												<!-- </sheet>
-											</form>
+										<field name="produk_silo_ids" nolabel="1">
+											<tree string="Pengiriman Produk Silo" editable="bottom">
+												<field name="no"/>
+												<field name="uraian_id"/>
+												<field name="aksesoris_silo_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
 										</field>
 									</group>
 								</page>
 								<page string="Produk Cold Bin">
 									<group>
-										<field name="inspeksi_pengiriman_produk_cold_bin_ids" nolabel="1">
-											<form string="Produk Cold Bin">
-												<sheet>
-													<group>
-														<group>
-															<field name="reference"/>
-															<field name="tanggal_efektif"/>
-														</group>
-														<group string="Dimensi Produk">
-															<field name="kriteria_dimensi_produk"/>
-															<field name="toleransi_dimensi_produk"/>
-															<field name="hasil_pemeriksaan_dimensi_produk_i"/>
-															<field name="hasil_pemeriksaan_dimensi_produk_ii"/>
-															<field name="keterangan_dimensi_produk"/>
-														</group>
-														<group string="Purchase Part">
-															<field name="kriteria_purchase_part"/>
-															<field name="toleransi_purchase_part"/>
-															<field name="hasil_pemeriksaan_purchase_part_i"/>
-															<field name="hasil_pemeriksaan_purchase_part_ii"/>
-															<field name="keterangan_purchase_part"/>
-														</group>
-														<group string="Kondisi Cat">
-															<field name="kriteria_kondisi_cat"/>
-															<field name="toleransi_kondisi_cat"/>
-															<field name="hasil_pemeriksaan_kondisi_cat_i"/>
-															<field name="hasil_pemeriksaan_kondisi_cat_ii"/>
-															<field name="keterangan_kondisi_cat"/>
-														</group>
-														<group string="Pintu Cold Bin">
-															<field name="kriteria_pintu_cold_bin"/>
-															<field name="toleransi_pintu_cold_bin"/>
-															<field name="hasil_pemeriksaan_pintu_cold_bin_i"/>
-															<field name="hasil_pemeriksaan_pintu_cold_bin_ii"/>
-															<field name="keterangan_pintu_cold_bin"/>
-														</group>
-													</group>
-														<tree> -->
-															<!-- <field name="reference"/> -->
-															<!-- <field name="kriteria"/>
-															<field name="toleransi_tabung_silo"/>
-															<field name="hasil_pemeriksaan_tabung_silo_i"/>
-															<field name="hasil_pemeriksaan_tabung_silo_ii"/>
-															<field name="keterangan_tabung_silo"/> -->
-														<!-- </tree>
-												</sheet>
-											</form>
+										<field name="produk_cold_bin_ids" nolabel="1">
+											<tree string="Pengiriman Produk Cold Bin" editable="bottom">
+												<field name="no"/>
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
 										</field>
 									</group>
 								</page>
 								<page string="Produk Silo Mobile">
 									<group>
-										<field name="inspeksi_pengiriman_produk_silo_mobile_ids" nolabel="1">
-											<form string="Produk Silo Mobile">
-												<sheet>
-													<group>
-														<group>
-															<field name="reference"/>
-															<field name="tanggal_efektif"/>
-														</group>
-														<group string="Tabung Silo Mobile">
-															<field name="kriteria_tabung_silo_mobile"/>
-															<field name="toleransi_tabung_silo_mobile"/>
-															<field name="hasil_pemeriksaan_tabung_silo_mobile_i"/>
-															<field name="hasil_pemeriksaan_tabung_silo_mobile_ii"/>
-															<field name="keterangan_tabung_silo_mobile"/>
-														</group>
-														<group string="Bagian Dalam Silo Mobile">
-															<field name="kriteria_bagian_dalam_silo_mobile"/>
-															<field name="toleransi_bagian_dalam_silo_mobile"/>
-															<field name="hasil_pemeriksaan_bagian_dalam_silo_mobile_i"/>
-															<field name="hasil_pemeriksaan_bagian_dalam_silo_mobile_ii"/>
-															<field name="keterangan_bagian_dalam_silo_mobile"/>
-														</group>
-														<group string="Frame Silo Mobile">
-															<field name="kriteria_frame_silo_mobile"/>
-															<field name="toleransi_frame_silo_mobile"/>
-															<field name="hasil_pemeriksaan_frame_silo_mobile_i"/>
-															<field name="hasil_pemeriksaan_frame_silo_mobile_ii"/>
-															<field name="keterangan_frame_silo_mobile"/>
-														</group>
-														<group string="Valve In/Out">
-															<field name="kriteria_valve_in_out"/>
-															<field name="toleransi_valve_in_out"/>
-															<field name="hasil_pemeriksaan_valve_in_out_i"/>
-															<field name="hasil_pemeriksaan_valve_in_out_ii"/>
-															<field name="keterangan_valve_in_out"/>
-														</group>
-														<group string="Valve Material">
-															<field name="kriteria_valve_material"/>
-															<field name="toleransi_valve_material"/>
-															<field name="hasil_pemeriksaan_valve_material_i"/>
-															<field name="hasil_pemeriksaan_valve_material_ii"/>
-															<field name="keterangan_valve_material"/>
-														</group>
-														<group string="Main Hole">
-															<field name="kriteria_main_hole"/>
-															<field name="toleransi_main_hole"/>
-															<field name="hasil_pemeriksaan_main_hole_i"/>
-															<field name="hasil_pemeriksaan_main_hole_ii"/>
-															<field name="keterangan_main_hole"/>
-														</group>
-													</group>
-															<tree> -->
-																<!-- <field name="uraian"/>
-																<field name="kriteria"/>
-																<field name="toleransi"/>
-																<field name="hasil_pemeriksaan_i"/>
-																<field name="hasil_pemeriksaan_ii"/>
-																<field name="keterangan"/> -->									
-															<!-- </tree>
-												</sheet>
-											</form>
+										<field name="produk_silo_mobile_ids" nolabel="1">
+											<tree string="Pengiriman Produk Silo Mobile" editable="bottom">
+												<field name="no"/>
+												<field name="uraian_id"/>
+												<field name="aksesoris_silo_mobile_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
 										</field>
 									</group>
 								</page>
 								<page string="Aksesoris Drum Mixer">
 									<group>
-										<field name="inspeksi_pengiriman_aksesoris_drum_mixer_ids" nolabel="1">
-											<form string="Aksesoris Drum Mixer">
-												<sheet>
-													<group>
-														<group>
-															<field name="reference"/>
-															<field name="tanggal_efektif"/>
-														</group>
-														<group string="Kondisi Aksesoris Produk">
-															<field name="kriteria_kondisi_produk"/>
-															<field name="toleransi_kondisi_produk"/>
-															<field name="hasil_pemeriksaan_kondisi_produk_i"/>
-															<field name="hasil_pemeriksaan_kondisi_produk_ii"/>
-															<field name="keterangan_kondisi_produk"/>
-														</group>
-														<tree> -->
-															<!-- <field name="uraian"/>
-															<field name="kriteria"/>
-															<field name="toleransi"/>
-															<field name="hasil_pemeriksaan_i"/>
-															<field name="hasil_pemeriksaan_ii"/>
-															<field name="keterangan"/> -->
-														<!-- </tree>
-													</group>
-												</sheet>
-											</form>
+										<field name="aksesoris_drum_mixer_ids" nolabel="1">
+											<tree string="Pengiriman Aksesoris Drum Mixer" editable="bottom">
+												<field name="no"/>
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
 										</field>
 									</group>
-								</page> -->
-						
+								</page>
+							</notebook>
+						</group>						
 					</sheet>
 				</form>
 			</field>
