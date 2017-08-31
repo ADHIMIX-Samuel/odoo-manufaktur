@@ -1,1 +1,2 @@
 import klaim
+import klaim_pelanggan

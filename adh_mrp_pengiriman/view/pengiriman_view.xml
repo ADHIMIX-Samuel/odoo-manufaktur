@@ -23,7 +23,6 @@
 									<group>
 										<field name="uraian_ids" nolabel="1">
 											<tree string="Pengiriman Produk" editable="bottom">
-												<field name="no"/>
 												<field name="uraian_id"/>
 												<field name="kriteria_id"/>
 												<field name="hasil_1"/>
@@ -37,7 +36,6 @@
 									<group>
 										<field name="produk_silo_ids" nolabel="1">
 											<tree string="Pengiriman Produk Silo" editable="bottom">
-												<field name="no"/>
 												<field name="uraian_id"/>
 												<field name="aksesoris_silo_id"/>
 												<field name="kriteria_id"/>
@@ -53,7 +51,6 @@
 									<group>
 										<field name="produk_cold_bin_ids" nolabel="1">
 											<tree string="Pengiriman Produk Cold Bin" editable="bottom">
-												<field name="no"/>
 												<field name="uraian_id"/>
 												<field name="kriteria_id"/>
 												<field name="toleransi"/>
@@ -68,7 +65,6 @@
 									<group>
 										<field name="produk_silo_mobile_ids" nolabel="1">
 											<tree string="Pengiriman Produk Silo Mobile" editable="bottom">
-												<field name="no"/>
 												<field name="uraian_id"/>
 												<field name="aksesoris_silo_mobile_id"/>
 												<field name="kriteria_id"/>
@@ -84,7 +80,6 @@
 									<group>
 										<field name="aksesoris_drum_mixer_ids" nolabel="1">
 											<tree string="Pengiriman Aksesoris Drum Mixer" editable="bottom">
-												<field name="no"/>
 												<field name="uraian_id"/>
 												<field name="kriteria_id"/>
 												<field name="toleransi"/>

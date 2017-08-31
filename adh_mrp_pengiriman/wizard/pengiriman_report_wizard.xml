@@ -8,7 +8,7 @@
 			<field name="arch" type="xml">
 				<form string="Info Pasar">
 		            <group>
-		                <!-- <field name="tanggal_informasi"/> -->
+		                <field name="tanggal_efektif"/>
 		            </group>
 		            <footer>
 		                <button name="inspeksi_report" string="Print" type="object" class="btn-primary"/>
@@ -27,25 +27,31 @@
 			<field name="target">new</field>
 	    </record>
 	    <report
-			id="report_inspeksi_pengiriman"
+			id="report_inspeksi_pengiriman_menu"
 			string="Inspeksi Pengiriman"
 			model="adhimix.mrp.pengiriman"
 			report_type="qweb-pdf"
 			file="adhimix.mrp.pengiriman"
-			name="adh_mrp_pengiriman.inspeksi_pengiriman_report"
+			name="adh_mrp_pengiriman.report_inspeksi_pengiriman"
 		/>
-		<template id="inspeksi_pengiriman_report">
+		<!-- <template id="inspeksi_pengiriman_report">
 			<t t-call="report.html_container">
 				<t t-foreach="docs" t-as="doc">
 					<t t-call="adh_mrp_pengiriman.inspeksi_pengiriman_report_document"/>
 				</t>
 			</t>
+		</template> -->
+		<template id="report_inspeksi_pengiriman">
+			<t t-call="report.html_container">				
+				<t t-call="report.internal_layout">
+				</t>
+			</t>
+			<div class="page">
+				<t t-esc="nomor_inspkesi"/>
+			</div>
 		</template>
-		<template id="inspeksi_pengiriman_report_document">
-			<!-- <t t-call="report.external_layout"> --> 
-				<!-- <t t-set="doc" t-value="doc.with_context(
-					{'lang':doc.partner_id.lang})"/> -->
-				<div class="page">
+	
+				<!-- <div class="page">
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
@@ -689,7 +695,7 @@
 						</tr>
 					</table>
 				</div>
-		</template>
+		</template> -->
 		 <menuitem id="hasil_pemeriksaan_inspeksi_pengiriman"
 		            name="Inspeksi Pengiriman"
 		            action="action_view_adh_mrp_pengiriman_wizard"

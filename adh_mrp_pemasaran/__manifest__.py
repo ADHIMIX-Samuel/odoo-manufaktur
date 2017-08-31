@@ -16,7 +16,7 @@
 		"menu.xml",
 		"view/pemasaran_view.xml",
 		# "report/pemasaran_report.xml",
-		"wizard/pemasaran_wizard_report.xml",
+		"wizard/info_pasar_report.xml",
 	],
 	"installable": True,
 	"auto_install": False,

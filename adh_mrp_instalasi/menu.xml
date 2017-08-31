@@ -1,0 +1,51 @@
+<openerp>
+	<data>
+		<record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
+            <field name="name">Kesiapan Alat Dan Bahan</field>
+            <field name="res_model">adhimix.mrp.instalasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+            	<p class="oe_view_nocontent_create">
+            		Click to add a data
+            	</p>
+            </field>
+        </record>
+        
+
+		<menuitem id="menu_mrp_instalasi_inspeksi"
+		            name="Inspeksi Instalasi"
+		            parent="stock.menu_stock_warehouse_mgmt"
+		            sequence="2"/>      
+
+		<menuitem id="menu_mrp_kesiapan_alat_bahan"
+		            name="Kesiapan Alat dan Bahan"
+		            action="action_view_adh_mrp_instalasi_inspeksi_form"
+		            parent="menu_mrp_instalasi_inspeksi"
+		            sequence="3"/>
+
+		<record id="action_view_adh_mrp_instalasi_kesiapan_pondasi_form" model="ir.actions.act_window">
+            <field name="name">Kesiapan Pondasi Produk</field>
+            <field name="res_model">adhimix.mrp.kesiapan.pondasi.produk</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+            	<p class="oe_view_nocontent_create">
+            		Click to add a data
+            	</p>
+            </field>
+        </record>            
+
+		<menuitem id="menu_mrp_kesiapan_pondasi_produk"
+		            name="Kesiapan Pondasi Produk"
+		            action="action_view_adh_mrp_instalasi_kesiapan_pondasi_form"
+		            parent="menu_mrp_instalasi_inspeksi"
+		            sequence="4"/>
+
+
+	</data>
+</openerp>

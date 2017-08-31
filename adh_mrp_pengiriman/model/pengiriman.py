@@ -17,7 +17,6 @@ class adh_mrp_pengiriman_detail(models.Model):
 	_name ="adhimix.mrp.pengiriman.detail"
 	
 	reference = fields.Many2one(comodel_name = "adhimix.mrp.pengiriman",string="Reference")
-	no = fields.Char(string="No")
 	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.detail.uraian", string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.detail.kriteria", string="Kriteria")
 	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
@@ -42,7 +41,6 @@ class adh_mrp_pengiriman_produk_silo(models.Model):
 	_name = "adhimix.mrp.pengiriman.produk.silo"
 
 	reference = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Reference")
-	no = fields.Char(string="No")
 	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.produk.silo.detail.uraian", string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.produk.silo.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
@@ -65,7 +63,6 @@ class adh_mrp_aksesoris_silo(models.Model):
 	_name = "adhimix.mrp.aksesoris.silo"
 
 	name = fields.Char(string="Aksesoris Silo")
-	no_silo = fields.Char(string="No")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.produk.silo.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
 	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
@@ -80,7 +77,6 @@ class adh_mrp_pengiriman_produk_cold_bin(models.Model):
 	_name = "adhimix.mrp.pengiriman.produk.cold.bin"
 
 	reference = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Reference")
-	no = fields.Char(string="No")
 	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.produk.cold.bin.detail.uraian", string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.pengiriman.produk.cold.bin.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
@@ -104,7 +100,6 @@ class adh_mrp_produk_silo_mobile(models.Model):
 	_name = "adhimix.mrp.produk.silo.mobile"
 
 	reference = fields.Many2one(comodel_name ="adhimix.mrp.pengiriman",string="Reference")
-	no = fields.Char(string="No")
 	uraian_id = fields.Many2one(comodel_name ="adhimix.mrp.produk.silo.mobile.detail.uraian", string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name ="adhimix.mrp.produk.silo.mobile.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
@@ -127,7 +122,6 @@ class adh_mrp_aksesoris_silo_mobile(models.Model):
 	_name = "adhimix.mrp.aksesoris.silo.mobile"
 
 	name = fields.Char(string="Aksesoris Silo Mobile")
-	no_silo = fields.Char(string="No")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.produk.silo.mobile.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
 	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
@@ -141,7 +135,6 @@ class adh_mrp_aksesoris_drum_mixer(models.Model):
 	_name = "adhimix.mrp.aksesoris.drum.mixer"
 
 	reference = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Reference")
-	no = fields.Char(string="No")
 	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.aksesoris.drum.mixer.detail.uraian", string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.aksesoris.drum.mixer.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")

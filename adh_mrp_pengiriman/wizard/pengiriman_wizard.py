@@ -6,10 +6,12 @@ class pengiriman_wizard(models.TransientModel):
     _name = "pengiriman.wizard"
     _description = "Inspeksi Pengiriman"
 
+    tanggal_efektif = fields.Date(string="Tanggal Efektif")
+
  
 
     @api.multi
     def inspeksi_report(self):
-    	# raise UserError(_('Maaf anda belum beruntung'))	
-    	# print "aaaaaaaaaaaa"
-    	return self.env['report'].get_action( self,'adh_mrp_pengiriman.report_inspeksi_pengiriman')
+    	data = {'tanggal_efektif':self.tanggal_efektif}
+        return self.env['report'].get_action(
+            [], 'adh_mrp_pengiriman.report_inspeksi_pengiriman',data=data)

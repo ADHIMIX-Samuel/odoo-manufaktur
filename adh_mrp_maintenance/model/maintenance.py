@@ -14,7 +14,7 @@ class adhimix_mrp_maintenance(models.Model):
 
 
 	@api.multi
-	def button_Draft(self):
+	def button_Draft(self):		
 		self.state = Mtc_STATES[0][0]
         
 	@api.multi

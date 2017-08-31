@@ -8,7 +8,7 @@
 			<field name="arch" type="xml">
 				<form string="Info Pasar">
 		            <group>
-		                <!-- <field name="tanggal_informasi"/> -->
+		                <field name="tanggal"/>
 		            </group>
 		            <footer>
 		                <button name="klaim_report" string="Print" type="object" class="btn-primary"/>
@@ -27,14 +27,23 @@
 			<field name="target">new</field>
 	    </record>
 	    <report
-			id="report_klaim_pelanggan"
+			id="report_klaim_pelanggan_menu"
 			string="Klaim Pelanggan"
 			model="adhimix.mrp.klaim"
 			report_type="qweb-pdf"
 			file="adhimix.mrp.klaim"
-			name="adh_mrp_pemasaran_klaim.klaim_pelanggan_report"
+			name="adh_mrp_pemasaran_klaim.report_klaim_pelanggan"
 		/>
-		<template id="klaim_pelanggan_report">
+		<template id="report_klaim_pelanggan">
+			<t t-call="report.html_container">				
+				<t t-call="report.internal_layout">
+					<div class="page">					
+						<t t-esc="no_klaim.name"/>
+					</div>
+				</t>
+			</t>
+		</template>
+		<!-- <template id="klaim_pelanggan_report">
 			<t t-call="report.html_container">
 				<t t-foreach="docs" t-as="doc">
 					<t t-call="adh_mrp_pemasaran_klaim.klaim_pelanggan_report_document"/>
@@ -42,9 +51,6 @@
 			</t>
 		</template>
 		<template id="klaim_pelanggan_report_document">
-			<!-- <t t-call="report.external_layout"> -->
-				<!-- <t t-set="doc" t-value="doc.with_context(
-					{'lang':doc.partner_id.lang})"/> -->
 				<div class="page">
 					<table class="table table-bordered">
 						<tbody>
@@ -264,18 +270,16 @@
 								<td style="text-align:left">
 									<p style="height:2cm">Mengetahui :</p>
 									<p>(.......................) </p>
-									<!-- <p><span t-field="doc.instructor_id"/></p> -->
 								</td>
 								<td style="text-align:right">
 									<p style="height:2cm">Dibuat Oleh :</p>
 									<p>(...................) </p>
-									<!-- <p><span t-field="doc.instructor_id" /></p> -->
 								</td>
 							</center>
 						</tr>
 					</table>					
 				</div>
-		</template>					
+		</template>					 -->
 	     <menuitem id="menu_klaim_wizard"
 		            name="Klaim Pelanggan"
 		            action="action_view_adh_mrp_klaim_wizard"

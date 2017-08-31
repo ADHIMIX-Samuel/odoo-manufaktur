@@ -1,0 +1,116 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_inspeksi_kesiapan_alat_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.inspeksi.kesiapan.alat.form</field>
+			<field name="model">adhimix.mrp.instalasi</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Kesiapan Alat Dan Bahan">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal"/>
+								<field name="lokasi_install"/>
+							</group>
+							<group>
+								<field name="nama_pekerjaan"/>
+								<field name="company_id"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Kesiapan Alat Dan Bahan">
+									<group>
+										<field name="install_produk_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="hasil_oke" attrs="{'readonly':[('hasil_tidak_oke', '!=', False)]}"/>
+												<field name="hasil_tidak_oke" attrs="{'readonly':[('hasil_oke', '!=', False)]}"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_inspeksi_kesiapan_alat_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.inspeksi.kesiapan.alat.tree</field>
+			<field name="model">adhimix.mrp.instalasi</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Kesiapan Alat Dan Bahan">
+					<field name="name"/>
+					<field name="tanggal"/>
+					<field name="lokasi_install"/>
+					<field name="nama_pekerjaan"/>
+					<field name="company_id"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_inspeksi_kesiapan_pondasi_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.inspeksi.kesiapan.pondasi.form</field>
+			<field name="model">adhimix.mrp.kesiapan.pondasi.produk</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Kesiapan Pondasi Produk">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal"/>
+								<field name="lokasi_install"/>
+							</group>
+							<group>
+								<field name="nama_pekerjaan"/>
+								<field name="company_id"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Kesiapan Pondasi Produk">
+									<group>
+										<field name="produk_silo_coldbin_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="hasil_oke" attrs="{'readonly':[('hasil_tidak_oke', '!=', False)]}"/>
+												<field name="hasil_tidak_oke" attrs="{'readonly':[('hasil_oke', '!=', False)]}"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_inspeksi_kesiapan_pondasi_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.inspeksi.kesiapan.pondasi.tree</field>
+			<field name="model">adhimix.mrp.kesiapan.pondasi.produk</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Kesiapan Alat Dan Bahan">
+					<field name="name"/>
+					<field name="tanggal"/>
+					<field name="lokasi_install"/>
+					<field name="nama_pekerjaan"/>
+					<field name="company_id"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</odoo>
+
