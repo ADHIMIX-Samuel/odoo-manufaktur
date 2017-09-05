@@ -1,10 +1,11 @@
 from odoo import api,fields,models,_
+import time
 
 class adh_mrp_pengiriman(models.Model):
 	_name = "adhimix.mrp.pengiriman"
 
 	name = fields.Char(string="No Dokumen")
-	tanggal_efektif = fields.Date(string="Tanggal Efektif")
+	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	company_id = fields.Many2one(comodel_name ="res.company",string="Company")
 	uraian_ids = fields.One2many(comodel_name ="adhimix.mrp.pengiriman.detail",inverse_name ="reference",string="Uraian")
 	produk_silo_ids = fields.One2many(comodel_name="adhimix.mrp.pengiriman.produk.silo",inverse_name="reference",string="Produk Silo")
@@ -135,20 +136,20 @@ class adh_mrp_aksesoris_drum_mixer(models.Model):
 	_name = "adhimix.mrp.aksesoris.drum.mixer"
 
 	reference = fields.Many2one(comodel_name="adhimix.mrp.pengiriman",string="Reference")
-	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.aksesoris.drum.mixer.detail.uraian", string="Uraian")
-	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.aksesoris.drum.mixer.detail.kriteria", string="Kriteria")
+	uraian_id = fields.Many2one(comodel_name="aksesoris.drum.mixer.detail.uraian", string="Uraian")
+	kriteria_id = fields.Many2one(comodel_name="aksesoris.drum.mixer.detail.kriteria", string="Kriteria")
 	toleransi = fields.Char(string="Toleransi")
 	hasil_1 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 1")
 	hasil_2 = fields.Selection([('Bagus','Bagus'),('Kurang Bagus','Kurang Bagus')],string="Hasil Pemeriksaan 2")
 	keterangan = fields.Char(string="Keterangan")
 
 class adh_mrp_aksesoris_drum_mixer_detail_uraian(models.Model):
-	_name ="adhimix.mrp.aksesoris.drum.mixer.detail.uraian"
+	_name ="aksesoris.drum.mixer.detail.uraian"
 
 	name = fields.Char(string="Uraian")
 
 class adh_mrp_aksesoris_drum_mixer_detail_kriteria(models.Model):
-	_name ="adhimix.mrp.aksesoris.drum.mixer.detail.kriteria"
+	_name ="aksesoris.drum.mixer.detail.kriteria"
 
 	name = fields.Char(string="Kriteria")
 

@@ -1,4 +1,5 @@
 from odoo import api,fields,models,_
+import time
 
 class adh_mrp_klaim(models.Model):
 	_name ="adhimix.mrp.klaim"
@@ -6,13 +7,14 @@ class adh_mrp_klaim(models.Model):
 	name = fields.Char(string="No FORM")
 	nama_pelanggan = fields.Char(string="Nama Pelanggan/Vendor")
 	no_komplain = fields.Char(string="No Komplain/Klaim")
-	tanggal_penerimaan = fields.Date(string="Tanggal Peneriman")
+	tanggal_penerimaan = fields.Date(string="Tanggal Penerimaan")
 	jabatan = fields.Char(string="jabatan")
 	nama_pelapor = fields.Char(string="Nama Pelapor")
 	no_telp = fields.Char(string="No Telepon")
 	uraian = fields.Text(string="Uraian")
 	Komplain_klaim = fields.Text(string="Komplain/Klaim")
 	tanggal = fields.Date(string="Tanggal")
+	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	jenis_komplain = fields.Selection([('Mutu/Kualitas','Mutu/Kualitas'),('Waktu','Waktu'),
 										('Pembayaran','Pembayaran'),('SDM','SDM'),('Lainnya','Lainnya')],
 										string="Jenis Komplain")
@@ -22,7 +24,7 @@ class adh_mrp_klaim(models.Model):
 	rencana_selesai = fields.Char(string="Rencana Selesai")
 	petugas = fields.Char(string="Petugas")
 	selesai_tanggal = fields.Date(string="Selesai Tanggal")
-	tanggal_pemberitahuan_penanganan = fields.Date(string="Tanggal Pemberitahuan Penanganan Komplain Ke Pelanggan/Vendor")
+	tanggal_pemberitahuan_penanganan = fields.Date(string="Tanggal Pemberitahuan Penanganan")
 	status = fields.Selection([('Open','Open'),('Close','Close')],string="Status")
 	realisasi_hasil_komplain= fields.Text(string="Realisasi Hasil Komplain")
 	bagian_yang_menangani = fields.Selection([('Pemasaran','Pemasaran'),('Produksi','Produksi'),

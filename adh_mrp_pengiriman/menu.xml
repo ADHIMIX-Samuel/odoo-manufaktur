@@ -19,7 +19,7 @@
 		            name="Inspeksi Pengiriman"
 		            action="action_view_adh_mrp_pengiriman_form"
 		            parent="stock.menu_stock_warehouse_mgmt"
-		            sequence="1"/>
+		            sequence="0"/>
 
 	</data>
 </openerp>

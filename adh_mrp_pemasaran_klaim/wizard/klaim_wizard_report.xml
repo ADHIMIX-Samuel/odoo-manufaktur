@@ -6,9 +6,11 @@
 			<field name="type">form</field>
 			<field name="priority" eval="8"/>
 			<field name="arch" type="xml">
-				<form string="Info Pasar">
+				<form string="Klaim Pelanggan">
 		            <group>
-		                <field name="tanggal"/>
+		                <!-- <field name="tanggal_penerimaan"/> -->
+		                <field name="start_date"/>
+		                <field name="end_date"/>
 		            </group>
 		            <footer>
 		                <button name="klaim_report" string="Print" type="object" class="btn-primary"/>
@@ -37,250 +39,354 @@
 		<template id="report_klaim_pelanggan">
 			<t t-call="report.html_container">				
 				<t t-call="report.internal_layout">
-					<div class="page">					
-						<t t-esc="no_klaim.name"/>
+					<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+									</td>
+									<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>KOMPLAIN / KLAIM</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+										<center></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>NO</center>
+									</th>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>Tanggal</center>
+									</th>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>No <br/>Komplain/Klaim</center>
+									</th>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>Tanggal <br/> Penerimaan</center>
+									</th>
+									<th  colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>Nama pelanggan/Vendor</center>
+									</th>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>Jenis <br/> Komplain/Klaim</center>
+									</th>
+									<th style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center>Status</center>
+									</th>
+								</tr>
+								<tbody>
+									<tr t-foreach="tanggal_ids" t-as="k">
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><span t-esc="k_index + 1" /></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.tanggal"/></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.no_komplain"/></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.tanggal_penerimaan"/></center>
+										</td>
+										<td  colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.nama_pelanggan"/></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.jenis_komplain"/></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black;vertical-align:middle;">
+												<center><t t-esc="k.status"/></center>
+										</td>
+									</tr>
+								</tbody>
+							</thead>
+						</table>
+						<table class="table" style="margin-top:-20px;">
+							<tr>
+								<center>
+									<td style="text-align:right">
+										<p> ..........,.............</p>
+										<p style="height:2cm">Dibuat Oleh :</p>
+										<p>(DCC) </p>
+									</td>
+								</center>
+							</tr>
+						</table>
 					</div>
 				</t>
 			</t>
 		</template>
-		<!-- <template id="klaim_pelanggan_report">
-			<t t-call="report.html_container">
-				<t t-foreach="docs" t-as="doc">
-					<t t-call="adh_mrp_pemasaran_klaim.klaim_pelanggan_report_document"/>
-				</t>
-			</t>
-		</template>
-		<template id="klaim_pelanggan_report_document">
-				<div class="page">
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
-								</td>
-								<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
-									<center><strong>FORM <br/>KOMPLAIN / KLAIM</strong></center>
-								</td>
-								<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<center><strong>No. Dokumen :</strong></center>
-								</td>
-							</tr>
-							<tr>
-								<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
-									<center><span t-field="doc.name"/></center>
-								</td>
-							</tr>
-							<tr>
-								<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<center><strong>Revisi :</strong> </center>
-								</td>
-								<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<center><strong>Tanggal Efektif :</strong></center>
-								</td>
-								<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<center><strong>Hal : </strong> </center>
-								</td>
-							</tr>
-						</tbody>
-						<table class="table table-condensed" style="margin-top:-20px">
-							<tr>
-								<td style="border-left:2px solid black;border-bottom:1px solid black;">
-									<strong>NO FORM  &#32;: &#32; &#32;</strong><span t-field="doc.name"/>
-								</td>
-								<td colspan="7" style="border-right:2px solid black;"></td>
+								
 
-							</tr>
+							
+
+
+	<!-- Tampilan Satu Record/Berbentuk Form -->
+	    <!-- <report
+			id="report_klaim_pelanggan_menu"
+			string="Klaim Pelanggan"
+			model="adhimix.mrp.klaim"
+			report_type="qweb-pdf"
+			file="adhimix.mrp.klaim"
+			name="adh_mrp_pemasaran_klaim.report_klaim_pelanggan"
+		/>
+		<template id="report_klaim_pelanggan">
+			<t t-call="report.html_container">				
+				<t t-call="report.internal_layout">
+					<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+									</td>
+									<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>KOMPLAIN / KLAIM</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+										<center><t t-esc="no_klaim"/></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						<table class="table table-condensed" style="margin-top:-20px">
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;border-bottom:1px solid black;">
+										<strong>NO FORM  &#32;: &#32; &#32;</strong><t t-esc="k.name"/>
+									</td>
+									<td colspan="7" style="border-right:2px solid black;"></td>
+
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Nama Pelanggan</strong>
+									</td>
+									<td>:</td>
+									<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.nama_pelanggan"/>
+									</td>						
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Nomor Surat</strong>
+									</td>
+									<td>:</td>
+									<td style="border-bottom:1px solid black;">
+										<t t-esc="k.no_komplain"/>
+									</td>
+									<td colspan="2" style="border-bottom:1px solid black;">
+										<strong>Tanggal</strong>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td colspan="2" style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.tanggal_penerimaan"/>
+									</td>						
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Nama Pelapor</strong>
+									</td>
+									<td>:</td>
+									<td style="border-bottom:1px solid black;">
+										<t t-esc="k.nama_pelapor"/>
+									</td>							
+									<td colspan="2" style="border-bottom:1px solid black;">
+										<strong>Jabatan</strong>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td colspan="2"  style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.jabatan"/>
+									</td>								
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Nomor Telepon</strong>
+									</td>
+									<td>:</td>
+									<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.no_telp"/>
+									</td>						
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Uraian </strong>
+									</td>
+									<td>:</td>
+									<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.uraian"/>
+									</td>
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Komplain/Klaim</strong>
+									</td>
+									<td>:</td>
+									<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.Komplain_klaim"/>
+									</td>							
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td style="border-left:2px solid black;">
+										<strong>Jenis Komplain</strong>
+									</td>
+									<td>:</td>
+									<td colspan="6" style="border-right:2px solid black;">
+										<t t-esc="k.jenis_komplain"/>
+									</td>						
+								</tr>
+							</table>
+							<table class="table table-bordered" style="margin-top:-20px">
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="4" style="border-right:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-top:2px solid black;">
+										<strong>Analisa Atas Komplain/Klaim :  &#32;  </strong><t t-esc="k.analisa_atas_komplain"/>
+									</td>								
+									<td colspan="4" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+										<strong>Penyebab Yang Paling Mungkin : &#32; </strong><t t-esc="k.penyebab_yg_paling_mungkin"/>
+									</td>
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="4" rowspan="4" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid up;border-bottom:2px solid black;">
+										<strong>Upaya Tindakan Koreksi :  &#32;</strong><t t-esc="k.upaya_tindakan"/>
+									</td>								
+									<td colspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">
+										<strong>Rencana Selesai</strong>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.rencana_selesai"/>
+									</td>							
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
+										<strong>Petugas</strong>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.petugas"/>
+									</td>								
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
+										<strong>Selesai Tanggal</strong><br/><br/>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.selesai_tanggal"/>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
+										<strong>Paraf</strong><br/><br/>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;"></td>
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="8" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black">
+										<strong><br/>Tanggal Pemberitahuan Penanganan Komplain :  &#32;</strong><t t-esc="k.tanggal_pemberitahuan_penanganan"/>
+									</td>	
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="4" rowspan="3" style="border-left:2px solid black;border-top:2px solid up;border-bottom:2px solid black;border-right:2px solid black">
+										<strong><br/>Realisasi Hasil Komplain :  &#32;</strong><t t-esc="k.realisasi_hasil_komplain"/>
+									</td>	
+									<td colspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">
+										<strong>Dinyatakan Selesai Oleh</strong><br/><br/>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.dinyatakan_selesai"/>
+									</td>						
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
+										<strong>Jabatan</strong><br/><br/>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.jabatan"/>
+									</td>
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
+										<strong>Tanggal</strong><br/><br/>
+									</td>
+									<td style="border-bottom:1px solid black;">:</td>
+									<td  style="border-right:2px solid black;border-bottom:1px solid black;">
+										<t t-esc="k.tanggal"/>
+									</td>								
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="4" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<strong>status : &#32;</strong><t t-esc="k.status"/><br/><br/>
+									</td>
+									<td colspan="4" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<strong>Tanda Tangan : &#32;</strong><br/><br/>
+									</td>
+								</tr>
+								<tr t-foreach="tanggal_ids" t-as="k">
+									<td colspan="8" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<strong><br/>Bagian Yang Menangani : &#32;</strong><t t-esc="k.bagian_yang_menangani"/>
+									</td>								
+								</tr>
+							</table>			
+						</table>
+						<table class="table">
 							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Nama Pelanggan</strong>
-								</td>
-								<td>:</td>
-								<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.nama_pelanggan"/>
-								</td>						
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Nomor Surat</strong>
-								</td>
-								<td>:</td>
-								<td style="border-bottom:1px solid black;">
-									<span t-field="doc.no_komplain"/>
-								</td>
-								<td colspan="2" style="border-bottom:1px solid black;">
-									<strong>Tanggal</strong>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td colspan="2" style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.tanggal"/>
-								</td>						
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Nama Pelapor</strong>
-								</td>
-								<td>:</td>
-								<td style="border-bottom:1px solid black;">
-									<span t-field="doc.nama_pelapor"/>
-								</td>							
-								<td colspan="2" style="border-bottom:1px solid black;">
-									<strong>Jabatan</strong>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td colspan="2"  style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.jabatan"/>
-								</td>								
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Nomor Telepon</strong>
-								</td>
-								<td>:</td>
-								<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.no_telp"/>
-								</td>						
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Uraian </strong>
-								</td>
-								<td>:</td>
-								<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.uraian"/>
-								</td>
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Komplain/Klaim</strong>
-								</td>
-								<td>:</td>
-								<td colspan="6" style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.Komplain_klaim"/>
-								</td>							
-							</tr>
-							<tr>
-								<td style="border-left:2px solid black;">
-									<strong>Jenis Komplain</strong>
-								</td>
-								<td>:</td>
-								<td colspan="6" style="border-right:2px solid black;">
-									<span t-field="doc.jenis_komplain"/>
-								</td>						
+								<center>
+									<td style="text-align:left">
+										<p style="height:2cm">Mengetahui :</p>
+										<p>(.......................) </p>
+									</td>
+									<td style="text-align:right">
+										<p style="height:2cm">Dibuat Oleh :</p>
+										<p>(...................) </p>
+									</td>
+								</center>
 							</tr>
 						</table>
-						<table class="table table-bordered" style="margin-top:-20px">
-							<tr>
-								<td colspan="4" style="border-right:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-top:2px solid black;">
-									<strong>Analisa Atas Komplain/Klaim :  &#32;  </strong><span t-field="doc.analisa_atas_komplain"/>
-								</td>								
-								<td colspan="4" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
-									<strong>Penyebab Yang Paling Mungkin : &#32; </strong><span t-field="doc.penyebab_yg_paling_mungkin"/>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" rowspan="4" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid up;border-bottom:2px solid black;">
-									<strong>Upaya Tindakan Koreksi :  &#32;</strong><span t-field="doc.upaya_tindakan"/>
-								</td>								
-								<td colspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">
-									<strong>Rencana Selesai</strong>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.rencana_selesai"/>
-								</td>							
-							</tr>
-							<tr>
-								<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
-									<strong>Petugas</strong>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.petugas"/>
-								</td>								
-							</tr>
-							<tr>
-								<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
-									<strong>Selesai Tanggal</strong><br/><br/>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.selesai_tanggal"/>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
-									<strong>Paraf</strong><br/><br/>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;"></td>
-							</tr>
-							<tr>
-								<td colspan="8" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black">
-									<strong><br/>Tanggal Pemberitahuan Penanganan Komplain :  &#32;</strong><span t-field="doc.tanggal_pemberitahuan_penanganan"/>
-								</td>	
-							</tr>
-							<tr>
-								<td colspan="4" rowspan="3" style="border-left:2px solid black;border-top:2px solid up;border-bottom:2px solid black;border-right:2px solid black">
-									<strong><br/>Realisasi Hasil Komplain :  &#32;</strong><span t-field="doc.realisasi_hasil_komplain"/>
-								</td>	
-								<td colspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">
-									<strong>Dinyatakan Selesai Oleh</strong><br/><br/>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.dinyatakan_selesai"/>
-								</td>						
-							</tr>
-							<tr>
-								<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
-									<strong>Jabatan</strong><br/><br/>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.jabatan"/>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">
-									<strong>Tanggal</strong><br/><br/>
-								</td>
-								<td style="border-bottom:1px solid black;">:</td>
-								<td  style="border-right:2px solid black;border-bottom:1px solid black;">
-									<span t-field="doc.tanggal"/>
-								</td>								
-							</tr>
-							<tr>
-								<td colspan="4" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<strong>status : &#32;</strong><span t-field="doc.status"/><br/><br/>
-								</td>
-								<td colspan="4" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<strong>Tanda Tangan : &#32;</strong><br/><br/>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="8" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-									<strong><br/>Bagian Yang Menangani : &#32;</strong><span t-field="doc.bagian_yang_menangani"/>
-								</td>								
-							</tr>
-						</table>			
-					</table>
-					<table class="table">
-						<tr>
-							<center>
-								<td style="text-align:left">
-									<p style="height:2cm">Mengetahui :</p>
-									<p>(.......................) </p>
-								</td>
-								<td style="text-align:right">
-									<p style="height:2cm">Dibuat Oleh :</p>
-									<p>(...................) </p>
-								</td>
-							</center>
-						</tr>
-					</table>					
-				</div>
-		</template>					 -->
-	     <menuitem id="menu_klaim_wizard"
+					</div>
+				</t>
+			</t>
+		</template>							 -->	
+	    <menuitem id="menu_klaim_wizard"
 		            name="Klaim Pelanggan"
 		            action="action_view_adh_mrp_klaim_wizard"
 		            parent="sales_team.menu_sale_report"

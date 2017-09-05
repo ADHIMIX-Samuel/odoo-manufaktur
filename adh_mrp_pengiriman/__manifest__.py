@@ -15,7 +15,7 @@
 		"menu.xml",
 		"view/pengiriman_view.xml",
 		# "report/klaim_report.xml",
-		"wizard/pengiriman_report_wizard.xml",
+		"wizard/pengiriman_wizard.xml",
 	],
 	"installable": True,
 	"auto_install": False,

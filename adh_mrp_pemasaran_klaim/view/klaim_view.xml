@@ -22,7 +22,7 @@
 								<field name="komplain"/>
 								<field name="klaim"/>
 								<field name="jenis_komplain"/>
-								<field name="tanggal"/>
+								<field name="tanggal_penerimaan"/>
 								<field name="jabatan"/>
 								<field name="status"/>
 								<field name="bagian_yang_menangani"/>
@@ -64,7 +64,7 @@
 			<field name="arch" type="xml">
 				<tree string="Daftar Komplain/Klaim">
 					<field name="name"/>
-					<field name="tanggal"/>
+					<field name="tanggal_pemberitahuan_penanganan"/>
 					<field name="no_komplain"/>
 					<field name="tanggal_penerimaan"/>
 					<field name="nama_pelanggan"/>

@@ -14,9 +14,9 @@
 	"data": [
 		"menu.xml",
 		"view/instalasi_view.xml",
-		"wizard/kesiapan_produk_report_wizard.xml",
+		"wizard/kesiapan_produk_wizard.xml",
 		# "report/pondasi_report.xml",
-		"wizard/kesiapan_alat_report_wizard.xml",
+		"wizard/kesiapan_alat_wizard.xml",
 	],
 	"installable": True,
 	"auto_install": False,

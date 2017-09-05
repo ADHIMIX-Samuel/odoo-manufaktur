@@ -15,7 +15,7 @@
 	"data": [
 		"menu.xml",
 		"view/klaim_view.xml",
-		# "report/klaim_report.xml",
+		"report/klaim_report.xml",
 		"wizard/klaim_wizard_report.xml",
 	],
 	"installable": True,

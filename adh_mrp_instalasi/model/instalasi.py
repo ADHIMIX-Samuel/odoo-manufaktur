@@ -1,10 +1,12 @@
 from odoo import api,fields,models,_
+import time
 
 class adh_mrp_instalasi(models.Model):
 	_name ="adhimix.mrp.instalasi"
 
 	name = fields.Char(string="No Dokumen")
 	tanggal = fields.Date(string="Tanggal")
+	tanggal_efektif= fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	lokasi_install = fields.Char(string="Lokasi Install")
 	nama_pekerjaan = fields.Char(string="Nama Pekerjaan")
 	company_id = fields.Many2one(comodel_name="res.company",string="Company")
@@ -20,8 +22,6 @@ class adh_mrp_intsalasi_produk(models.Model):
 	hasil_oke = fields.Boolean(string="Oke")
 	hasil_tidak_oke = fields.Boolean(string="Tidak Oke")
 	keterangan = fields.Char(string="Keterangan")
-
-
 			
 
 class adh_mrp_instalasi_produk_detail_uraian(models.Model):
@@ -36,13 +36,14 @@ class adh_mrp_instalasi_produk_detail_kriteria(models.Model):
 
 
 
-
+# Class Kesiapan Pondasi Produk
 
 class adh_mrp_kesiapan_pondasi_produk(models.Model):
 	_name ="adhimix.mrp.kesiapan.pondasi.produk"
 
 	name = fields.Char(string="No Dokumen")
 	tanggal = fields.Date(string="Tanggal")
+	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	lokasi_install = fields.Char(string="Lokasi Install")
 	nama_pekerjaan = fields.Char(string="Nama Pekerjaan")
 	company_id = fields.Many2one(comodel_name="res.company",string="Company")

@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<record id="view_adhimix_mrp_pengiriman" model="ir.ui.view">
+		<record id="view_adhimix_mrp_pengiriman_form" model="ir.ui.view">
 			<field name="name">adhimix.mrp.pengiriman.form</field>
 			<field name="model">adhimix.mrp.pengiriman</field>
 			<field name="type">form</field>
@@ -94,6 +94,18 @@
 						</group>						
 					</sheet>
 				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_pengiriman_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pengiriman.tree</field>
+			<field name="model">adhimix.mrp.pengiriman</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Insepeksi Pengiriman Produk">
+					<field name="name"/>
+					<field name="tanggal_efektif"/>
+				</tree>
 			</field>
 		</record>
 	</data>
