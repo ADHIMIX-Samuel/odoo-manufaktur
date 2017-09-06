@@ -32,28 +32,32 @@ class report_kesiapan_alat(models.Model):
             ('tanggal','<=',date_stop)
         	])
 
+		install_produk_ids = self.env['adhimix.mrp.instalasi.produk']
+		for alat_id in kesiapan_alat_ids :
+			install_produk_ids += alat_id.install_produk_ids
+
 		for x in kesiapan_alat_ids:
-			nomor_alat = x.name 
-			tanggal = x.tanggal
+			# nomor_alat = x.name 
+			# tanggal = x.tanggal
 			tanggal_efektif = x.tanggal_efektif
-			lokasi_install = x.lokasi_install
-			nama_pekerjaan = x.nama_pekerjaan
+			# lokasi_install = x.lokasi_install
+			# nama_pekerjaan = x.nama_pekerjaan
 			company_id = x.company_id.logo
-			install_produk_ids = x.install_produk_ids
-			uraian_alat = x.install_produk_ids.uraian_id.name
-			kriteria_alat = x.install_produk_ids.kriteria_id.name
+			# install_produk_ids = x.install_produk_ids
+			# uraian_alat = x.install_produk_ids.uraian_id.name
+			# kriteria_alat = x.install_produk_ids.kriteria_id.name
 
 		return{
-			'nomor_alat' : nomor_alat,
-			'tanggal' : tanggal,
+			# 'nomor_alat' : nomor_alat,
+			# 'tanggal' : tanggal,
 			'tanggal_efektif':tanggal_efektif,
-			'lokasi_install' : lokasi_install,
-			'nama_pekerjaan' : nama_pekerjaan,
+			# 'lokasi_install' : lokasi_install,
+			# 'nama_pekerjaan' : nama_pekerjaan,
 			'company_id' : company_id,
 			'install_produk_ids':install_produk_ids,
-			'kesiapan_alat_ids': kesiapan_alat_ids,
-			'uraian_alat' : uraian_alat,
-			'kriteria_alat': kriteria_alat
+			# 'kesiapan_alat_ids': kesiapan_alat_ids,
+			# 'uraian_alat' : uraian_alat,
+			# 'kriteria_alat': kriteria_alat
 
 			}
 

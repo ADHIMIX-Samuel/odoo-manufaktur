@@ -17,6 +17,7 @@
 							<group>
 								<field name="nama_pekerjaan"/>
 								<field name="company_id"/>
+								<field name="tanggal_efektif"/>
 							</group>
 						</group>
 						<group>
@@ -72,6 +73,7 @@
 							<group>
 								<field name="nama_pekerjaan"/>
 								<field name="company_id"/>
+								<field name="tanggal_efektif"/>
 							</group>
 						</group>
 						<group>

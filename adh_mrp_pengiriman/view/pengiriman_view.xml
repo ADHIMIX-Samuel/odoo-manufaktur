@@ -37,7 +37,22 @@
 										<field name="produk_silo_ids" nolabel="1">
 											<tree string="Pengiriman Produk Silo" editable="bottom">
 												<field name="uraian_id"/>
-												<field name="aksesoris_silo_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Silo">
+									<group>
+										<field name="aksesoris_silo_ids" nolabel="1">
+											<tree string="Aksesoris Silo" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
 												<field name="kriteria_id"/>
 												<field name="toleransi"/>
 												<field name="hasil_1"/>
@@ -66,7 +81,22 @@
 										<field name="produk_silo_mobile_ids" nolabel="1">
 											<tree string="Pengiriman Produk Silo Mobile" editable="bottom">
 												<field name="uraian_id"/>
-												<field name="aksesoris_silo_mobile_id"/>
+												<!-- <field name="aksesoris_silo_mobile_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Silo Mobile">
+									<group>
+										<field name="aksesoris_silo_mobile_ids" nolabel="1">
+											<tree string="Aksesoris Silo Mobile" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
 												<field name="kriteria_id"/>
 												<field name="toleransi"/>
 												<field name="hasil_1"/>

@@ -7,79 +7,89 @@ class report_inspeksi_pengiriman(models.AbstractModel):
 
 
     @api.model
-    def get_inspeksi_pengiriman_details(self, tanggal_efektif=False):
+    # def get_inspeksi_pengiriman_details(self, tanggal_efektif=False):
+    def get_inspeksi_pengiriman_details(self, date_start =False,date_stop=False):
+
+        if date_start:
+            date_start = fields.Datetime.from_string(date_start)
+        else:
+            # start by default today 00:00:00
+            date_start = today
+
+        if date_stop:
+            # set time to 23:59:59
+            date_stop = fields.Datetime.from_string(date_stop)
+        else:
+            # stop by default today 23:59:59
+            date_stop = today + timedelta(days=1, seconds=-1)
+
+        # avoid a date_stop smaller than date_start
+        date_stop = max(date_stop, date_start)
+
+        date_start = fields.Datetime.to_string(date_start)
+        date_stop = fields.Datetime.to_string(date_stop)
+
+
         inspeksi_pengiriman_ids = self.env['adhimix.mrp.pengiriman'].search([
-        	('tanggal_efektif','<=',tanggal_efektif)
+        	# ('tanggal_efektif','<=',tanggal_efektif)
+            ('tanggal_efektif','>=',date_start),
+            ('tanggal_efektif','<=',date_stop)
         	])
+        uraian_ids = self.env['adhimix.mrp.pengiriman.detail']
+        for uraian_id in inspeksi_pengiriman_ids :
+            uraian_ids += uraian_id.uraian_ids
+
+        produk_silo_ids = self.env['adhimix.mrp.pengiriman.produk.silo']
+        for produk_id in inspeksi_pengiriman_ids :
+            produk_silo_ids += produk_id.produk_silo_ids
+
+        aksesoris_silo_ids = self.env['adhimix.mrp.aksesoris.silo']
+        for aksesoris_silo_id in inspeksi_pengiriman_ids :
+            aksesoris_silo_ids += aksesoris_silo_id.aksesoris_silo_ids
+
+        produk_cold_bin_ids = self.env['adhimix.mrp.pengiriman.produk.cold.bin']
+        for produk_cold_bin_id in inspeksi_pengiriman_ids :
+            produk_cold_bin_ids += produk_cold_bin_id.produk_cold_bin_ids
+
+        produk_silo_mobile_ids = self.env['adhimix.mrp.produk.silo.mobile']
+        for produk_silo_id in inspeksi_pengiriman_ids :
+            produk_silo_mobile_ids += produk_silo_id.produk_silo_mobile_ids
+
+
+        aksesoris_silo_mobile_ids = self.env['adhimix.mrp.aksesoris.silo.mobile']
+        for aksesoris_silo_mobile_id in inspeksi_pengiriman_ids :
+            aksesoris_silo_mobile_ids += aksesoris_silo_mobile_id.aksesoris_silo_mobile_ids
+
+        aksesoris_drum_mixer_ids = self.env['adhimix.mrp.aksesoris.drum.mixer']
+        for aksesoris_drum_mixer_id in inspeksi_pengiriman_ids :
+            aksesoris_drum_mixer_ids += aksesoris_drum_mixer_id.aksesoris_drum_mixer_ids
+
+
+
+
 
         for x in inspeksi_pengiriman_ids:
-        	nomor_inspeksi = x.name
-                tanggal_efektif = x.tanggal_efektif
-                company_id = x.company_id.logo
-
-                uraian_detail = x.produk_silo_ids.uraian_id.name
-                hasil_1_detail = x.produk_silo_ids.hasil_1
-                kriteria_detail = x.produk_silo_ids.kriteria_id.name
-                hasil_2_detail = x.produk_silo_ids.hasil_2
-                keterangan_detail = x.produk_silo_ids.keterangan
-
-                uraian_silo = x.produk_cold_bin_ids.uraian_id.name
-                hasil_1_silo = x.produk_cold_bin_ids.hasil_1
-                kriteria_silo = x.produk_cold_bin_ids.kriteria_id.name
-                hasil_2_silo = x.produk_cold_bin_ids.hasil_2
-                toleransi_silo = x.produk_silo_ids.toleransi
-                keterangan_silo = x.produk_cold_bin_ids.keterangan
-
-                # for y in inspeksi_pengiriman_ids.produk_silo_ids.aksesoris_silo_id:
-                uraian_aksesoris_silo = y.produk_silo_ids.aksesoris_silo_id.uraian_id.name
-                toleransi_aksesoris_silo = y.produk_silo_ids.aksesoris_silo_id.toleransi
-                hasil_1_aksesoris_silo = y.produk_silo_ids.aksesoris_silo_id.hasil_1
-                hasil_2_aksesoris_silo = y.produk_silo_ids.aksesoris_silo_id.hasil_2
-                keterangan_aksesoris_silo = y.produk_silo_ids.aksesoris_silo_id.keterangan
+            tanggal_efektif = x.tanggal_efektif
+            company_id = x.company_id.logo
                     
 
 
         return {
-        	'nomor_inspeksi' : nomor_inspeksi,
             'tanggal_efektif' : tanggal_efektif,
             'company_id' : company_id,
-            'inspeksi_pengiriman_ids' : inspeksi_pengiriman_ids,
+            'uraian_ids': uraian_ids,
             'produk_silo_ids': produk_silo_ids,
-            'produk_cold_bin_ids': produk_cold_bin_ids,
-
-            'uraian_detail' : uraian_detail,
-            'kriteria_detail' : kriteria_detail,
-            'hasil_1_detail' : hasil_1_detail,
-            'hasil_2_detail' : hasil_2_detail,
-            'keterangan_detail' :keterangan_detail,
-            
-            'uraian_silo' : uraian_silo,
-            'hasil_1_silo' : hasil_1_silo,
-            'kriteria_silo' : kriteria_silo,
-            'hasil_2_silo' : hasil_2_silo,
-            'keterangan_silo' : keterangan_silo,
+            'aksesoris_silo_ids': aksesoris_silo_ids,
+            'produk_cold_bin_ids':produk_cold_bin_ids,
+            'produk_silo_mobile_ids': produk_silo_mobile_ids,
+            'aksesoris_silo_mobile_ids': aksesoris_silo_mobile_ids,
+            'aksesoris_drum_mixer_ids' : aksesoris_drum_mixer_ids
         }
 
-        # uraian_detail_ids = self.env['adhimix.mrp.pengiriman.detail'].search([
-        #     ])
-
-        # for y in inspeksi_pengiriman_ids.uraian_ids:
-        #     uraian_detail = y.uraian_id.name
-        #     hasil_1_detail = y.hasil_1
-        #     kriteria_detail = y.kriteria_id
-        #     hasil_2_detail = y.hasil_2
-        #     keterangan_detail = y.keterangan
-
-        # return {
-        #         'uraian_detail' : uraian_detail,
-        #         'kriteria_detail' : kriteria_detail,
-        #         'hasil_1_detail' : hasil_1_detail,
-        #         'hasil_2_detail' : hasil_2_detail,
-        #         'keterangan_detail' :keterangan_detail
-        # }
 
     @api.multi
     def render_html(self, docids, data=None):
         data = dict(data or {})        
-        data.update(self.get_inspeksi_pengiriman_details(data['tanggal_efektif']))
+        # data.update(self.get_inspeksi_pengiriman_details(data['tanggal_efektif']))
+        data.update(self.get_inspeksi_pengiriman_details(data['date_start'],data['date_stop']))
         return self.env['report'].render('adh_mrp_pengiriman.report_inspeksi_pengiriman', data)

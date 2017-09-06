@@ -46,7 +46,7 @@
 									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
 									</td>
-									<td colspan="7" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+									<td colspan="8" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
 										<center><strong>FORM <br/>CHECKLIST KESIAPAN ALAT DAN BAHAN <br/> INSTALL PRODUK</strong></center>
 									</td>
 									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
@@ -62,7 +62,7 @@
 									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 										<center><strong>Revisi :</strong> </center>
 									</td>
-									<td colspan="7" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+									<td colspan="8" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 										<center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/></strong></center>
 									</td>
 									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
@@ -75,67 +75,71 @@
 							<thead>
 								<tr>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
-										<center><br/>No</center>
+										<strong><center><br/>No</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-										<center><br/>Tanggal</center>
+										<strong><center><br/>Tanggal</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-										<center><br/>Lokasi Pekerjaan</center>
+										<strong><center><br/>No Dokumen</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-										<center><br/>Nama Pekerjaan</center>
+										<strong><center><br/>Lokasi Pekerjaan</center></strong>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<strong><center><br/>Nama Pekerjaan</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-right:2px solid black;border-left:1px solid black;">
-										<center><br/>Uraian</center>
+										<strong><center><br/>Uraian</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
-										<center><br/>Kriteria</center>
+										<strong><center><br/>Kriteria</center></strong>
 									</td>
 									<td colspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
-										<center>Hasil Pengecekan</center>
+										<strong><center>Hasil Pengecekan</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
-										<center><br/>Keterangan</center>
+										<strong><center><br/>Keterangan</center></strong>
 									</td>
 								</tr>
 								<tr>
 									<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
-										<center>Oke</center>
+										<strong><center>Oke</center></strong>
 									</td>
 									<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black; border-right:2px solid black;">
-										<center>Tidak Oke</center>
+										<strong><center>Tidak Oke</center></strong>
 									</td>
 								</tr>
-								<tr t-foreach="kesiapan_alat_ids" t-as="l">
+								<tr t-foreach="install_produk_ids" t-as="l">
 									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
 										<span t-esc="l_index + 1" />
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.tanggal "/>
+										<t t-esc="l.reference.tanggal "/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.lokasi_install "/>
+										<t t-esc="l.reference.name "/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.nama_pekerjaan "/>
+										<t t-esc="l.reference.lokasi_install "/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.reference.nama_pekerjaan "/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;" >
-										<!-- <t-foreach="kesiapan_alat_ids.install_produk_ids" t-as="l"/> -->
 										<t t-esc="l.uraian_id.name"/>
-										<!-- <t t-esc="l_index + 1"/> -->
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.install_produk_ids.kriteria_id.name"/>
+										<t t-esc="l.kriteria_id.name"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.install_produk_ids.hasil_oke"/>
+										<t t-esc="l.hasil_oke"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.install_produk_ids.hasil_tidak_oke"/>
+										<t t-esc="l.hasil_tidak_oke"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
-										<t t-esc="l.install_produk_ids.keterangan"/>
+										<t t-esc="l.keterangan"/>
 									</td>
 								</tr>
 							</thead>

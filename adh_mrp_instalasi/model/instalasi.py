@@ -56,7 +56,7 @@ class adh_mrp_kesiapan_pondasi_produk(models.Model):
 class adh_mrp_instalasi_silo(models.Model):
 	_name="adhimix.mrp.instalasi.silo"
 
-	reference= fields.Many2one(comodel_name="adhimix.mrp.instalasi",string="Reference")
+	reference= fields.Many2one(comodel_name="adhimix.mrp.kesiapan.pondasi.produk",string="Reference")
 	uraian_id = fields.Many2one(comodel_name="adhimix.mrp.instalasi.silo.detail.uraian",string="Uraian")
 	kriteria_id = fields.Many2one(comodel_name="adhimix.mrp.instalasi.silo.detail.kriteria",string="Kriteria")
 	hasil_oke = fields.Boolean(string="Oke")

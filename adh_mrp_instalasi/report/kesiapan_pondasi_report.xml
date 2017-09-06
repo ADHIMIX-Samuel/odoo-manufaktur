@@ -1,0 +1,174 @@
+<odoo>
+	<data>
+		<report
+			id="report_kesiapan_pondasi_id"
+			string="Kesiapan Pondasi Produk Print"
+			model="adhimix.mrp.kesiapan.pondasi.produk"
+			report_type="qweb-pdf"
+			file="adh_mrp_instalasi.report_kesiapanPondasi_produk"
+			name="adh_mrp_instalasi.report_kesiapanPondasi_produk"
+		/>
+
+		<template id="report_kesiapanPondasi_produk">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_mrp_instalasi.report_kesiapan_pondasi_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_kesiapan_pondasi_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>PEMERIKSAAN PONDASI PRODUK <br/> SILO &#38; COLD BIN</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td style="border-left:2px solid black;">
+							Tanggal
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4" style="border-right:2px solid black;">
+							<t t-esc="doc.tanggal"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-left:2px solid black;">
+							Lokasi Install
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4" style="border-right:2px solid black;">
+							<t t-esc="doc.lokasi_install"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-left:2px solid black;">
+							Nama Pekerjaan
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4" style="border-right:2px solid black;">
+							<t t-esc="doc.nama_pekerjaan"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered" style="margin-top:-20px;">
+					<thead>
+						<tr>
+							<td rowspan="2" style="vertical-align:center;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<center><br/>No</center>
+							</td>
+							<td rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-right:1px solid black;border-left:1px solid black;">
+								<center><br/>Uraian</center>
+							</td>
+							<td rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<center><br/>Kriteria</center>
+							</td>
+							<td colspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<center>Hasil Pengecekan</center>
+							</td>
+							<td rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<center><br/>Keterangan</center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<center>Oke</center>
+							</td>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black; border-right:1px solid black;">
+								<center>Tidak Oke</center>
+							</td>
+						</tr>
+						<tr t-foreach="doc.produk_silo_coldbin_ids" t-as="l">
+							<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<span t-esc="l_index + 1" />
+							</td>
+							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<span t-field="l.uraian_id.name"/>
+							</td>
+							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<span t-field="l.kriteria_id.name"/>
+							</td>
+							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<span t-field="l.hasil_oke"/>
+							</td>
+							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<span t-field="l.hasil_tidak_oke"/>
+							</td>
+							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<span t-field="l.keterangan"/>
+							</td>
+						</tr>
+					</thead>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:left;border-left:2px solid black;border-right:2px solid black;">
+								<p>Catatan:</p>
+								<p>Beri Tanda Centang Di Kolom Hasil Pengecekan</p>
+							</td>
+						</center>
+						</tr>
+					</table>
+				<table class="table" style="margin-top:-40px">
+					<tr>
+						<center>
+							<td style="text-align:right;border-left:2px solid black;border-right:2px solid black;">
+								<p>..........,...............</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+				<table class="table" style="margin-top:-40px">
+					<tr>
+						<center>
+							<td style="text-align:left;border-left:2px solid black;border-bottom:2px solid black;">
+								<p style="height:3cm">Disetujui Oleh,</p>
+								<p>(......................)</p>
+								<p>Supervisor Produksi</p>
+							</td>								
+							<td style="text-align:right;border-right:2px solid black;border-bottom:2px solid black;">
+								<p style="height:3cm">Dibuat Oleh,</p>
+								<p>(......................)</p>
+								<p>Pelaksana</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>
