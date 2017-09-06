@@ -1,0 +1,340 @@
+<odoo>
+	<data>
+		<report
+			id="report_pemeriksaan_alat_id"
+			string="Pemeriksaan Kerusakan Alat Print"
+			model="adhimix.mrp.pemeriksaan.kerusakan.alat"
+			report_type="qweb-pdf"
+			file="adh_mrp_pemeriksaan_alat.report_pemeriksaanAlat"
+			name="adh_mrp_pemeriksaan_alat.report_pemeriksaanAlat"
+		/>
+		<template id="report_pemeriksaanAlat">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<!-- <t t-call="adh_mrp_pemeriksaan_alat.report_pemeriksaanAlat_internal">
+					</t> -->
+					<t  t-if="doc.kerusakan_alat=='Internal'"><t t-call="adh_mrp_pemeriksaan_alat.report_pemeriksaanAlat_internal"/></t>
+					<t  t-if="doc.kerusakan_alat=='Eksternal'"><t t-call="adh_mrp_pemeriksaan_alat.report_pemeriksaanAlat_eksternal"/></t>
+				</t>
+			</t>
+		</template>
+		<template id="report_pemeriksaanAlat_internal">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center;max-height:100px; max-width:80px;"/>
+							</td>
+								<td colspan="6" rowspan="2" style="border-top:2px solid 	black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>CHECKLIST KERUSAKAN ALAT <br/> 
+								(INTERNAL)</strong></center>
+								</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<strong><center><t t-esc="doc.name"/></center></strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td colspan="2">
+							Nama Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.nama_alat"/>
+						</td>
+						<td colspan="2">
+							Lokasi Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.lokasi_alat"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Tipe Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tipe_alat"/>
+						</td>
+						<td colspan="2">
+							Tanggal Alat Masuk
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tanggal_masuk_alat"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Nomor Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.nomor_alat"/>
+						</td>
+						<td colspan="2">
+							Tanggal Checklist Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tanggal_checklist_alat"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered" style="margin-top:-20px;">
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong><center><br/>Kategori/Bagian Alat</center></strong>
+							</td>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-right:2px solid black;border-left:1px solid black;">
+								<strong><center><br/>Kriteria</center></strong>
+							</td>
+							<td colspan="2"  style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center>Hasil Checklist</center></strong>
+							</td>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center><br/>Keterangan</center></strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center>Sesuai</center></strong>
+							</td>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black; border-right:2px solid black;">
+								<strong><center>Tidak Sesuai</center></strong>
+							</td>
+						</tr>
+						<tr t-foreach="doc.pemeriksaan_alat_ids" t-as="l">
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.kategori_alat.name"/>
+							</td>
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;border-left:1px solid black;">
+								<t t-esc="l.kriteria_alat.name"/>
+							</td>
+							<td  style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.hasil_sesuai"/>
+							</td>
+							<td  style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.hasil_tidak_sesuai"/>
+							</td>
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<t t-esc="l.keterangan"/>
+							</td>
+						</tr>
+					</thead>
+				</table>
+				<table class="table">
+					<tr>
+						<center>
+							<td style="text-align:left">
+								<p style="height:3cm">Mengetahui,</p>
+								<p>(......................)</p>
+								<p>Pelanggan</p>
+							</td>
+							<td style="text-align:center">
+								<p style="height:3cm">Disetujui Oleh,</p>
+								<p>(......................)</p>
+								<p>Spv Produksi</p>
+							</td>									
+							<td style="text-align:right">
+								<p style="height:3cm">Dibuat Oleh,</p>
+								<p>(......................)</p>
+								<p>Pelaksana</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>	
+		<template id="report_pemeriksaanAlat_eksternal">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center;max-height:100px; max-width:80px;"/>
+							</td>
+							<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>CHECKLIST KERUSAKAN ALAT <br/> (EKSTERNAL)</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<strong><center><t t-esc="doc.name"/></center></strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td colspan="2">
+							Nama Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.nama_alat"/>
+						</td>
+						<td colspan="2">
+							Lokasi Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.lokasi_alat"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Tipe Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tipe_alat"/>
+						</td>
+						<td colspan="2">
+							Tanggal Alat Masuk
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tanggal_masuk_alat"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							Nomor Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.nomor_alat"/>
+						</td>
+						<td colspan="2">
+							Tanggal Checklist Alat
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<t t-esc="doc.tanggal_checklist_alat"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered" style="margin-top:-20px;">
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong><center><br/>Kategori/Bagian Alat</center></strong>
+							</td>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-right:2px solid black;border-left:1px solid black;">
+								<strong><center><br/>Kriteria</center></strong>
+							</td>
+							<td colspan="2"  style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center>Hasil Checklist</center></strong>
+							</td>
+							<td colspan="2" rowspan="2" style="vertical-align:center;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center><br/>Keterangan</center></strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<strong><center>Sesuai</center></strong>
+							</td>
+							<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black; border-right:2px solid black;">
+								<strong><center>Tidak Sesuai</center></strong>
+							</td>
+						</tr>
+						<tr t-foreach="doc.pemeriksaan_alat_ids" t-as="l">
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.kategori_alat.name"/>
+							</td>
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;border-left:1px solid black;">
+								<t t-esc="l.kriteria_alat.name"/>
+							</td>
+							<td  style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.hasil_sesuai"/>
+							</td>
+							<td  style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
+								<t t-esc="l.hasil_tidak_sesuai"/>
+							</td>
+							<td colspan="2" style="vertical-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:2px solid black;">
+								<t t-esc="l.keterangan"/>
+							</td>
+						</tr>
+					</thead>
+				</table>
+				<table class="table">
+					<tr>
+						<center>
+							<td style="text-align:left">
+								<p style="height:3cm">Disetujui Oleh,</p>
+								<p>(......................)</p>
+								<p>Spv Produksi</p>
+							</td>									
+							<td style="text-align:right">
+								<p style=";height:3cm">Dibuat Oleh,</p>
+								<p>(......................)</p>
+								<p>Pelaksana</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>

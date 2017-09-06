@@ -1,0 +1,65 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_pemeriksaan_kerusakan_alat_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pemeriksaan.kerusakan.alat.form</field>
+			<field name="model">adhimix.mrp.pemeriksaan.kerusakan.alat</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Pemeriksaan Kerusakan Alat">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="nama_alat"/>
+								<field name="tipe_alat"/>
+								<field name="nomor_alat"/>
+							</group>
+							<group>
+								<field name="lokasi_alat"/>
+								<field name="tanggal_masuk_alat"/>
+								<field name="tanggal_checklist_alat"/>
+								<field name="company_id"/>
+								<field name="kerusakan_alat"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Pemeriksaan Kerusakan Alat">
+									<group>
+										<field name="pemeriksaan_alat_ids" nolabel="1">
+											<tree string="Pemeriksaan Kerusakan Alat" editable="bottom">
+												<field name="kategori_alat"/>
+												<field name="kriteria_alat"/>
+												<field name="hasil_sesuai" attrs="{'readonly':[('hasil_tidak_sesuai', '!=', False)]}"/>
+												<field name="hasil_tidak_sesuai" attrs="{'readonly':[('hasil_sesuai', '!=', False)]}"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>								
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_pemeriksaan_kerusakan_alat_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pemeriksaan.kerusakan.alat.tree</field>
+			<field name="model">adhimix.mrp.pemeriksaan.kerusakan.alat</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Pemeriksaan Pemeriksaan Kerusakan Alat">
+					<field name="name"/>
+					<field name="tanggal_masuk_alat"/>
+					<field name="tanggal_checklist_alat"/>
+					<field name="nama_alat"/>
+					<field name="nomor_alat"/>
+					<field name="lokasi_alat"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
+								
