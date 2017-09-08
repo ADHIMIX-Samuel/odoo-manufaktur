@@ -1,0 +1,25 @@
+{
+	"name": "Logistic - Seleksi Supplier/Sub Kontraktor", 
+	"version": "1.0", 
+	"depends": [
+		"base",
+		"product",
+		"mrp",
+	], 
+	"author": "PT.WITACO -Samuel-Haerul",
+	"website": "https://www.adhimix.co.id",
+	"category": "Seleksi Supplier/Sub Kontraktor",
+	"summary": " Divisi Logistik PT.Adhimix Indonesia",
+	"description": "Module yang digunakan untuk daftar Seleksi Supplier/Sub Kontraktor di PT Adhimix",
+	"data": [
+		"menu.xml",
+		"view/seleksi_supplier_view.xml",
+		"view/seleksi_subkontraktor_view.xml",
+		"report/seleksi_supplier_report.xml",
+		"report/seleksi_subkontraktor_report.xml",
+		# "wizard/pemeriksaan_alat_wizard.xml",
+	],
+	"installable": True,
+	"auto_install": False,
+	"application" : True,
+}

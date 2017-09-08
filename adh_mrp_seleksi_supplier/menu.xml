@@ -1,0 +1,44 @@
+<openerp>
+	<data>
+		<record id="action_view_adh_mrp_seleksi_supplier" model="ir.actions.act_window">
+                  <field name="name">Seleksi Supplier</field>
+                  <field name="res_model">adhimix.mrp.seleksi.supplier</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+                  <field name="domain">[]</field>
+                  <field name="context">{}</field>
+                  <field name="help" type="html">
+                  	<p class="oe_view_nocontent_create">
+                  		Click to add a data
+                  	</p>
+                  </field>
+            </record>
+            <record id="action_view_adh_mrp_seleksi_subkontraktor" model="ir.actions.act_window">
+                  <field name="name">Seleksi Sub Kontraktor</field>
+                  <field name="res_model">adhimix.mrp.seleksi.subkontraktor</field>
+                  <field name="view_type">form</field>
+                  <field name="view_mode">tree,form</field>
+                  <field name="domain">[]</field>
+                  <field name="context">{}</field>
+                  <field name="help" type="html">
+                        <p class="oe_view_nocontent_create">
+                              Click to add a data
+                        </p>
+                  </field>
+            </record>
+        
+
+		<menuitem id="menu_mrp_seleksi_supplier"
+		            name="Seleksi Supplier"
+		            action="action_view_adh_mrp_seleksi_supplier"
+		            parent="purchase.menu_procurement_management"
+		            sequence="16"/>
+
+            <menuitem id="menu_mrp_seleksi_subkontraktor"
+                        name="Seleksi Sub Kontraktor"
+                        action="action_view_adh_mrp_seleksi_subkontraktor"
+                        parent="purchase.menu_procurement_management"
+                        sequence="17"/>
+
+	</data>
+</openerp>

@@ -1,0 +1,527 @@
+<odoo>
+	<data>
+		<report
+			id="report_seleksi_subkontraktor_id"
+			string="Seleksi Sub Kontraktor"
+			model="adhimix.mrp.seleksi.subkontraktor"
+			report_type="qweb-pdf"
+			file="adh_mrp_seleksi_supplier.report_seleksi_subkontraktor"
+			name="adh_mrp_seleksi_supplier.report_seleksi_subkontraktor"
+		/>
+
+		<template id="report_seleksi_subkontraktor">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_mrp_seleksi_supplier.report_seleksi_subkontraktor_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_seleksi_subkontraktor_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>SELEKSI SUBKONTRAKTOR</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><t t-esc="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-15px">
+					<tr>
+						<td>
+							<strong>Nama Sub. Kontraktor</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4">
+							<t t-esc="doc.nama_subkontraktor"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Alamat</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4">
+							<t t-esc="doc.alamat"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Contact Person</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4">
+							<t t-esc="doc.contact_person"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Telepon</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4">
+							<t t-esc="doc.telepon"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Fax</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4" >
+							<t t-esc="doc.fax"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Supplai Utama</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td colspan="4" >
+							<t t-esc="doc.supplai_utama"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="border-top:2px solid black;">
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:-15px">
+					<tr>
+						<td colspan="10">
+							<strong>Referensi Pekerjaan Sejenis</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							Surat Surat Ijin Perusahaan
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Ya</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Tidak</strong>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Keterangan</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Akte notaris
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.akte_notaris_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.akte_notaris_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.akte_notaris_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Surat Ijin Usaha Perdagangan
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.siup_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.siup_tidak"/>
+						</td>
+						<td  colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.siup_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Pengukuhan Pengusaha Kena Pajak
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.pengukuhan_pengusaha_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.pengukuhan_pengusaha_tidak"/>
+						</td>
+						<td  colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.pengukuhan_pengusaha_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Tanda Daftar Perusahaan
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tanda_daftar_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tanda_daftar_tidak"/>
+						</td>
+						<td  colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tanda_daftar_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Kartu Nomor Pajak
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kartu_nomor_pajak_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kartu_nomor_pajak_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kartu_nomor_pajak_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							• Surat Ijin Usaha Konstruksi
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sijk_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sijk_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sijk_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Jumlah Tenaga Ahli/Peralatan
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Jumlah Pekerjaan Yang Telah/Dalam Kontrak
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Sampai dengan Rp. 15 Juta 
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sd_15jt_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sd_15jt_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sd_15jt_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Rp. 15 juta s/d Rp. 50 juta
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.s15_50jt_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.s15_50jt_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.s15_50jt_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Diatas Rp. 200 juta
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.up_200jt_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.up_200jt_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.up_200jt_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Kemampuan Yang dimiliki
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Peralatan Kerja
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.peralatan_kerja_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.peralatan_kerja_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.peralatan_kerja_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Kualifikasi Personil
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kualifikasi_peralatan_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kualifikasi_peralatan_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kualifikasi_peralatan_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td colspan="5">
+							Tepat Waktu Menyelesaikan Tugas
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tepat_waktu_ya"/>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tepat_waktu_tidak"/>
+						</td>
+						<td colspan="2" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.tepat_waktu_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="9">
+							Kualifikasi :
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+						</td>
+						<td>
+							Sertifikasi
+						</td>
+						<td>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sertifikasi_iso_9001"/>
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 9001(Quality)
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sertifikasi_smk3"/>
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO SMK3 (HSE)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+						<td>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sertifikasi_iso_9002"/>
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 9002(Quality)
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sertifikasi_ohsas_18001"/>
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							OHSAS 18001(HSE)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+						</td>
+						<td>
+						
+						</td>
+						<td>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+						
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 9001 .........
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.sertifikasi_iso_14000"/>
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 14000 (ENVIRONMENT)
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="border-top:2px solid black;">
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td>
+						</td>							
+						<td>
+							Hasil
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.hasil_lulus"/>
+						</td>
+						<td>
+							
+						</td>
+						<td>
+							Lulus
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>							
+						<td>
+							
+						</td>
+						<td>
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.hasil_tidak_lulus"/>
+						</td>
+						<td>
+							
+						</td>
+						<td>
+							Tidak Lulus
+						</td>
+					</tr>
+				</table>
+				<table class="table" style="border-top:2px solid black">
+					<tr>
+						<td>
+							
+						</td>
+						<td>
+						</td>
+						<td style="text-align:right">
+							<p>...........,..........</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<strong>Penyaji Data</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<p>...............................</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<strong>Penilai Data</strong>
+						</td>
+						<td>
+							:
+						</td>
+						<td>
+							<p>...............................</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>
+
+

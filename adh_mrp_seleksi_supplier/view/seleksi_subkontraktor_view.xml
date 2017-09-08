@@ -1,0 +1,125 @@
+<odoo>
+	<data>		
+		<record id="view_adhimix_mrp_seleksi_subkontraktor_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.seleksi.subkontraktor.form</field>
+			<field name="model">adhimix.mrp.seleksi.subkontraktor</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Seleksi Sub Kontraktor">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="nama_subkontraktor"/>
+								<field name="contact_person"/>
+								<field name="alamat"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+								<field name="telepon"/>
+								<field name="fax"/>
+								<field name="supplai_utama"/>
+							</group>
+							<group string="Akte Notaris">
+								<field name="akte_notaris_ya" attrs="{'readonly':[('akte_notaris_tidak', '!=', False)]}"/>
+								<field name="akte_notaris_tidak" attrs="{'readonly':[('akte_notaris_ya', '!=', False)]}"/>
+								<field name="akte_notaris_keterangan"/>
+							</group>
+							<group string="Surat Ijin Usaha Perdagangan">
+								<field name="siup_ya" attrs="{'readonly':[('siup_tidak', '!=', False)]}"/>
+								<field name="siup_tidak" attrs="{'readonly':[('siup_ya', '!=', False)]}"/>
+								<field name="siup_keterangan"/>
+							</group>
+							<group string="Pengukuhan Pengusaha Kena Pajak">
+								<field name="pengukuhan_pengusaha_ya" attrs="{'readonly':[('pengukuhan_pengusaha_tidak', '!=', False)]}"/>
+								<field name="pengukuhan_pengusaha_tidak" attrs="{'readonly':[('pengukuhan_pengusaha_ya', '!=', False)]}"/>
+								<field name="pengukuhan_pengusaha_keterangan"/>
+							</group>
+							<group string="Tanda Daftar Perusahaan">
+								<field name="tanda_daftar_ya" attrs="{'readonly':[('tanda_daftar_tidak', '!=', False)]}"/>
+								<field name="tanda_daftar_tidak" attrs="{'readonly':[('tanda_daftar_ya', '!=', False)]}"/>
+								<field name="tanda_daftar_keterangan"/>
+							</group>
+							<group string="Kartu Nomor Pokok Pajak">
+								<field name="kartu_nomor_pajak_ya" attrs="{'readonly':[('kartu_nomor_pajak_tidak', '!=', False)]}"/>
+								<field name="kartu_nomor_pajak_tidak" attrs="{'readonly':[('kartu_nomor_pajak_ya', '!=', False)]}"/>
+								<field name="kartu_nomor_pajak_keterangan"/>
+							</group>
+							<group string="Surat Ijin Usaha Konstruksi">
+								<field name="sijk_ya" attrs="{'readonly':[('sijk_tidak', '!=', False)]}"/>
+								<field name="sijk_tidak" attrs="{'readonly':[('sijk_ya', '!=', False)]}"/>
+								<field name="sijk_keterangan"/>
+							</group>
+							<group string="Sampai Dengan 15 Juta">
+								<field name="sd_15jt_ya" attrs="{'readonly':[('sd_15jt_tidak', '!=', False)]}"/>
+								<field name="sd_15jt_tidak" attrs="{'readonly':[('sd_15jt_ya', '!=', False)]}"/>
+								<field name="sd_15jt_keterangan"/>
+							</group>
+							<group string="Rp.15 juta s/d Rp.50 juta">
+								<field name="s15_50jt_ya" attrs="{'readonly':[('s15_50jt_tidak', '!=', False)]}"/>
+								<field name="s15_50jt_tidak" attrs="{'readonly':[('s15_50jt_ya', '!=', False)]}"/>
+								<field name="s15_50jt_keterangan"/>
+							</group>
+							<group string="Rp.50 juta s/d Rp.200 juta">
+								<field name="s50_200jt_ya" attrs="{'readonly':[('s50_200jt_tidak', '!=', False)]}"/>
+								<field name="s50_200jt_tidak" attrs="{'readonly':[('s50_200jt_ya', '!=', False)]}"/>
+								<field name="s50_200jt_keterangan"/>
+							</group>
+							<group string="Diatas Rp.200 juta">
+								<field name="up_200jt_ya" attrs="{'readonly':[('up_200jt_tidak', '!=', False)]}"/>
+								<field name="up_200jt_tidak" attrs="{'readonly':[('up_200jt_ya', '!=', False)]}"/>
+								<field name="up_200jt_keterangan"/>
+							</group>
+							<group string="Kemampuan Yang Dimiliki">
+								<field name="peralatan_kerja_ya" attrs="{'readonly':[('peralatan_kerja_tidak', '!=', False)]}"/>
+								<field name="peralatan_kerja_tidak" attrs="{'readonly':[('peralatan_kerja_ya', '!=', False)]}"/>
+								<field name="peralatan_kerja_keterangan"/>
+							</group>
+							<group string="Kualifikasi Personil">
+								<field name="kualifikasi_peralatan_ya" attrs="{'readonly':[('kualifikasi_peralatan_tidak', '!=', False)]}"/>
+								<field name="kualifikasi_peralatan_tidak" attrs="{'readonly':[('kualifikasi_peralatan_ya', '!=', False)]}"/>
+								<field name="kualifikasi_peralatan_keterangan"/>
+							</group>
+							<group string="Tepat Waktu Menyelesaikan Tugas">
+								<field name="tepat_waktu_ya" attrs="{'readonly':[('tepat_waktu_tidak', '!=', False)]}"/>
+								<field name="tepat_waktu_tidak" attrs="{'readonly':[('tepat_waktu_ya', '!=', False)]}"/>
+								<field name="tepat_waktu_keterangan"/>
+							</group>
+							<group string="Sertifikasi">
+								<field name="sertifikasi_iso_9001"/>
+								<field name="sertifikasi_iso_9002"/>
+								<field name="sertifikasi_smk3"/>
+								<field name="sertifikasi_ohsas_18001"/>
+								<field name="sertifikasi_iso_14000"/>
+							</group>
+							<group string="Hasil">
+								<field name="hasil_lulus" attrs="{'readonly':[('hasil_tidak_lulus', '!=', False)]}"/>
+								<field name="hasil_tidak_lulus" attrs="{'readonly':[('hasil_lulus', '!=', False)]}"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_seleksi_subkontraktor_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.seleksi.subkontraktor.tree</field>
+			<field name="model">adhimix.mrp.seleksi.subkontraktor</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Seleksi Sub Kontraktor">
+					<field name="name"/>
+					<field name="nama_subkontraktor"/>
+					<field name="contact_person"/>
+					<field name="alamat"/>
+					<field name="telepon"/>
+					<field name="fax"/>
+					<field name="supplai_utama"/>
+					<field name="hasil_lulus"/>
+					<field name="hasil_tidak_lulus"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
