@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
 	<data>
 		<record id="action_view_adh_mrp_seleksi_supplier" model="ir.actions.act_window">
                   <field name="name">Seleksi Supplier</field>
@@ -41,4 +41,4 @@
                         sequence="17"/>
 
 	</data>
-</openerp>
+</odoo>

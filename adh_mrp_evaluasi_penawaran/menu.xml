@@ -1,8 +1,8 @@
 <odoo>
 	<data>
-		<record id="action_view_adh_mrp_klaim_form" model="ir.actions.act_window">
-            <field name="name">Klaim Pelanggan</field>
-            <field name="res_model">adhimix.mrp.klaim</field>
+		<record id="action_view_adh_mrp_evaluasi_penawaran_form" model="ir.actions.act_window">
+            <field name="name">Evaluasi Penawaran</field>
+            <field name="res_model">adhimix.mrp.evaluasi.penawaran</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
@@ -15,11 +15,11 @@
         </record>
         
 
-		<menuitem id="menu_mrp_klaim_pelanggan"
-		            name="Klaim Pelanggan"
-		            action="action_view_adh_mrp_klaim_form"
+		<menuitem id="menu_mrp_evaluasi_penawaran"
+		            name="Evaluasi Penawaran"
+		            action="action_view_adh_mrp_evaluasi_penawaran_form"
 		            parent="sales_team.menu_sales"
-		            sequence="9"/>
+		            sequence="8"/>
 
 	</data>
 </odoo>

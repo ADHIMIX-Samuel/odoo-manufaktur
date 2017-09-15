@@ -5,7 +5,7 @@ class adh_mrp_seleksi_supplier(models.Model):
 	_name = "adhimix.mrp.seleksi.supplier"
 
 
-	name = fields.Char(string="No Dokumen")
+	name = fields.Char(string="No Dokumen",required=True)
 	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	nama_vendor = fields.Char(string="Nama Vendor")
 	alamat = fields.Char(string="Alamat")

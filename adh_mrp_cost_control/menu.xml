@@ -1,0 +1,21 @@
+<odoo>
+	<data>
+		<record id="action_adh_mrp_cost_control" model="ir.actions.act_window">
+			<field name="name">Cost Control</field>
+			<field name="res_model">adhimix.mrp.cost.control</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Data
+              </p>				
+			</field>
+		</record>
+
+		<menuitem id="menu_cost_control"
+		 action="action_adh_mrp_cost_control"
+		 name="Cost Control"
+		 sequence="2"
+		 parent="mrp.menu_mrp_manufacturing"/>
+
+	</data>
+</odoo>

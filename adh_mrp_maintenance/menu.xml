@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
 	<data>
 		<record id="action_view_maintenance_form" model="ir.actions.act_window">
             <field name="name">Maintenance</field>
@@ -26,4 +26,4 @@
 
 
 	</data>
-</openerp>
+</odoo>

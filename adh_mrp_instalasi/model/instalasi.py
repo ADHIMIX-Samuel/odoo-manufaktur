@@ -4,8 +4,8 @@ import time
 class adh_mrp_instalasi(models.Model):
 	_name ="adhimix.mrp.instalasi"
 
-	name = fields.Char(string="No Dokumen")
-	tanggal = fields.Date(string="Tanggal")
+	name = fields.Char(string="No Dokumen",required=True)
+	tanggal = fields.Date(string="Tanggal",required=True)
 	tanggal_efektif= fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	lokasi_install = fields.Char(string="Lokasi Install")
 	nama_pekerjaan = fields.Char(string="Nama Pekerjaan")
@@ -41,8 +41,8 @@ class adh_mrp_instalasi_produk_detail_kriteria(models.Model):
 class adh_mrp_kesiapan_pondasi_produk(models.Model):
 	_name ="adhimix.mrp.kesiapan.pondasi.produk"
 
-	name = fields.Char(string="No Dokumen")
-	tanggal = fields.Date(string="Tanggal")
+	name = fields.Char(string="No Dokumen",required=True)
+	tanggal = fields.Date(string="Tanggal",required=True)
 	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	lokasi_install = fields.Char(string="Lokasi Install")
 	nama_pekerjaan = fields.Char(string="Nama Pekerjaan")

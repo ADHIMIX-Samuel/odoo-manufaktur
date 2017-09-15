@@ -1,0 +1,51 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_evaluasi_penawaran_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.evaluasi.penawaran.form</field>
+			<field name="model">adhimix.mrp.evaluasi.penawaran</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Evaluasi Penawaran"> 
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="no_penawaran"/>
+								<field name="tanggal_penawaran"/>
+								<field name="nama_pelanggan"/>	
+								<field name="kontak_person"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+								<field name="nama_spesifikasi_produk"/>
+								<field name="status"/>
+								<!-- <field name="period"/> -->
+								<field name="penyebab_kekalahan"/>
+								<field name="pic"/>	
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_evaluasi_penawaran_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.evaluasi.penawaran.tree</field>
+			<field name="model">adhimix.mrp.evaluasi.penawaran</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Evaluasi Penawaran">
+					<field name="name"/>
+					<field name="no_penawaran"/>
+					<field name="tanggal_penawaran"/>
+					<field name="nama_pelanggan"/>	
+					<field name="kontak_person"/>
+					<field name="status"/>
+					<field name="penyebab_kekalahan"/>
+					<field name="pic"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

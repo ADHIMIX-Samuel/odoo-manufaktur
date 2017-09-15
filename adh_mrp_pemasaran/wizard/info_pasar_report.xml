@@ -186,7 +186,80 @@
 										</tr>
 									</tbody>							
 								</thead>
-							</table>				
+							</table>
+							<table class="table table-condensed" style="margin-top:-15px">
+								<tr>
+									<td style="border-bottom:1px solid white;border-top:1px solid white">
+										<strong>Status :</strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										1 Terklarifikasi
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										2 Belum Terklarifikasi
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										<strong>Sumber Informasi :</strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										(Dari)
+									</td>
+									<td style="border-bottom:1px solid white;border-top:1px solid white;">
+										(Cara)
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										1 Owner
+									</td>
+									<td style="border-bottom:1px solid white">
+										1 By Phone
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										2 Rekanan
+									</td>
+									<td style="border-bottom:1px solid white">
+										2 DOOR TO DOOR (Datang Langsung)
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										
+									</td>
+									<td style="border-bottom:1px solid white">
+										3 Media Elektronik
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										
+									</td>
+									<td style="border-bottom:1px solid white">
+										3 Media Cetak
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										<strong>Catatan:</strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										Daftar informasi pasar dibuat dalam bentuk buku besar, ditulis secara harian
+									</td>
+								</tr>
+							</table>
+
 						</div>
 					<!-- </t>				 -->
 				</t>

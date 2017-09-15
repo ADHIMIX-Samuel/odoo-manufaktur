@@ -36,14 +36,15 @@ class adhimix_mrp_maintenance_sparepart(models.Model):
 
 	reference = fields.Many2one(comodel_name="adhimix.mrp.maintenance",string="Maintenance ID")
 	nama_barang = fields.Many2one(comodel_name="product.product",required=True,string="Nama Barang")
-	qty = fields.Float(string="QTY",required=True,default="1")
+	qty = fields.Float(string="QTY",required=True,default="1.0")
 	hpp = fields.Float(string="HPP",required=True)
-	total_hpp = fields.Float(string="Total HPP",required=True,compute="_get_total_hpp")
+	total_hpp = fields.Float(string="Total HPP",required=True,)
 	
-	@api.depends('total_hpp')
-	def _get_total_hpp(self):
-		for rec in self:
-			rec.total_hpp = self.qty * self.hpp
+	@api.onchange('qty','hpp','total_hpp')
+	def onchange_total_hpp(self):
+		self.total_hpp =(self.qty * self.hpp)
+	
+	
 
 	@api.onchange('nama_barang')
 	def onchange_nama_barang(self):

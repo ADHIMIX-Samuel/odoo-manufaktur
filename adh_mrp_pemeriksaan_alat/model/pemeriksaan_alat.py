@@ -4,14 +4,14 @@ import time
 class adh_mrp_pemeriksaan_kerusakan_alat(models.Model):
 	_name = "adhimix.mrp.pemeriksaan.kerusakan.alat"
 
-	name = fields.Char(string="No Dokumen")
+	name = fields.Char(string="No Dokumen",required=True)
 	nama_alat = fields.Char(string="Nama alat")
 	tipe_alat = fields.Char(string="Tipe Alat")
 	nomor_alat = fields.Char(string="Nomor Alat")
 	lokasi_alat = fields.Char(string="Lokasi Alat")
 	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
-	tanggal_masuk_alat = fields.Date(string="Tanggal Masuk Alat")
-	tanggal_checklist_alat = fields.Date(string="Tanggal Checklist Alat")
+	tanggal_masuk_alat = fields.Date(string="Tanggal Masuk Alat",required=True)
+	tanggal_checklist_alat = fields.Date(string="Tanggal Checklist Alat",required=True)
 	company_id = fields.Many2one(comodel_name="res.company",string="Company")
 	kerusakan_alat = fields.Selection([('Internal','Internal'),('Eksternal','Eksternal')])
 	pemeriksaan_alat_ids = fields.One2many(comodel_name="adhimix.mrp.pemeriksaan.alat.detail",inverse_name="reference",string="Reference")

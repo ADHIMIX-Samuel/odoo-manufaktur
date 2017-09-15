@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
 	<data>
 		<record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
             <field name="name">Kesiapan Alat Dan Bahan</field>
@@ -48,4 +48,4 @@
 
 
 	</data>
-</openerp>
+</odoo>

@@ -4,7 +4,7 @@ import time
 class adh_mrp_pengiriman(models.Model):
 	_name = "adhimix.mrp.pengiriman"
 
-	name = fields.Char(string="No Dokumen")
+	name = fields.Char(string="No Dokumen",required=True)
 	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	company_id = fields.Many2one(comodel_name ="res.company",string="Company")
 	uraian_ids = fields.One2many(comodel_name ="adhimix.mrp.pengiriman.detail",inverse_name ="reference",string="Uraian")

@@ -5,7 +5,7 @@ import time
 class adh_mrp_seleksi_subkontraktor(models.Model):
 	_name ="adhimix.mrp.seleksi.subkontraktor"
 
-	name = fields.Char(string="No Dokumen")
+	name = fields.Char(string="No Dokumen",required=True)
 	tanggal_efektif = fields.Date(string="Tanggal Efektif",default=lambda self:time.strftime("%Y-%m-%d"))
 	nama_subkontraktor = fields.Char(string="Nama Sub Kontraktor")
 	contact_person = fields.Char(string="Contact Person")

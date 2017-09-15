@@ -1,0 +1,218 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_evaluasi_penawaran_wizard" model="ir.ui.view">
+			<field name="name">adhimix.mrp.evaluasi.penawaran.wizard</field>
+			<field name="model">evaluasi.penawaran.wizard</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Evaluasi Penawaran">
+		            <group>
+		                <!-- <field name="tanggal_penawaran"/> -->
+		                <field name="start_date"/>
+		                <field name="end_date"/>
+		            </group>
+		            <footer>
+		                <button name="evaluasi_penawaran_report" string="Print" type="object" class="btn-primary"/>
+		                <button string="Cancel" class="btn-default" special="cancel"/>
+		            </footer>
+		        </form>
+		    </field>
+		</record> 
+		<record id="action_view_adh_mrp_evaluasi_penawaran_wizard" model="ir.actions.act_window">
+			<field name="name">Evaluasi Penawaran</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">evaluasi.penawaran.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_adhimix_mrp_evaluasi_penawaran_wizard"/>
+			<field name="target">new</field>
+	    </record>
+	    <report
+			id="report_evaluasi_penawaran_menu"
+			string="Evaluasi Penawaran"
+			model="adhimix.mrp.evaluasi.penawaran"
+			report_type="qweb-pdf"
+			file="adhimix.mrp.evaluasi.penawaran"
+			name="adh_mrp_evaluasi_penawaran.report_evaluasi_penawaran"
+		/>
+		<template id="report_evaluasi_penawaran">
+			<t t-call="report.html_container">				
+				<t t-call="report.internal_layout">
+					<!-- <t t-foreach="docs" t-as="doc"> -->
+						<div class="page">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center;max-height:100px; max-width:80px;"/>
+										</td>
+										<td colspan="13" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center><strong>FORM <br/> EVALUASI PENAWARAN</strong></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>No. Dokumen : </strong></center>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+											<!-- <center><t t-esc="nomor_info"/></center> -->
+										</td>
+									</tr>
+									<tr>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Revisi :</strong> </center>
+										</td>
+										<td colspan="13" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/> </strong></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Hal : </strong> </center>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-condensed" style="margin-top:-20px">
+						
+									<tr>
+										<td>
+											Period :
+											 <span t-esc="tanggal_efektif" t-field-options='{"format": "dd MMMM YYYY"}'/>
+											 
+										</td>
+									</tr>
+								<!-- </t> -->
+							</table>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<strong><center>No</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Tanggal Penawaran</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Nama Pelanggan</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Nama/Spesifikasi Produk</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Kontak Person</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Status</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+											<strong><center>Penyebab Kekalahan</center></strong>
+										</td>
+										<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<strong><center>PIC</center></strong>
+										</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="evaluasi_ids" t-as="l">
+										<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="l.name"/>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="l.tanggal_penawaran"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="l.no_penawaran"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="l.nama_pelanggan.name"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="nama_spesifikasi_produk"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="l.status"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="l.penyebab_kekalahan"/></center>
+										</td>
+										<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+											<center><t t-esc="l.pic"/></center>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-condensed" style="margin-top:-20px">
+								<tr>
+									<td style="border-bottom:1px solid white">
+										<strong>Status :</strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										1 Proses
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										2 Menang/Kontrak
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+									3 Kalah
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										<strong>Penyebab Kekalahan :</strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										1 Harga
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										2 Waktu Pelaksanaan
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										3 Lama Waktu Produksi/Perbaikan
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid white">
+										4 Kualitas Layanan (Pengalaman Masa Lalu)
+									</td>
+								</tr>
+							</table>
+							<table class="table" style="margin-top:-20px">
+								<tr>
+									<center>
+										<td style="text-align:left;border-top:1px solid white">
+											<p style="height:3cm">Disetujui Oleh,</p>
+											<p>(......................)</p>
+											<p>Spv Engineering</p>
+										</td>									
+										<td style="text-align:right;border-top:1px solid white">
+											<p style=";height:3cm">Dibuat Oleh,</p>
+											<p>(......................)</p>
+											<p>Staf Engineering</p>
+										</td>
+									</center>
+								</tr>
+							</table>
+						</div>
+					<!-- </t> -->
+				</t>
+			</t>
+		</template> 			
+		<menuitem id="menu_evaluasi_penawaran"
+		            name="Evaluasi Penawaran"
+		            action="action_view_adh_mrp_evaluasi_penawaran_wizard"
+		            parent="sales_team.menu_sale_report"
+		            sequence="13"/>
+	</data>
+</odoo>

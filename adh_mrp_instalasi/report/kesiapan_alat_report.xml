@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
-								<center></center>
+								<center><t t-esc="doc.name"/></center>
 							</td>
 						</tr>
 						<tr>
@@ -51,35 +51,35 @@
 				</table>
 				<table class="table table-condensed" style="margin-top:-20px;">
 					<tr>
-						<td style="border-left:2px solid black;">
+						<td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							Tanggal
 						</td>
-						<td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white">
 							:
 						</td>
-						<td colspan="4" style="border-right:2px solid black;">
+						<td colspan="4" style="border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							<t t-esc="doc.tanggal"/>
 						</td>
 					</tr>
 					<tr>
-						<td style="border-left:2px solid black;">
+						<td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							Lokasi Install
 						</td>
-						<td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white">
 							:
 						</td>
-						<td colspan="4" style="border-right:2px solid black;">
+						<td colspan="4" style="border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							<t t-esc="doc.lokasi_install"/>
 						</td>
 					</tr>
 					<tr>
-						<td style="border-left:2px solid black;">
+						<td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							Nama Pekerjaan
 						</td>
-						<td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white">
 							:
 						</td>
-						<td colspan="4" style="border-right:2px solid black;">
+						<td colspan="4" style="border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 							<t t-esc="doc.nama_pekerjaan"/>
 						</td>
 					</tr>
@@ -122,10 +122,12 @@
 								<t t-esc="l.kriteria_id.name"/>
 							</td>
 							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-								<t t-esc="l.hasil_oke"/>
+								<!-- <t t-esc="l.hasil_oke"/> -->
+								<center><t t-if="l.hasil_oke==hasil_oke"><input type="checkbox" checked="True" style="responsive"/></t></center>
 							</td>
 							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-								<t t-esc="l.hasil_tidak_oke"/>
+								<!-- <t t-esc="l.hasil_tidak_oke"/> -->
+								<center><t t-if="l.hasil_tidak_oke==hasil_tidak_oke"><input type="checkbox" checked="True" style="responsive"/></t></center>
 							</td>
 							<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
 								<t t-esc="l.keterangan"/>
@@ -136,7 +138,7 @@
 				<table class="table" style="margin-top:-20px">
 					<tr>
 						<center>
-							<td style="text-align:left;border-left:2px solid black;border-right:2px solid black;">
+							<td style="text-align:left;border-left:2px solid black;border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 								<p>Catatan:</p>
 								<p>Beri Tanda Centang Di Kolom Hasil Pengecekan</p>
 							</td>
@@ -146,7 +148,7 @@
 				<table class="table" style="margin-top:-40px">
 					<tr>
 						<center>
-							<td style="text-align:right;border-left:2px solid black;border-right:2px solid black;">
+							<td style="text-align:right;border-left:2px solid black;border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
 								<p>..........,...............</p>
 							</td>
 						</center>
@@ -155,12 +157,12 @@
 				<table class="table" style="margin-top:-40px">
 					<tr>
 						<center>
-							<td style="text-align:left;border-left:2px solid black;border-bottom:2px solid black;">
+							<td style="text-align:left;border-left:2px solid black;border-bottom:2px solid black;border-top:1px solid white;">
 								<p style="height:3cm">Disetujui Oleh,</p>
 								<p>(......................)</p>
 								<p>Supervisor Produksi</p>
 							</td>								
-							<td style="text-align:right;border-right:2px solid black;border-bottom:2px solid black;">
+							<td style="text-align:right;border-right:2px solid black;border-bottom:2px solid black;border-top:1px solid white;">
 								<p style="height:3cm">Dibuat Oleh,</p>
 								<p>(......................)</p>
 								<p>Pelaksana</p>
