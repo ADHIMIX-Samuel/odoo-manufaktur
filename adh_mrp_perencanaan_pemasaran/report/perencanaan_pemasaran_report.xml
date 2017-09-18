@@ -1,0 +1,1365 @@
+<odoo>
+	<data>
+		<report
+			id="report_perencanaan_pemasaran_id"
+			string="Perencanaan Pemasaran"
+			model="adhimix.mrp.perencanaan.pemasaran"
+			report_type="qweb-pdf"
+			file="adh_mrp_perencanaan_pemasaran.report_perencanaan_pemasaran"
+			name="adh_mrp_perencanaan_pemasaran.report_perencanaan_pemasaran"
+		/>
+
+		<template id="report_perencanaan_pemasaran">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_mrp_perencanaan_pemasaran.report_perencanaan_pemasaran_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_perencanaan_pemasaran_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>TINDAK LANJUT EVALUASI KEPUASAN PELANGGAN</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><span t-field="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y"}'/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered" style="margin-top:50px">
+					<thead>
+						<tr>
+							<td rowspan="3" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>No</strong></center>
+							</td>
+							<td rowspan="3" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>PELANGGAN</strong></center>
+							</td>
+							<td rowspan="3" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>JENIS PEKERJAAN</strong></center>
+							</td>
+							<td rowspan="3" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>QTY</strong></center>
+							</td>
+							<td rowspan="2" colspan="4" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>TOTAL</strong></center>
+							</td>
+							<td colspan="8" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>RENCANA&#38;REAL/BULAN</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>Periode <span t-field="doc.tanggal_efektif" t-field-options='{"format": "MMMM"}'/></strong></center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>Periode <span t-field="doc.tanggal_efektif" t-field-options='{"format": "MMMM"}'/></strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>SALES</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>BIAYA</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>LABA</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>PM</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>VOL</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>SALES</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>BIAYA</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>LABA</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>VOL</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>SALES</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>BIAYA</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;background-color:#C0C0C0">
+								<center><strong>LABA</strong></center>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr t-foreach="doc.readymix_ids" t-as="r">
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r_index +1"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.pelanggan.name"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.jenis_pekerjaan"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.qty"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.total_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.total_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.total_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.total_pm"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.rencana_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.rencana_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.rencana_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.rencana_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.real_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.real_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="r.real_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<center><t t-esc="r.real_laba"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								
+							</td>
+							<td colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<center><strong>SUB TOTAL DIVISI READYMIX</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.qty"/></center> -->
+								<t t-set="total_qty_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_qty_readymix" t-value="total_qty_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.qty for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_sales"/></center> -->
+								<t t-set="total_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_sales_readymix" t-value="total_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_biaya"/></center> -->
+								<t t-set="total_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_biaya_readymix" t-value="total_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_laba"/></center> -->
+								<t t-set="total_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_laba_readymix" t-value="total_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_pm"/></center> -->
+								<t t-set="total_pm_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_pm_readymix" t-value="total_pm_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_pm for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_volume"/></center> -->
+								<t t-set="rencana_volume_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_volume_readymix" t-value="rencana_volume_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_volume for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_sales"/></center> -->
+								<t t-set="rencana_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_sales_readymix" t-value="rencana_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_biaya"/></center> -->
+								<t t-set="rencana_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_biaya_readymix" t-value="rencana_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_laba"/></center> -->
+								<t t-set="rencana_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_laba_readymix" t-value="rencana_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_volume"/></center> -->
+								<t t-set="real_volume_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_volume_readymix" t-value="real_volume_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_volume for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_sales"/></center> -->
+								<t t-set="real_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_sales_readymix" t-value="real_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_biaya"/></center> -->
+								<t t-set="real_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_biaya_readymix" t-value="real_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_laba"/></center> -->
+								<t t-set="real_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_laba_readymix" t-value="real_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr t-foreach="doc.precast_ids" t-as="p">
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p_index +1"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.pelanggan.name"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.jenis_pekerjaan"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.qty"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.total_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.total_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.total_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.total_pm"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.rencana_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.rencana_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.rencana_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.rencana_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.real_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.real_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="p.real_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<center><t t-esc="p.real_laba"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								
+							</td>
+							<td colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<center><strong>SUB TOTAL DIVISI PRECAST</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.qty"/></center> -->
+								<t t-set="total_qty_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_qty_precast" t-value="total_qty_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.qty for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_sales"/></center> -->
+								<t t-set="total_sales_precast" t-value="0" />
+						                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_sales_precast" t-value="total_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_biaya"/></center> -->
+								<t t-set="total_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_biaya_precast" t-value="total_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_laba"/></center> -->
+								<t t-set="total_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_laba_precast" t-value="total_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_pm"/></center> -->
+								<t t-set="total_pm_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_pm_precast" t-value="total_pm_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_pm for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_volume"/></center> -->
+								<t t-set="rencana_volume_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_volume_precast" t-value="rencana_volume_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_volume for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_sales"/></center> -->
+								<t t-set="rencana_sales_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_sales_precast" t-value="rencana_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_biaya"/></center> -->
+								<t t-set="rencana_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_biaya_precast" t-value="rencana_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_laba"/></center> -->
+								<t t-set="rencana_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_laba_precast" t-value="rencana_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_volume"/></center> -->
+								<t t-set="real_volume_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_volume_precast" t-value="real_volume_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_volume for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_sales"/></center> -->
+								<t t-set="real_sales_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_sales_precast" t-value="real_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_biaya"/></center> -->
+								<t t-set="real_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_biaya_precast" t-value="real_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_laba"/></center> -->
+								<t t-set="real_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_laba_precast" t-value="real_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr t-foreach="doc.external_ids" t-as="e">
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e_index +1"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.pelanggan.name"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.jenis_pekerjaan"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.qty"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.total_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.total_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.total_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.total_pm"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.rencana_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.rencana_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.rencana_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.rencana_laba"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.real_volume"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.real_sales"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="e.real_biaya"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<center><t t-esc="e.real_laba"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								
+							</td>
+							<td colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<center><strong>SUB TOTAL EXTERNAL</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.qty"/></center> -->
+								<t t-set="total_qty_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_qty_external" t-value="total_qty_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.qty for e in doc.external_ids)"/>
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_sales"/></center> -->
+								<t t-set="total_sales_external" t-value="0" />
+						                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_sales_external" t-value="total_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_biaya"/></center> -->
+								<t t-set="total_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_biaya_external" t-value="total_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_laba"/></center> -->
+								<t t-set="total_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_laba_external" t-value="total_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_pm"/></center> -->
+								<t t-set="total_pm_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_pm_external" t-value="total_pm_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_pm for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_volume"/></center> -->
+								<t t-set="rencana_volume_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_volume_external" t-value="rencana_volume_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_sales"/></center> -->
+								<t t-set="rencana_sales_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_sales_external" t-value="rencana_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_biaya"/></center> -->
+								<t t-set="rencana_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_biaya_external" t-value="rencana_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_laba"/></center> -->
+								<t t-set="rencana_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_laba_external" t-value="rencana_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_volume"/></center> -->
+								<t t-set="real_volume_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_volume_external" t-value="real_volume_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_sales"/></center> -->
+								<t t-set="real_sales_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_sales_external" t-value="real_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_biaya"/></center> -->
+								<t t-set="real_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_biaya_external" t-value="real_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_laba"/></center> -->
+								<t t-set="real_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_laba_external" t-value="real_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								
+							</td>
+							<td colspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<center><strong>TOTAL</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.qty"/></center> -->
+								<t t-set="total_qty" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_qty" t-value="total_qty+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.qty for r in doc.readymix_ids)+sum(p.qty for p in doc.precast_ids)+sum(e.qty for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_sales"/></center> -->
+								<t t-set="total_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_sales" t-value="total_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_sales for r in doc.readymix_ids)+sum(p.total_sales for p in doc.precast_ids)+sum(e.total_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_biaya"/></center> -->
+								<t t-set="total_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_biaya" t-value="total_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_biaya for r in doc.readymix_ids)+sum(p.total_biaya for p in doc.precast_ids)+sum(e.total_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_laba"/></center> -->
+								<t t-set="total_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_laba" t-value="total_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_laba for r in doc.readymix_ids)+sum(p.total_laba for p in doc.precast_ids)+sum(e.total_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.total_pm"/></center> -->
+								<t t-set="total_pm" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_pm" t-value="total_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_pm for r in doc.readymix_ids)+sum(p.total_pm for p in doc.precast_ids)+sum(e.total_pm for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_volume"/></center> -->
+								<t t-set="total_rencana_volume" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_volume" t-value="total_rencana_volume+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_volume for r in doc.readymix_ids)+sum(p.rencana_volume for p in doc.precast_ids)+sum(e.rencana_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_sales"/></center> -->
+								<t t-set="total_rencana_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_sales" t-value="total_rencana_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_sales for r in doc.readymix_ids)+sum(p.rencana_sales for p in doc.precast_ids)+sum(e.rencana_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_biaya"/></center> -->
+								<t t-set="total_rencana_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_biaya" t-value="total_rencana_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_biaya for r in doc.readymix_ids)+sum(p.rencana_biaya for p in doc.precast_ids)+sum(e.rencana_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.rencana_laba"/></center> -->
+								<t t-set="total_rencana_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_laba" t-value="total_rencana_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_laba for r in doc.readymix_ids)+sum(p.rencana_laba for p in doc.precast_ids)+sum(e.rencana_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_volume"/></center> -->
+								<t t-set="total_real_volume" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_volume" t-value="total_real_volume+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_volume for r in doc.readymix_ids)+sum(p.real_volume for p in doc.precast_ids)+sum(e.real_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_sales"/></center> -->
+								<t t-set="total_real_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_sales" t-value="total_real_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_sales for r in doc.readymix_ids)+sum(p.real_sales for p in doc.precast_ids)+sum(e.real_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_biaya"/></center> -->
+								<t t-set="total_real_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_biaya" t-value="total_real_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_biaya for r in doc.readymix_ids)+sum(p.real_biaya for p in doc.precast_ids)+sum(e.real_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;background-color:#C0C0C0">
+								<!-- <center><t t-esc="r.real_laba"/></center> -->
+								<t t-set="total_real_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_laba" t-value="total_real_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_laba for r in doc.readymix_ids)+sum(p.real_laba for p in doc.precast_ids)+sum(e.real_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="15" style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								Rekap
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								1
+							</td>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								DIV. READYMIX
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total readymix -->
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_qty_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_qty_readymix" t-value="total_qty_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.qty for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_sales_readymix" t-value="total_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_biaya_readymix" t-value="total_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="total_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="total_laba_readymix" t-value="total_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.total_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total readymix real dan rencana -->
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_volume_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_volume_readymix" t-value="rencana_volume_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_volume for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_sales_readymix" t-value="rencana_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_biaya_readymix" t-value="rencana_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="rencana_laba_readymix" t-value="rencana_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.rencana_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_volume_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_volume_readymix" t-value="real_volume_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_volume for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_sales_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_sales_readymix" t-value="real_sales_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_sales for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_biaya_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_biaya_readymix" t-value="real_biaya_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_biaya for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="real_laba_readymix" t-value="0" />
+					                <t t-foreach="doc.readymix_ids" t-as="f">
+					                    <t t-set="real_laba_readymix" t-value="real_laba_readymix+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(r.real_laba for r in doc.readymix_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								2
+							</td>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								DIV. PRECAST
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total precast -->
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_qty_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_qty_precast" t-value="total_qty_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.qty for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+						
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_sales_precast" t-value="0" />
+						                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_sales_precast" t-value="total_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_biaya_precast" t-value="total_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="total_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="total_laba_precast" t-value="total_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.total_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total precast real dan rencana -->
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_volume_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_volume_precast" t-value="rencana_volume_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_volume for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_sales_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_sales_precast" t-value="rencana_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_biaya_precast" t-value="rencana_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="rencana_laba_precast" t-value="rencana_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.rencana_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_volume_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_volume_precast" t-value="real_volume_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_volume for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_sales_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_sales_precast" t-value="real_sales_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_sales for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_biaya_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_biaya_precast" t-value="real_biaya_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_biaya for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="real_laba_precast" t-value="0" />
+					                <t t-foreach="doc.precast_ids" t-as="p">
+					                    <t t-set="real_laba_precast" t-value="real_laba_precast+1" />
+					                    <t t-if="p_last">
+					                      <t t-esc="sum(p.real_laba for p in doc.precast_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								3
+							</td>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								EKSTERNAL
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total eksternal -->
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_qty_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_qty_external" t-value="total_qty_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.qty for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>							
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_sales_external" t-value="0" />
+						                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_sales_external" t-value="total_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="total_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_biaya_external" t-value="total_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="total_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="total_laba_external" t-value="total_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.total_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total eksternal real dan rencana -->
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_volume_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_volume_external" t-value="rencana_volume_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_sales_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_sales_external" t-value="rencana_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_biaya_external" t-value="rencana_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="rencana_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="rencana_laba_external" t-value="rencana_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.rencana_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_volume_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_volume_external" t-value="real_volume_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_sales_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_sales_external" t-value="real_sales_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<t t-set="real_biaya_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_biaya_external" t-value="real_biaya_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<t t-set="real_laba_external" t-value="0" />
+					                <t t-foreach="doc.external_ids" t-as="e">
+					                    <t t-set="real_laba_external" t-value="real_laba_external+1" />
+					                    <t t-if="e_last">
+					                      <t t-esc="sum(e.real_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+						<tr>
+							<!-- kosong -->
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								
+							</td>
+							<td  style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+								TOTAL
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total readymix -->
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_qty" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_qty" t-value="total_qty+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.qty for r in doc.readymix_ids)+sum(p.qty for p in doc.precast_ids)+sum(e.qty for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_sales" t-value="total_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_sales for r in doc.readymix_ids)+sum(p.total_sales for p in doc.precast_ids)+sum(e.total_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_biaya" t-value="total_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_biaya for r in doc.readymix_ids)+sum(p.total_biaya for p in doc.precast_ids)+sum(e.total_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_laba" t-value="total_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.total_laba for r in doc.readymix_ids)+sum(p.total_laba for p in doc.precast_ids)+sum(e.total_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<!-- kosong -->
+							<td style="border-bottom:1px solid white;border-top:1px solid white;border-right:1px solid white;border-left:1px solid white;">
+							</td>
+							<!-- total readymix real dan rencana -->
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_rencana_volume" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_volume" t-value="total_rencana_volume+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_volume for r in doc.readymix_ids)+sum(p.rencana_volume for p in doc.precast_ids)+sum(e.rencana_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_rencana_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_sales" t-value="total_rencana_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_sales for r in doc.readymix_ids)+sum(p.rencana_sales for p in doc.precast_ids)+sum(e.rencana_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_rencana_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_biaya" t-value="total_rencana_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_biaya for r in doc.readymix_ids)+sum(p.rencana_biaya for p in doc.precast_ids)+sum(e.rencana_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_rencana_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_rencana_laba" t-value="total_rencana_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.rencana_laba for r in doc.readymix_ids)+sum(p.rencana_laba for p in doc.precast_ids)+sum(e.rencana_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_real_volume" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_volume" t-value="total_real_volume+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_volume for r in doc.readymix_ids)+sum(p.real_volume for p in doc.precast_ids)+sum(e.real_volume for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_real_sales" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_sales" t-value="total_real_sales+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_sales for r in doc.readymix_ids)+sum(p.real_sales for p in doc.precast_ids)+sum(e.real_sales for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<t t-set="total_real_biaya" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_biaya" t-value="total_real_biaya+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_biaya for r in doc.readymix_ids)+sum(p.real_biaya for p in doc.precast_ids)+sum(e.real_biaya for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_real_laba" t-value="0" />
+					                <t t-foreach="docs" t-as="t">
+					                    <t t-set="total_real_laba" t-value="total_real_laba+1" />
+					                    <t t-if="t_last">
+					                      <t t-esc="sum(r.real_laba for r in doc.readymix_ids)+sum(p.real_laba for p in doc.precast_ids)+sum(e.real_laba for e in doc.external_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		<record id="PerencanaanPemasaran_paperformat" model="report.paperformat"> 
+			<field name="name">Perencanaan Pemasaran Format</field>
+            <field name="default" eval="False" />
+            <field name="format">A3</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">4</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+		<record id="report_perencanaan_pemasaran_id" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="adh_mrp_perencanaan_pemasaran.PerencanaanPemasaran_paperformat"/>
+        </record>
+	</data>
+</odoo>
+
+
+
+
+
+
+

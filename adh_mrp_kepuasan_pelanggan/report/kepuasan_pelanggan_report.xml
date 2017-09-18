@@ -1,0 +1,134 @@
+<odoo>
+	<data>
+		<report
+			id="report_kepuasan_pelanggan_id"
+			string="Kepuasan Pelanggan"
+			model="adhimix.mrp.kepuasan.pelanggan"
+			report_type="qweb-pdf"
+			file="adh_mrp_kepuasan_pelanggan.report_kepuasan_pelanggan"
+			name="adh_mrp_kepuasan_pelanggan.report_kepuasan_pelanggan"
+		/>
+
+		<template id="report_kepuasan_pelanggan">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_mrp_kepuasan_pelanggan.report_kepuasan_pelanggan_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_kepuasan_pelanggan_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>TINDAK LANJUT EVALUASI KEPUASAN PELANGGAN</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><span t-field="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y"}'/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px">
+					<tr>
+						<td>
+							<center>Bulan :
+							 <span t-field="doc.tanggal_efektif" t-field-options='{"format": "MMMM "}'/></center>							 
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered" style="margin-top:-15px">
+					<thead>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong><center>No.</center></strong>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<strong><center>PERMASALAHAN</center></strong>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<strong><center>TINDAKAN PERBAIKAN/PENCEGAHAN</center></strong>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<strong><center>PIC TERKAIT</center></strong>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+								<strong><center>TARGER WAKTU <br/>PENYELESAIAN</center></strong>
+							</td>
+							<td style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong><center>Status</center></strong>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr t-foreach="doc.pengelolaan_ids" t-as="l">
+							<td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="l_index +1"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="l.permasalahan_id.name"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="l.tindakan_pencegahan"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="l.pic_terkait"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+								<center><t t-esc="l.target_waktu"/></center>
+							</td>
+							<td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+								<center><t t-esc="l.status"/></center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:right;border-top:1px solid white;border-bottom:1px solid white;margin-right:-50px">
+								<p>..........,...............</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:left;border-top:1px solid white;margin-left:-50px;">
+								<p style="height:3cm">Disetujui Oleh:</p>
+								<p>(......................)</p>
+								<p>Kepala Bagian</p>
+							</td>								
+							<td style="text-align:right;border-top:1px solid white;margin-right:-50px;">
+								<p style="height:3cm">Dibuat Oleh :</p>
+								<p>(......................)</p>
+								<p>Spv Engineering</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>

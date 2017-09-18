@@ -41,7 +41,7 @@
 								<center><strong>Revisi :</strong> </center>
 							</td>
 							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif"/></strong></center>
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
 							</td>
 							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 								<center><strong>Hal : </strong> </center>

@@ -44,7 +44,7 @@
 								<center><strong>Revisi :</strong> </center>
 							</td>
 							<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
 							</td>
 							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 								<center><strong>Hal : </strong> </center>
@@ -90,7 +90,7 @@
 							:
 						</td>
 						<td  style="border-bottom:1px solid white;border-top:1px solid white">
-							<t t-esc="doc.tanggal_masuk_alat"/>
+							<span t-field="doc.tanggal_masuk_alat" t-field-options='{"format": "d MMMM y "}'/>
 						</td>
 					</tr>
 					<tr>
@@ -110,7 +110,7 @@
 							:
 						</td>
 						<td style="border-bottom:1px solid white;border-top:1px solid white">
-							<t t-esc="doc.tanggal_checklist_alat"/>
+							<span t-field="doc.tanggal_checklist_alat" t-field-options='{"format": "d MMMM y "}'/>
 						</td>
 					</tr>
 				</table>
@@ -207,7 +207,7 @@
 								<center><strong>Revisi :</strong> </center>
 							</td>
 							<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
-								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif"/></strong></center>
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif" t-field-options='{"format": " d MMMM y "}'/></strong></center>
 							</td>
 							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 								<center><strong>Hal : </strong> </center>
