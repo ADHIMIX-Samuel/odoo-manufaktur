@@ -1,0 +1,118 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_seleksi_supplier_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.seleksi.supplier.form</field>
+			<field name="model">adhimix.mrp.seleksi.supplier</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Seleksi Supplier">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="nama_vendor"/>
+								<field name="alamat"/>
+								<field name="contact_person"/>
+								<field name="telepon"/>
+								<field name="fax"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+								<field name="keterangan"/>					
+								<field name="supply_material"/>
+								<field name="supply_peralatan"/>								
+								<field name="peralatan_konstruksi"/>
+								<field name="peralatan_ringan"/>
+								<field name="peralatan_transportasi"/>
+							</group>
+							<group string="Pemenuhan terhadap spesifikasi">
+								<field name="pemenuhan_terhadap_spesifikasi_ya" attrs="{'readonly':[('pemenuhan_terhadap_spesifikasi_tidak', '!=', False)]}"/>
+								<field name="pemenuhan_terhadap_spesifikasi_tidak" attrs="{'readonly':[('pemenuhan_terhadap_spesifikasi_ya', '!=', False)]}"/>
+								<field name="pemenuhan_terhadap_spesifikasi_keterangan"/>
+							</group>
+							<group string="Kapasitas Produksi/Penyediaan">
+								<field name="kapasitas_produksi_ya" attrs="{'readonly':[('kapasitas_produksi_tidak', '!=', False)]}"/>
+								<field name="kapasitas_produksi_tidak" attrs="{'readonly':[('kapasitas_produksi_ya', '!=', False)]}"/>
+								<field name="kapasitas_produksi_keterangan"/>
+							</group>
+							<group string="Kemampuan Supply">
+								<field name="kemampuan_supply_ya" attrs="{'readonly':[('kemampuan_supply_tidak', '!=', False)]}"/>
+								<field name="kemampuan_supply_tidak" attrs="{'readonly':[('kemampuan_supply_ya', '!=', False)]}"/>
+								<field name="kemampuan_supply_keterangan"/>
+							</group>
+							<group string="Ketepatan Pengiriman Barang">
+								<field name="ketepatan_pengiriman_barang_ya" attrs="{'readonly':[('ketepatan_pengiriman_barang_tidak', '!=', False)]}"/>
+								<field name="ketepatan_pengiriman_barang_tidak" attrs="{'readonly':[('ketepatan_pengiriman_barang_ya', '!=', False)]}"/>
+								<field name="ketepatan_pengiriman_barang_keterangan"/>
+							</group>
+							<group string="Jumlah Armada">
+								<field name="jumlah_armada_ya" attrs="{'readonly':[('jumlah_armada_tidak', '!=', False)]}"/>
+								<field name="jumlah_armada_tidak" attrs="{'readonly':[('jumlah_armada_ya', '!=', False)]}"/>
+								<field name="jumlah_armada_keterangan"/>
+							</group>
+							<group string="Produsen/Trader">
+								<field name="produsen_ya" attrs="{'readonly':[('produsen_tidak', '!=', False)]}"/>
+								<field name="produsen_tidak" attrs="{'readonly':[('produsen_ya', '!=', False)]}"/>
+								<field name="produsen_keterangan"/>
+							</group>
+							<group string="Popularitas di Dunia">
+								<field name="popularitas_ya" attrs="{'readonly':[('popularitas_tidak', '!=', False)]}"/>
+								<field name="popularitas_tidak" attrs="{'readonly':[('popularitas_ya', '!=', False)]}"/>
+								<field name="popularitas_keterangan"/>
+							</group>
+							<group string="Pelayanan Purna Jual">
+								<field name="pelayanan_purna_jual_ya" attrs="{'readonly':[('pelayanan_purna_jual_tidak', '!=', False)]}"/>
+								<field name="pelayanan_purna_jual_tidak" attrs="{'readonly':[('pelayanan_purna_jual_ya', '!=', False)]}"/>
+								<field name="pelayanan_purna_jual_keterangan"/>
+							</group>
+							<group string="Kesediaan Suku Cadang">
+								<field name="kesediaan_suku_cadang_ya" attrs="{'readonly':[('kesediaan_suku_cadang_tidak', '!=', False)]}"/>
+								<field name="kesediaan_suku_cadang_tidak" attrs="{'readonly':[('kesediaan_suku_cadang_ya', '!=', False)]}"/>
+								<field name="kesediaan_suku_cadang_keterangan"/>
+							</group>
+							<group string="Kemudahan Perbaikan">
+								<field name="kemudahan_perbaikan_ya" attrs="{'readonly':[('kemudahan_perbaikan_tidak', '!=', False)]}"/>
+								<field name="kemudahan_perbaikan_tidak" attrs="{'readonly':[('kemudahan_perbaikan_ya', '!=', False)]}"/>
+								<field name="kemudahan_perbaikan_keterangan"/>
+							</group>
+							<group string="Kondisi Umum Alat">
+								<field name="kondisi_umum_ya" attrs="{'readonly':[('kondisi_umum_tidak', '!=', False)]}"/>
+								<field name="kondisi_umum_tidak" attrs="{'readonly':[('kondisi_umum_ya', '!=', False)]}"/>
+								<field name="kondisi_umum_keterangan"/>
+							</group>
+							<group string="Sertifikasi">
+								<field name="sertifikasi_iso_9001"/>
+								<field name="sertifikasi_iso_9002"/>
+								<field name="sertifikasi_smk3"/>
+								<field name="sertifikasi_ohsas_18001"/>
+								<field name="sertifikasi_iso_14000"/>
+							</group>
+							<group string="Hasil">
+								<field name="hasil_lulus" attrs="{'readonly':[('hasil_tidak_lulus', '!=', False)]}"/>
+								<field name="hasil_tidak_lulus" attrs="{'readonly':[('hasil_lulus', '!=', False)]}"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_seleksi_supplier_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.seleksi.supplier.tree</field>
+			<field name="model">adhimix.mrp.seleksi.supplier</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Seleksi Supplier">
+					<field name="name"/>
+					<field name="nama_vendor"/>
+					<field name="alamat"/>
+					<field name="contact_person"/>
+					<field name="telepon"/>
+					<field name="hasil_lulus"/>
+					<field name="hasil_tidak_lulus"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

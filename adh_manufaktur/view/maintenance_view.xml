@@ -1,0 +1,60 @@
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="maintenance_form_view">
+			<field name="name">Maintenance Form View</field>
+			<field name="model">adhimix.mrp.maintenance</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="button_Progress" string="Progress" type="object" class="oe_highlight" states="Draft"/>
+						<button name="button_Done" string="Done" type="object" class="oe_highlight" states="Progress"/>
+						<button name="button_Draft" string="Set to Draft" type="object" class="oe_highlight" states="Done"/>
+						<field name="state" widget="statusbar" readonly="True"/>
+					</header>
+					<sheet>
+						<group>
+							<group>
+									<field name="name"/>
+									<field name="tanggal_maintenance" class="oe_inline"/>
+							</group>
+								<group>
+									<field name="tanggal_selesai" class="oe_inline" />
+									<field name="dibuat_oleh" class="oe_inline"/>
+								</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Sparepart List">
+									<group>
+										<field name="sparepart_list" nolabel="1">
+											<tree editable="top">
+												<field name="nama_barang"/>
+												<field name="qty"/>
+												<field name="hpp"/>
+												<field name="total_hpp"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="maintenance_tree_view">
+			<field name="name">Maintenance Tree View</field>
+			<field name="model">adhimix.mrp.maintenance</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="tanggal_maintenance" />
+					<field name="tanggal_selesai" />
+					<field name="dibuat_oleh"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
+

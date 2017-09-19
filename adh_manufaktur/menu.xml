@@ -1,0 +1,394 @@
+<odoo>
+	<data>
+		<record id="action_view_adh_mrp_perencanaan_pemasaran_form" model="ir.actions.act_window">
+            <field name="name">Perencanaan Pemasaran</field>
+            <field name="res_model">adhimix.mrp.perencanaan.pemasaran</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+            	<p class="oe_view_nocontent_create">
+            		Click to add a data
+            	</p>
+            </field>
+        </record>
+
+        <record id="action_view_adh_mrp_perencanaan_pemasaran_form" model="ir.actions.act_window">
+            <field name="name">Perencanaan Pemasaran</field>
+            <field name="res_model">adhimix.mrp.perencanaan.pemasaran</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        <record id="action_view_adh_mrp_info_pasar_form" model="ir.actions.act_window">
+            <field name="name">Info Pasar</field>
+            <field name="res_model">adhimix.mrp.info.pasar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        <record id="action_view_adh_mrp_kontrak_form" model="ir.actions.act_window">
+            <field name="name">Kontrak</field>
+            <field name="res_model">adhimix.mrp.kontrak</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        <record id="action_view_adh_mrp_evaluasi_penawaran_form" model="ir.actions.act_window">
+            <field name="name">Evaluasi Penawaran</field>
+            <field name="res_model">adhimix.mrp.evaluasi.penawaran</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+
+        <record id="action_view_adh_mrp_klaim_form" model="ir.actions.act_window">
+            <field name="name">Klaim Pelanggan</field>
+            <field name="res_model">adhimix.mrp.klaim</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+
+        <record id="action_view_adh_mrp_pengelolaan_pelanggan_form" model="ir.actions.act_window">
+            <field name="name">Pengelolaan Kepuasan Pelanggan</field>
+            <field name="res_model">adhimix.mrp.kepuasan.pelanggan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        
+
+
+       
+        <!--Menu Logistik  -->
+        <record id="action_view_adh_mrp_seleksi_supplier" model="ir.actions.act_window">
+              <field name="name">Seleksi Supplier</field>
+              <field name="res_model">adhimix.mrp.seleksi.supplier</field>
+              <field name="view_type">form</field>
+              <field name="view_mode">tree,form</field>
+              <field name="domain">[]</field>
+              <field name="context">{}</field>
+              <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+              </field>
+        </record>
+        <record id="action_view_adh_mrp_seleksi_subkontraktor" model="ir.actions.act_window">
+              <field name="name">Seleksi Sub Kontraktor</field>
+              <field name="res_model">adhimix.mrp.seleksi.subkontraktor</field>
+              <field name="view_type">form</field>
+              <field name="view_mode">tree,form</field>
+              <field name="domain">[]</field>
+              <field name="context">{}</field>
+              <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                          Click to add a data
+                    </p>
+              </field>
+        </record>
+
+        <!-- Menu Produksi -->
+        <record id="action_view_adh_mrp_pemeriksaan_alat_form" model="ir.actions.act_window">
+            <field name="name">Pemeriksaan Keruksaan Alat</field>
+            <field name="res_model">adhimix.mrp.pemeriksaan.kerusakan.alat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        <record id="action_view_adh_mrp_pengiriman_form" model="ir.actions.act_window">
+            <field name="name">Inspeksi Pengiriman</field>
+            <field name="res_model">adhimix.mrp.pengiriman</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+
+         <!-- Menu Inspeksi Instalasi -->
+        <record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
+            <field name="name">Kesiapan Alat Dan Bahan</field>
+            <field name="res_model">adhimix.mrp.instalasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+
+        <record id="action_view_adh_mrp_instalasi_kesiapan_pondasi_form" model="ir.actions.act_window">
+            <field name="name">Kesiapan Pondasi Produk</field>
+            <field name="res_model">adhimix.mrp.kesiapan.pondasi.produk</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record> 
+
+          <!--Menu Cost Control  -->
+          <record id="action_adh_mrp_cost_control" model="ir.actions.act_window">
+            <field name="name">Cost Control</field>
+            <field name="res_model">adhimix.mrp.cost.control</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Data
+              </p>              
+            </field>
+        </record>
+
+        <!-- Menu Maintenance -->
+        <record id="action_view_maintenance_form" model="ir.actions.act_window">
+            <field name="name">Maintenance</field>
+            <field name="res_model">adhimix.mrp.maintenance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>             
+
+      
+       
+
+       
+
+
+        <!-- Parent -->
+        <menuitem id="menu_manufaktur_id"
+             name="Manufaktur"
+             sequence="10"/>
+
+        <menuitem id="menu_mrp_pemasaran"
+                        name="Pemasaran"
+                        parent="menu_manufaktur_id"
+                        sequence="10"/>
+
+        <menuitem id="menu_mrp_logistic"
+                        name="Logistik"
+                        parent="menu_manufaktur_id"
+                        sequence="30"/>
+
+        <menuitem id="menu_mrp_produksi"
+                        name="Produksi"
+                        parent="menu_manufaktur_id"
+                        sequence="40"/>
+
+         <menuitem id="menu_mrp_cost_control"
+                        name="Cost Control"
+                        parent="menu_manufaktur_id"
+                        sequence="60"/>
+
+         <menuitem id="menu_mrp_maintenance"
+                    name="Maintenance"
+                    parent="menu_manufaktur_id"
+                    sequence="70"/>
+
+
+        <menuitem id="menu_mrp_report"
+                        name="Report"
+                        parent="menu_manufaktur_id"
+                        sequence="80"/>
+
+        <!-- Menu Report/Wizard -->
+         <menuitem id="menu_mrp_info_pasar_wizard"
+                    name="Info Pasar"
+                    action="action_view_adh_mrp_info_pasar_wizard"
+                    parent="menu_mrp_report"
+                    sequence="10"/>
+
+        <menuitem id="menu_evaluasi_penawaran"
+                    name="Evaluasi Penawaran"
+                    action="action_view_adh_mrp_evaluasi_penawaran_wizard"
+                    parent="menu_mrp_report"
+                    sequence="20"/>
+
+         <menuitem id="menu_klaim_wizard"
+                    name="Klaim Pelanggan"
+                    action="action_view_adh_mrp_klaim_wizard"
+                    parent="menu_mrp_report"
+                    sequence="30"/>
+
+        <menuitem id="inspeksi_pengiriman"
+            name="Inspeksi Pengiriman"
+            action="action_view_adh_mrp_pengiriman_wizard"
+            parent="menu_mrp_report"
+            sequence="40"/>
+
+        <menuitem id="menu_kesiapan_alat_wizard"
+                name="Kesiapan Alat Dan Bahan"
+                action="action_view_adh_mrp_kesiapan_alat_wizard"
+                parent="menu_mrp_report"
+                sequence="50"/>
+
+        <menuitem id="menu_kesiapan_pondasi_wizard"
+                name="Kesiapan Pondasi Produk"
+                action="action_view_adh_mrp_kesiapan_pondasi_wizard"
+                parent="menu_mrp_report"
+                sequence="60"/>
+
+        <!--Menu Pemasaran  -->
+        <menuitem id="menu_mrp_perencanaan_pemasaran"
+                    name="Perencanaan Pemasaran"
+                    action="action_view_adh_mrp_perencanaan_pemasaran_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="10"/>
+
+        <menuitem id="menu_mrp_info_pasar"
+                        name="Info Pasar"
+                        action="action_view_adh_mrp_info_pasar_form"
+                        parent="menu_mrp_pemasaran"
+                        sequence="20"/>
+
+        <menuitem id="menu_mrp_kontrak"
+                    name="Kontrak"
+                    action="action_view_adh_mrp_kontrak_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="30"/>
+
+         <menuitem id="menu_mrp_evaluasi_penawaran"
+                    name="Evaluasi Penawaran"
+                    action="action_view_adh_mrp_evaluasi_penawaran_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="40"/> 
+
+        <menuitem id="menu_mrp_klaim_pelanggan"
+                    name="Klaim Pelanggan"
+                    action="action_view_adh_mrp_klaim_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="50"/>
+
+        <menuitem id="menu_mrp_pengelolaan_pelanggan"
+                    name="Kepuasan Pelanggan"
+                    action="action_view_adh_mrp_pengelolaan_pelanggan_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="60"/>
+
+        <!--Menu Logistik  -->
+        <menuitem id="menu_mrp_seleksi_supplier"
+                    name="Seleksi Supplier"
+                    action="action_view_adh_mrp_seleksi_supplier"
+                    parent="menu_mrp_logistic"
+                    sequence="10"/>
+
+        <menuitem id="menu_mrp_seleksi_subkontraktor"
+                        name="Seleksi Sub Kontraktor"
+                        action="action_view_adh_mrp_seleksi_subkontraktor"
+                        parent="menu_mrp_logistic"
+                        sequence="20"/>
+
+        <!-- Menu Produksi -->
+        <menuitem id="menu_mrp_pemeriksaan_kerusakan_alat"
+                    name="Pemeriksaan Kerusakan Alat"
+                    action="action_view_adh_mrp_pemeriksaan_alat_form"
+                    parent="menu_mrp_produksi"
+                    sequence="10"/>
+
+        <menuitem id="menu_mrp_pengiriman"
+                name="Inspeksi Pengiriman"
+                action="action_view_adh_mrp_pengiriman_form"
+                parent="menu_mrp_produksi"
+                sequence="80"/>
+
+        <!-- Inspeksi Instalasi/Parent -->
+        <menuitem id="menu_mrp_instalasi_inspeksi"
+                    name="Inspeksi Instalasi"
+                    parent="menu_mrp_produksi"
+                    sequence="90"/>      
+
+            <menuitem id="menu_mrp_kesiapan_alat_bahan"
+                    name="Kesiapan Alat dan Bahan"
+                    action="action_view_adh_mrp_instalasi_inspeksi_form"
+                    parent="menu_mrp_instalasi_inspeksi"
+                    sequence="10"/>
+            <menuitem id="menu_mrp_kesiapan_pondasi_produk"
+                    name="Kesiapan Pondasi Produk"
+                    action="action_view_adh_mrp_instalasi_kesiapan_pondasi_form"
+                    parent="menu_mrp_instalasi_inspeksi"
+                    sequence="4"/>
+
+        <!-- Cost Control -->
+        <menuitem id="menu_persiapan_cost_control"
+                 action="action_adh_mrp_cost_control"
+                 name="Pesiapan Cost Control"
+                 sequence="10"
+                 parent="menu_mrp_cost_control"/>
+
+
+        <!-- Menu Maintenance -->
+        <menuitem id="menu_mrp_maintenance_list"
+                name="Maintenance List"
+                action="action_view_maintenance_form"
+                parent="menu_mrp_maintenance"
+                sequence="10"/>
+
+
+
+
+
+
+   
+	</data>
+</odoo>

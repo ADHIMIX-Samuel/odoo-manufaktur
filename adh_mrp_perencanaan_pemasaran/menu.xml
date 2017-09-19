@@ -13,13 +13,14 @@
             	</p>
             </field>
         </record>
-        
+
 
 		<menuitem id="menu_mrp_perencanaan_pemasaran"
 		            name="Perencanaan Pemasaran"
 		            action="action_view_adh_mrp_perencanaan_pemasaran_form"
 		            parent="sales_team.menu_sales"
 		            sequence="11"/>
+         
 
 	</data>
 </odoo>

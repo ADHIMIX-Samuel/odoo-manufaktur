@@ -1,0 +1,142 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_pengiriman_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pengiriman.form</field>
+			<field name="model">adhimix.mrp.pengiriman</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Insepeksi Pengiriman Produk">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal_efektif"/>								
+							</group>
+							<group>
+								<field name="company_id"/>
+							</group>								
+						</group>
+						<group>
+							<notebook>
+								<page string="Produk">
+									<group>
+										<field name="uraian_ids" nolabel="1">
+											<tree string="Pengiriman Produk" editable="bottom">
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Produk Silo">
+									<group>
+										<field name="produk_silo_ids" nolabel="1">
+											<tree string="Pengiriman Produk Silo" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Silo">
+									<group>
+										<field name="aksesoris_silo_ids" nolabel="1">
+											<tree string="Aksesoris Silo" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Produk Cold Bin">
+									<group>
+										<field name="produk_cold_bin_ids" nolabel="1">
+											<tree string="Pengiriman Produk Cold Bin" editable="bottom">
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Produk Silo Mobile">
+									<group>
+										<field name="produk_silo_mobile_ids" nolabel="1">
+											<tree string="Pengiriman Produk Silo Mobile" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_mobile_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Silo Mobile">
+									<group>
+										<field name="aksesoris_silo_mobile_ids" nolabel="1">
+											<tree string="Aksesoris Silo Mobile" editable="bottom">
+												<field name="uraian_id"/>
+												<!-- <field name="aksesoris_silo_id"/> -->
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Drum Mixer">
+									<group>
+										<field name="aksesoris_drum_mixer_ids" nolabel="1">
+											<tree string="Pengiriman Aksesoris Drum Mixer" editable="bottom">
+												<field name="uraian_id"/>
+												<field name="kriteria_id"/>
+												<field name="toleransi"/>
+												<field name="hasil_1"/>
+												<field name="hasil_2"/>
+												<field name="keterangan"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>						
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_pengiriman_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pengiriman.tree</field>
+			<field name="model">adhimix.mrp.pengiriman</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Insepeksi Pengiriman Produk">
+					<field name="name"/>
+					<field name="tanggal_efektif"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

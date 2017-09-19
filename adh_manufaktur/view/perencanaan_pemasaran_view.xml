@@ -1,0 +1,165 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_perencanaan_pemasaran_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.perencanaan.pemasaran.form</field>
+			<field name="model">adhimix.mrp.perencanaan.pemasaran</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Perencanaan Pemasaran">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal_efektif"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Divisi Readymix">
+									<group>
+										<field name="readymix_ids" nolabel="1">
+											<tree>
+												<field name="pelanggan"/>
+												<field name="jenis_pekerjaan"/>
+												<field name="qty"/>
+											</tree>
+											<form>
+												<group>
+													<group>
+														<field name="pelanggan" class="oe_inline"/>
+														<field name="jenis_pekerjaan" class="oe_inline"/>
+														<field name="qty" class="oe_inline"/>
+													</group>
+													<group string="Total">
+														<field name="total_sales" class="oe_inline"/>
+														<field name="total_biaya" class="oe_inline"/>
+														<field name="total_laba" class="oe_inline"/>
+														<field name="total_pm" class="oe_inline"/>
+													</group>
+													<group string="Rencana /Bulan">
+														<!-- <field name="rencana_periode" class="oe_inline"/> -->
+														<field name="rencana_volume" class="oe_inline"/>
+														<field name="rencana_sales" class="oe_inline"/>
+														<field name="rencana_biaya" class="oe_inline"/>
+														<field name="rencana_laba" class="oe_inline"/>
+													</group>
+													<group string="Real /Bulan">
+														<!-- <field name="real_periode" class="oe_inline"/> -->
+														<field name="real_volume" class="oe_inline"/>
+														<field name="real_sales" class="oe_inline"/>
+														<field name="real_biaya" class="oe_inline"/>
+														<field name="real_laba" class="oe_inline"/>
+													</group>
+												</group>
+											</form>
+										</field>
+									</group>
+								</page>
+								<page string="Divisi Precast">
+									<group>
+										<field name="precast_ids" nolabel="1">
+											<tree>
+												<field name="pelanggan"/>
+												<field name="jenis_pekerjaan"/>
+												<field name="qty"/>
+											</tree>
+											<form>
+												<group>
+													<group>
+														<field name="pelanggan" class="oe_inline"/>
+														<field name="jenis_pekerjaan" class="oe_inline"/>
+														<field name="qty" class="oe_inline"/>
+													</group>
+													<group string="Total">
+														<field name="total_sales" class="oe_inline"/>
+														<field name="total_biaya" class="oe_inline"/>
+														<field name="total_laba" class="oe_inline"/>
+														<field name="total_pm" class="oe_inline"/>
+													</group>
+													<group string="Rencana /Bulan">
+														<!-- <field name="rencana_periode" class="oe_inline"/> -->
+														<field name="rencana_volume" class="oe_inline"/>
+														<field name="rencana_sales" class="oe_inline"/>
+														<field name="rencana_biaya" class="oe_inline"/>
+														<field name="rencana_laba" class="oe_inline"/>
+													</group>
+													<group string="Real /Bulan">
+														<!-- <field name="real_periode" class="oe_inline"/> -->
+														<field name="real_volume" class="oe_inline"/>
+														<field name="real_sales" class="oe_inline"/>
+														<field name="real_biaya" class="oe_inline"/>
+														<field name="real_laba" class="oe_inline"/>
+													</group>
+												</group>
+											</form>
+										</field>
+									</group>
+								</page>
+								<page string="External">
+									<group>
+										<field name="external_ids" nolabel="1">
+											<tree>
+												<field name="pelanggan"/>
+												<field name="jenis_pekerjaan"/>
+												<field name="qty"/>
+											</tree>
+											<form>
+												<group>
+													<group>
+														<field name="pelanggan" class="oe_inline"/>
+														<field name="jenis_pekerjaan" class="oe_inline"/>
+														<field name="qty" class="oe_inline"/>
+													</group>
+													<group string="Total">
+														<field name="total_sales" class="oe_inline"/>
+														<field name="total_biaya" class="oe_inline"/>
+														<field name="total_laba" class="oe_inline"/>
+														<field name="total_pm" class="oe_inline"/>
+													</group>
+													<group string="Rencana /Bulan">
+														<!-- <field name="rencana_periode" class="oe_inline"/> -->
+														<field name="rencana_volume" class="oe_inline"/>
+														<field name="rencana_sales" class="oe_inline"/>
+														<field name="rencana_biaya" class="oe_inline"/>
+														<field name="rencana_laba" class="oe_inline"/>
+													</group>
+													<group string="Real /Bulan">
+														<!-- <field name="real_periode" class="oe_inline"/> -->
+														<field name="real_volume" class="oe_inline"/>
+														<field name="real_sales" class="oe_inline"/>
+														<field name="real_biaya" class="oe_inline"/>
+														<field name="real_laba" class="oe_inline"/>
+													</group>
+												</group>
+											</form>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_perencanaan_pemasaran_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.perencanaan.pemasaran.tree</field>
+			<field name="model">adhimix.mrp.perencanaan.pemasaran</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Perencanaan Pemasaran">
+					<field name="name"/>
+					<field name="tanggal_efektif"/>
+					<field name="company_id"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
+												
+
+									

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="seq_adhimix_maintenance" model="ir.sequence">
+			<field name="name">Adhimix Mrp Maintenance</field>
+			<field name="code">adhimix.mrp.maintenance</field>
+			<field name="prefix">MAIN/%(y)s/%(month)s/</field> 
+			<field name="padding">4</field>
+			<field eval="1" name="number_increment"/>
+		</record>		
+	</data>
+</openerp>

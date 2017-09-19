@@ -1,0 +1,444 @@
+<odoo>
+	<data>
+		<report
+			id="report_cost_control_id"
+			string="Pemeriksaan Cost Control"
+			model="adhimix.mrp.cost.control"
+			report_type="qweb-pdf"
+			file="adh_manufaktur.report_costControl"
+			name="adh_manufaktur.report_costControl"
+		/>
+		<template id="report_costControl">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_manufaktur.report_costControl_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_costControl_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>MONITORING COST CONTROL</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><t t-esc="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<t t-esc="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							NO KONTRAK
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.name"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							PELANGGAN
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.pelanggan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							PROYEK
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.proyek"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							DEADLINE KONTRAK
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.deadline_kontrak"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							SUBKON
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.subkon.name"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							ID. COST CONTROL
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<t t-esc="doc.id_cost_control"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td rowspan="3" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>WARNING QUANTITY</center></strong>
+							</td>
+							<td rowspan="3" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>WARNING COST</center></strong>
+							</td>
+							<td rowspan="3" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>Nomor Directory Cost Control</center></strong>
+							</td>
+							<td rowspan="3" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>URAIAN</center></strong>
+							</td>
+							<td rowspan="3" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>SPESIFIKASI</center></strong>
+							</td>
+							<td colspan="6" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>RENCANA HPP</center></strong>
+							</td>
+							<td colspan="6" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong><center>REALISASI s.d SAAT INI</center> </strong>
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Volume</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Harga</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Total</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Volume</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Harga</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Total</strong>								
+							</td>
+							<td colspan="2" rowspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>O/M Biaya</strong>								
+							</td>
+							<td colspan="2" rowspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>O/M Jml</strong>								
+							</td>
+						</tr>
+						<tr>
+							<td style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Jml</strong>								
+							</td>
+							<td style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Sat</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Rupiah</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Rupiah</strong>								
+							</td>
+							<td style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Jml</strong>								
+							</td>
+							<td style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Sat</strong>								
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Rupiah</strong>								
+							</td>
+							<td  colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle">
+								<strong>Rupiah</strong>								
+							</td>
+						</tr>
+						<tr t-foreach="doc.cost_control_ids" t-as="l">
+							<td  style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;background-color: black;">
+								
+							</td>
+							<td  style="border-right:2px solid black;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;vertical-align:middle;background-color: black;">
+								
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;">
+								<center><t t-esc="l.no_directory"/></center>
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;">
+								<center><t t-esc="l.uraian_id.name"/></center>
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;">
+								<center><t t-esc="l.spesifikasi"/></center>
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;">
+								<center><t t-esc="l.jumlah_volume_hpp"/></center>
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.satuan_volume_hpp.name"/></center>
+							</td>
+							<td colspan="2" style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.harga_hpp"/></center>						
+							</td>
+							<td colspan="2" style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.total_harga_hpp"/></center>				
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle;">
+								<center><t t-esc="l.jumlah_volume_realisasi"/></center>
+							</td>
+							<td style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.satuan_volume_realisasi.name"/></center>
+							</td>
+							<td colspan="2" style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.harga_realisasi"/></center>				
+							</td>
+							<td colspan="2" style="border-right:1px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.total_harga_realisasi"/></center>			
+							</td>
+							<td  colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.om_biaya"/></center>				
+							</td>
+							<td colspan="2" style="border-right:2px solid black;border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;vertical-align:middle">
+								<center><t t-esc="l.om_jumlah"/></center>			
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="4" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>TOTAL HPP RENCANA</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_harga_hpp" t-value="0" />
+					                <t t-foreach="doc.cost_control_ids" t-as="f">
+					                    <t t-set="total_harga_hpp" t-value="total_harga_hpp+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(l.total_harga_hpp for l in doc.cost_control_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td colspan="4" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>TOTAL REALISASI s.d SAAT INI</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_harga_realisasi" t-value="0" />
+					                <t t-foreach="doc.cost_control_ids" t-as="f">
+					                    <t t-set="total_harga_realisasi" t-value="total_harga_realisasi+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(l.total_harga_realisasi for l in doc.cost_control_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="om_biaya" t-value="0" />
+					                <t t-foreach="doc.cost_control_ids" t-as="f">
+					                    <t t-set="om_biaya" t-value="om_biaya+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(l.om_biaya for l in doc.cost_control_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+						</tr>
+					
+						<tr>
+							<td colspan="20" style="border-left:1px solid white;border-bottom:1px solid white;">								
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;">
+								<strong>SALES RENCANA</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;">
+							</td>
+							<td rowspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;">
+							</td>
+							<td style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:3px solid black;">
+								<strong>SALES REALISASI</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;">
+							</td>
+							<td rowspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;">
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="7" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>TOTAL HPP RENCANA</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_harga_hpp" t-value="0" />
+					                <t t-foreach="doc.cost_control_ids" t-as="f">
+					                    <t t-set="total_harga_hpp" t-value="total_harga_hpp+1" />
+					                    <t t-if="f_last">
+					                      <t t-esc="sum(l.total_harga_hpp for l in doc.cost_control_ids)"/> 
+					                  </t>
+					                </t>
+							</td>
+							<td style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>TOTAL HPP REALISASI</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<t t-set="total_harga_realisasi" t-value="0" />
+				                <t t-foreach="doc.cost_control_ids" t-as="f">
+				                    <t t-set="total_harga_realisasi" t-value="total_harga_realisasi+1" />
+				                    <t t-if="f_last">
+				                      <t t-esc="sum(l.total_harga_realisasi for l in doc.cost_control_ids)"/> 
+				                  </t>
+				                </t>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>LABA/RUGI RENCANA</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+							<td style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+							<td style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>LABA/RUGI REALISASI</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="20" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black">
+								<strong>51112 - by bhn baku</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>51116 - byupah sub</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>51118 - by angkutan</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>51213 - by utility</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<strong>51229 - btl ws</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="13" style="border-left:1px solid white;border-bottom:1px solid white">
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:yellow;">
+								<strong>Total</strong>
+							</td>
+							<td colspan="2" style="border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							</td>
+						</tr>
+					</thead>					
+				</table>
+			</div>
+		</template>
+		<record id="costControl_paperformat" model="report.paperformat"> 
+			<field name="name">Cost Control Format</field>
+            <field name="default" eval="False"/>
+            <field name="format">A3</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">4</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+		<record id="report_cost_control_id" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="adh_manufaktur.costControl_paperformat"/>
+        </record>
+	
+	</data>
+</odoo>

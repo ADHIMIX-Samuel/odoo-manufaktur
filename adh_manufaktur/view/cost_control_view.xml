@@ -1,0 +1,88 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_cost_control_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.cost.control.form</field>
+			<field name="model">adhimix.mrp.cost.control</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Persiapan Cost Control">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="pelanggan"/>
+								<field name="proyek"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+								<field name="subkon"/>
+								<field name="deadline_kontrak"/>
+								<field name="id_cost_control"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Persiapan Cost Control">
+									<group>
+										<field name="cost_control_ids" nolabel="1">
+											<tree>
+												<field name="no_directory"/>
+												<field name="uraian_id"/>
+												<field name="om_biaya" />
+												<field name="om_jumlah"/>
+												<field name="total_harga_hpp"/>
+												<field name="total_harga_realisasi"/>
+											</tree>
+											<form>
+												<group>
+													<group>
+														<field name="no_directory"  class="oe_inline"/>
+														<field name="uraian_id"  class="oe_inline"/>
+														<field name="spesifikasi"  class="oe_inline"/>
+														<field name="om_biaya"  class="oe_inline"/>
+														<field name="om_jumlah"  class="oe_inline"/>
+													</group>
+													<group>
+														<group string="Rencana HPP">
+															<field name="jumlah_volume_hpp" class="oe_inline"/>
+															<field name="satuan_volume_hpp" class="oe_inline"/>
+															<field name="harga_hpp" class="oe_inline"/>
+															<field name="total_harga_hpp" class="oe_inline"/>
+														</group>
+													</group>
+													<group string="Realisasi s/d Saat Ini">
+														<field name="jumlah_volume_realisasi" class="oe_inline"/>
+														<field name="satuan_volume_realisasi" class="oe_inline"/>
+														<field name="harga_realisasi" class="oe_inline"/>
+														<field name="total_harga_realisasi" class="oe_inline"/>
+													</group>
+												</group>
+											</form>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_cost_control_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.cost.control.tree</field>
+			<field name="model">adhimix.mrp.cost.control</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Persiapan Cost Control">
+					<field name="name"/>
+					<field name="pelanggan"/>
+					<field name="proyek"/>
+					<field name="subkon"/>
+					<field name="deadline_kontrak"/>
+					<field name="id_cost_control"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

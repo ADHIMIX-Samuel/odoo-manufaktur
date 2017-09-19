@@ -1,0 +1,231 @@
+<odoo>
+	<data>
+		<report
+			id="report_kontrak_id"
+			string="Kontrak"
+			model="adhimix.mrp.kontrak"
+			report_type="qweb-pdf"
+			file="adh_manufaktur.report_kontrak"
+			name="adh_manufaktur.report_kontrak"
+		/>
+
+		<template id="report_kontrak">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_manufaktur.report_kontrak_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_kontrak_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>BERITA ACARA <br/>KLARIFIKSAI &#38; NEGOSIASI</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><span t-field="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed">
+					<tr>
+						<td colspan="2" style="border-top:2px solid black;border-bottom:1px solid white;
+							border-left:2px solid black">
+							Pada hari ini
+						</td>
+						<td style="border-top:2px solid black;border-bottom:1px solid white;">
+							:
+						</td>
+						<td  style="border-top:2px solid black;border-bottom:1px solid black;">
+							<span t-field="doc.tanggal" t-field-options='{"format": "EEEE"}'/>
+						</td>
+						<td colspan="2" style="border-top:2px solid black;border-bottom:1px solid white;border-right:2px solid black">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;border-left:2px solid black">
+							Tanggal
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid black;">
+							<span t-field="doc.tanggal" t-field-options='{"format": "dd MMMM YYYY"}'/>
+						</td>
+						<td colspan="2" style="border-bottom:1px solid white;border-right:2px solid black">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;
+							border-left:2px solid black">
+							Bertempat di
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid black;">
+							<t t-esc="doc.lokasi"/>
+						</td>
+						<td colspan="2" style="border-bottom:1px solid white;border-right:2px solid black">
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-bottom:1px solid white;border-left:2px solid black">
+							Telah diadakan negosiasi terhadap penawaran No.:
+							
+						</td>
+						<td colspan="2">
+							<t t-esc="doc.name"/>
+						</td>
+						<td colspan="2" style="border-bottom:1px solid white;border-right:2px solid black">
+						</td>
+					</tr>
+				</table>
+				<table class="table table-bordered" style="margin-top:-20px">
+					<tbody>
+						<tr>
+							<td style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								1.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Pekerjaan
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.pekerjaan"/>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								2.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Spesifikasi
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.spesifikasi"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								3.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Waktu pelaksanaan
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.waktu_pelaksanaan"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								4.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Harga negosiasi
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.harga_negosiasi"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								5.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Cara pembayaran
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.cara_pembayaran"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								6.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Scope pekerjaan (PT. API)
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.scope_pekerjaan_owner"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								7.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Scope pekerjaan <t t-esc="doc.nama_pelanggan.name"/>
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.scope_pekerjaan_client"/>
+							</td>
+						</tr>
+						<tr>
+							<td  style="border-left:2px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								8.
+							</td>
+							<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black">
+								Lampiran yang merupakan <br/> bagian dari berita acara ini
+							</td>
+							<td colspan="3" style="border-left:1px solid black;border-top:1px solid black;border-right:2px solid black;border-bottom:1px solid black">
+								<t t-esc="doc.lampiran.name"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
+							Berdasarkan materi penjelasan di atas, pihak PT. Adhimix Precast Indonesia telah mengerti produk yang harus <br/>
+							dihasilkan dan akan mampu merealisasikannya di lapangan.
+						</td>
+					</tr>
+					<tr>
+						<center>
+							<td style="text-align:right;border-left:2px solid black;border-right:2px solid black;border-top:1px solid white;border-bottom:1px solid white">
+								<p>..........,...............</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:left;border-left:2px solid black;border-bottom:2px solid black;border-top:1px solid white;margin-left:50px">
+								<p style="height:3cm">PT.Adhimix Precast Indonesia</p>
+								<p>(..............................................)</p>
+							</td>								
+							<td style="text-align:right;border-right:2px solid black;border-bottom:2px solid black;border-top:1px solid white;margin-right:50px">
+								<p style="height:3cm"><t t-esc="doc.nama_pelanggan.name"/></p>
+								<p>(...............................................)</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>
+

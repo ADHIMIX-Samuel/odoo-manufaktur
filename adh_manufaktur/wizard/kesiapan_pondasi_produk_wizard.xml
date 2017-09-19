@@ -1,48 +1,49 @@
 <odoo>
 	<data>
-		<record id="view_adhimix_mrp_kesiapan_alat_wizard" model="ir.ui.view">
-			<field name="name">adhimix.mrp.kesiapan.alat.wizard</field>
-			<field name="model">kesiapan.alat.wizard</field>
-			<field name="type">form</field>
-			<field name="priority" eval="8"/>
-			<field name="arch" type="xml">
-				<form string="Kesiapan Alat Dan Bahan">
-		            <group>
-		                <field name="start_date"/>
-		                <field name="end_date"/>
-		                <!-- <field name="tanggal"/> -->
-		            </group>
-		            <footer>
-		                <button name="generate_report" string="Print" type="object" class="btn-primary"/>
-		                <button string="Cancel" class="btn-default" special="cancel"/>
-		            </footer>
-		        </form>
-		    </field>
-		</record> 
-		<record id="action_view_adh_mrp_kesiapan_alat_wizard" model="ir.actions.act_window">
-			<field name="name">Kesiapan Alat Dan Bahan</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">kesiapan.alat.wizard</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_adhimix_mrp_kesiapan_alat_wizard"/>
-			<field name="target">new</field>
-	    </record>
-	     <report
-			id="report_kesiapan_alat_menu"
-			string="Kesiapan Alat Dan Bahan"
-			model="adhimix.mrp.instalasi"
+		<!-- Wizard kesiapan produk -->
+        <record id="view_adhimix_mrp_kesiapan_pondasi_wizard" model="ir.ui.view">
+            <field name="name">adhimix.mrp.kesiapan.pondasi.wizard</field>
+            <field name="model">kesiapan.pondasi.wizard</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Kesiapan Pondasi Produk">
+                    <group>
+                        <!-- <field name="tanggal"/> -->
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record> 
+        <record id="action_view_adh_mrp_kesiapan_pondasi_wizard" model="ir.actions.act_window">
+            <field name="name">Kesiapan Pondasi Produk</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kesiapan.pondasi.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_adhimix_mrp_kesiapan_pondasi_wizard"/>
+            <field name="target">new</field>
+        </record>
+	    <report
+			id="report_kesiapan_pondasi_menu"
+			string="Kesiapan Pondasi Produk"
+			model="adhimix.mrp.kesiapan.pondasi.produk"
 			report_type="qweb-pdf"
-			file="adhimix.mrp.instalasi"
-			name="adh_mrp_instalasi.report_kesiapan_alat"
+			file="adhimix.mrp.kesiapan.pondasi.produk"
+			name="adh_manufaktur.report_kesiapan_pondasi"
 		/>
-		<template id="report_kesiapan_alat">
+		<template id="report_kesiapan_pondasi">
 			<t t-call="report.html_container">				
 				<t t-call="report.internal_layout">
 					<div class="page">
 						<table class="table table-bordered">
 							<tbody>
-								<tr>
+								<tr >
 									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
 									</td>
@@ -74,7 +75,7 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:1px solid black;">
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
 										<strong><center><br/>No</center></strong>
 									</td>
 									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
@@ -110,23 +111,24 @@
 										<strong><center>Tidak Oke</center></strong>
 									</td>
 								</tr>
-								<tr t-foreach="install_produk_ids" t-as="l">
+								<tr t-foreach="produk_silo_coldbin_ids" t-as="l">
 									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
 										<span t-esc="l_index + 1" />
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.reference.tanggal "/>
+										<t t-esc="l.reference.tanggal"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.reference.name "/>
+										<t t-esc="l.reference.name"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.reference.lokasi_install "/>
+										<t t-esc="l.reference.lokasi_install"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
-										<t t-esc="l.reference.nama_pekerjaan "/>
+										<t t-esc="l.reference.nama_pekerjaan"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;" >
+										
 										<t t-esc="l.uraian_id.name"/>
 									</td>
 									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
@@ -149,7 +151,7 @@
 						<table class="table" style="margin-top:-15px">
 							<tr>
 								<center>
-									<td style="text-align:left;border-top:1px solid white;border-bottom:1px solid white">
+									<td style="text-align:left;border-bottom:1px solid white;border-top:solid white">
 										<p>Catatan:</p>
 										<p>Beri Tanda Centang Di Kolom Hasil Pengecekan</p>
 									</td>
@@ -159,7 +161,7 @@
 						<table class="table" style="margin-top:-40px">
 							<tr>
 								<center>
-									<td style="text-align:right;border-top:1px solid white;border-bottom:1px solid white">
+									<td style="text-align:right;border-bottom:1px solid white;border-top:solid white">
 										<p>..........,...............</p>
 									</td>
 								</center>
@@ -168,12 +170,12 @@
 						<table class="table" style="margin-top:-40px">
 							<tr>
 								<center>
-									<td style="text-align:left;border-top:1px solid white;border-bottom:1px solid white">
+									<td style="text-align:left;border-bottom:1px solid white;border-top:solid white">
 										<p style="height:3cm">Disetujui Oleh,</p>
 										<p>(......................)</p>
 										<p>Supervisor Produksi</p>
 									</td>								
-									<td style="text-align:right;border-top:1px solid white;border-bottom:1px solid white">
+									<td style="text-align:right;border-bottom:1px solid white;border-top:solid white">
 										<p style="height:3cm">Dibuat Oleh,</p>
 										<p>(......................)</p>
 										<p>Pelaksana</p>
@@ -184,11 +186,6 @@
 					</div>
 				</t>
 			</t>
-		</template>
-		<menuitem id="menu_kesiapan_alat_wizard"
-	            name="Kesiapan Alat Dan Bahan"
-	            action="action_view_adh_mrp_kesiapan_alat_wizard"
-	            parent="stock.menu_warehouse_report"
-	            sequence="152"/>
+		</template>			
 	</data>
 </odoo>

@@ -1,40 +1,41 @@
 <odoo>
 	<data>
-		<record id="view_adhimix_mrp_kesiapan_alat_wizard" model="ir.ui.view">
-			<field name="name">adhimix.mrp.kesiapan.alat.wizard</field>
-			<field name="model">kesiapan.alat.wizard</field>
-			<field name="type">form</field>
-			<field name="priority" eval="8"/>
-			<field name="arch" type="xml">
-				<form string="Kesiapan Alat Dan Bahan">
-		            <group>
-		                <field name="start_date"/>
-		                <field name="end_date"/>
-		                <!-- <field name="tanggal"/> -->
-		            </group>
-		            <footer>
-		                <button name="generate_report" string="Print" type="object" class="btn-primary"/>
-		                <button string="Cancel" class="btn-default" special="cancel"/>
-		            </footer>
-		        </form>
-		    </field>
-		</record> 
-		<record id="action_view_adh_mrp_kesiapan_alat_wizard" model="ir.actions.act_window">
-			<field name="name">Kesiapan Alat Dan Bahan</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">kesiapan.alat.wizard</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_adhimix_mrp_kesiapan_alat_wizard"/>
-			<field name="target">new</field>
-	    </record>
-	     <report
+		<!-- wizard inspeksi pengiriman/kesiapan alat -->
+        <record id="view_adhimix_mrp_kesiapan_alat_wizard" model="ir.ui.view">
+            <field name="name">adhimix.mrp.kesiapan.alat.wizard</field>
+            <field name="model">kesiapan.alat.wizard</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Kesiapan Alat Dan Bahan">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <!-- <field name="tanggal"/> -->
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record> 
+        <record id="action_view_adh_mrp_kesiapan_alat_wizard" model="ir.actions.act_window">
+            <field name="name">Kesiapan Alat Dan Bahan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kesiapan.alat.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_adhimix_mrp_kesiapan_alat_wizard"/>
+            <field name="target">new</field>
+        </record>
+	    <report
 			id="report_kesiapan_alat_menu"
 			string="Kesiapan Alat Dan Bahan"
 			model="adhimix.mrp.instalasi"
 			report_type="qweb-pdf"
 			file="adhimix.mrp.instalasi"
-			name="adh_mrp_instalasi.report_kesiapan_alat"
+			name="adh_manufaktur.report_kesiapan_alat"
 		/>
 		<template id="report_kesiapan_alat">
 			<t t-call="report.html_container">				
@@ -185,10 +186,6 @@
 				</t>
 			</t>
 		</template>
-		<menuitem id="menu_kesiapan_alat_wizard"
-	            name="Kesiapan Alat Dan Bahan"
-	            action="action_view_adh_mrp_kesiapan_alat_wizard"
-	            parent="stock.menu_warehouse_report"
-	            sequence="152"/>
+		
 	</data>
 </odoo>

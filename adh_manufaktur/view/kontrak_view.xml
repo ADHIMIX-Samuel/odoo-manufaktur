@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_kontrak_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.kontrak.form</field>
+			<field name="model">adhimix.mrp.kontrak</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Kontrak"> 
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<!-- <field name="hari"/> -->
+								<field name="tanggal"/>
+								<field name="company_id"/>	
+								<field name="spesifikasi"/>
+								<field name="scope_pekerjaan_owner"/>
+								<field name="lampiran" widget="many2many_binary"/>
+							</group>
+							<group>
+								<field name="nama_pelanggan"/>	
+								<field name="pekerjaan"/>
+								<field name="lokasi"/>
+								<field name="waktu_pelaksanaan"/>
+								<field name="harga_negosiasi"/>
+								<field name="cara_pembayaran"/>							
+								<field name="scope_pekerjaan_client"/>	
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_kontrak_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.kontrak.tree</field>
+			<field name="model">adhimix.mrp.kontrak</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Kontrak">
+					<field name="name"/>
+					<field name="tanggal"/>
+					<field name="nama_pelanggan"/>	
+					<field name="pekerjaan"/>
+					<field name="lokasi"/>
+					<field name="waktu_pelaksanaan"/>
+					<field name="harga_negosiasi"/>
+					<field name="cara_pembayaran"/>	
+				</tree>
+			</field>
+		</record> 
+	</data>
+</odoo>

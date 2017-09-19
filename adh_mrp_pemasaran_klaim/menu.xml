@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<record id="action_view_adh_mrp_klaim_form" model="ir.actions.act_window">
+	<record id="action_view_adh_mrp_klaim_form" model="ir.actions.act_window">
             <field name="name">Klaim Pelanggan</field>
             <field name="res_model">adhimix.mrp.klaim</field>
             <field name="view_type">form</field>

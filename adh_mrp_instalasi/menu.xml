@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
+	<record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
             <field name="name">Kesiapan Alat Dan Bahan</field>
             <field name="res_model">adhimix.mrp.instalasi</field>
             <field name="view_type">form</field>

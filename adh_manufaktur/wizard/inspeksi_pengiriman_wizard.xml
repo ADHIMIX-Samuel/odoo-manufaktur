@@ -1,0 +1,775 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_pengiriman_wizard" model="ir.ui.view">
+			<field name="name">adhimix.mrp.pengiriman.wizard</field>
+			<field name="model">pengiriman.wizard</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Inspeksi Pengiriman">
+		            <group>
+		                <!-- <field name="tanggal_efektif"/> -->
+		                <field name="start_date"/>
+		                <field name="end_date"/>
+		            </group>
+		            <footer>
+		                <button name="inspeksi_report" string="Print" type="object" class="btn-primary"/>
+		                <button string="Cancel" class="btn-default" special="cancel"/>
+		            </footer>
+		        </form>
+		    </field>
+		</record> 
+		<record id="action_view_adh_mrp_pengiriman_wizard" model="ir.actions.act_window">
+			<field name="name">Inspeksi Pengiriman</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">pengiriman.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_adhimix_mrp_pengiriman_wizard"/>
+			<field name="target">new</field>
+	    </record>
+	    <report
+			id="report_inspeksi_pengiriman_menu"
+			string="Inspeksi Pengiriman"
+			model="adhimix.mrp.pengiriman"
+			report_type="qweb-pdf"
+			file="adhimix.mrp.pengiriman"
+			name="adh_manufaktur.report_inspeksi_pengiriman"
+		/>
+		<template id="report_inspeksi_pengiriman">
+			<t t-call="report.html_container">				
+				<t t-call="report.internal_layout">
+					<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center;max-height:100px; max-width:80px;"/>
+									</td>
+									<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>INSPEKSI KESIAPAN PENGIRIMAN <br/> PRODUK</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No</strong></center>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No Dokumen</strong></center>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Tanggal Efektif</strong></center>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-right:2px solid black;border-left:1px solid black;">
+										<center><strong><br/>Uraian</strong></center>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+										<center><strong><br/>Kriteria</strong></center>
+									</td>
+									<td colspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:2px solid black;">
+										<center><strong>Hasil Pemerikasaan</strong></center>
+									</td>
+									<td rowspan="2" style="vertical-align:middle;border-top:2 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+										<center><strong><br/>Keterangan</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black;border-right:2px solid black;">
+										<center><strong>I</strong></center>
+									</td>
+									<td style="border-top:1 solid black;border-bottom:2px solid black;border-left:1px solid black; border-right:2px solid black;">
+										<center><strong>II</strong></center>
+									</td>
+								</tr>
+								<tr t-foreach="uraian_ids" t-as="i">
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											 <t t-esc="i_index + 1" />			
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.reference.name" />			
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.reference.tanggal_efektif" />			
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.uraian_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.kriteria_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.hasil_1"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="i.hasil_2"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<t t-esc="i.keterangan"/>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:right">
+										<p>..........,.................</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:left">
+										<p style="height:3cm">Disetujui Oleh,</p>
+										<p>Supervisi Produksi</p>
+									</td>
+									<td style="text-align:center">
+										<p style="height:3cm">Diperiksa Oleh,</p>
+										<p>Quality Control</p>
+									</td>
+									<td style="text-align:right">
+										<p style="height:3cm">Dibuat Oleh,</p>
+										<p>Pelaksana</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+					</div>
+					<t t-call="report.internal_layout">
+						<div class="page">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+										</td>
+										<td colspan="8" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+											<center><strong>FORM <br/>INSPEKSI SEBELUM PENGIRIMAN <br/> PRODUK SILO</strong></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>No. Dokumen :</strong></center>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+											<center></center>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Revisi :</strong> </center>
+										</td>
+										<td colspan="8" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Tanggal Efektif : <t t-esc="tanggal_efektif"/></strong></center>
+										</td>
+										<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>Hal : </strong> </center>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>No</strong></center>
+										</td>
+										<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>No Dokumen</strong></center>
+										</td>
+										<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>Tanggal Efektif</strong></center>
+										</td>
+										<td colspan="2" rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>Uraian</strong></center>
+										</td>
+										<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>Kriteria</strong></center>
+										</td>
+										<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>Toleransi</strong></center>
+										</td>
+										<td colspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+											<center><strong>Hasil Pemeriksaan</strong></center>
+										</td>
+										<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong><br/>Keterangan</strong></center>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>I</strong></center>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+											<center><strong>II</strong></center>
+										</td>
+									</tr>
+									<tr t-foreach="produk_silo_ids" t-as="j">
+										<td  style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j_index + 1" />								
+										</td>
+										<td  style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.reference.name" />								
+										</td>
+										<td  style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.reference.tanggal_efektif" />								
+										</td>
+										<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<center><t t-esc="j.uraian_id.name"/></center>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.kriteria_id.name"/>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.toleransi"/>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.hasil_1"/>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+											<t t-esc="j.hasil_2"/>
+										</td>
+										<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+											<t t-esc="j.keterangan"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											
+										</td>
+										<td colspan="9" style="border-left:1px solid black;border-right:2px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<strong><center>Aksesoris Silo</center></strong>
+										</td>
+									</tr>
+									<tr t-foreach="aksesoris_silo_ids" t-as="a">
+										<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.reference.name"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.reference.tanggal_efektif"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a_index +1"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.uraian_id.name"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.kriteria_id.name"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.toleransi"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.hasil_1"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.hasil_2"/>
+										</td>
+										<td style="border-left:1px solid black;border-right:2px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+											<t t-esc="a.keterangan"/>
+										</td>
+									</tr>
+								</thead>
+							</table>
+							<table class="table" style="margin-top:-20px">
+								<tr>
+									<center>
+										<td style="text-align:right">
+											<p>.......................</p>
+										</td>
+									</center>
+								</tr>
+							</table>
+							<table class="table" style="margin-top:-20px">
+								<tr>
+									<center>
+										<td style="text-align:left">
+											<p style="height:3cm">Disetujui Oleh,</p>
+											<p>Supervisi Produksi</p>
+										</td>
+										<td style="text-align:center">
+											<p style="height:3cm">Diperiksa Oleh,</p>
+											<p>Quality Control</p>
+										</td>
+										<td style="text-align:right">
+											<p style="height:3cm">Dibuat Oleh,</p>
+											<p>Pelaksana</p>
+										</td>
+									</center>
+								</tr>
+							</table>
+						</div>
+					</t>
+					<t t-call="report.internal_layout">
+						<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+									</td>
+									<td colspan="7" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>INSPEKSI SEBELUM PENGIRIMAN PRODUK <br/> COLD BIN</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+										<center></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="7" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif:<t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No Dokumen</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Tanggal Efektif</strong></center>
+									</td>
+									<td colspan="2" rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Uraian</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Kriteria</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Toleransi</strong></center>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<center><strong>Hasil Pemeriksaan</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Keterangan</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>I</strong></center>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>II</strong></center>
+									</td>
+								</tr>
+								<tr t-foreach="produk_cold_bin_ids" t-as="k">
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="k_index +1"/></center>
+									</td>
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="k.reference.name"/></center>
+									</td>
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="k.reference.tanggal_efektif"/></center>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="k.uraian_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="k.kriteria_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="k.toleransi"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="k.hasil_1"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="k.hasil_2"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<span t-field="k.keterangan"/>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:right">
+										<p>.......................</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:left">
+										<p style="height:3cm">Disetujui Oleh,</p>
+										<p>Supervisi Produksi</p>
+									</td>
+									<td style="text-align:center">
+										<p style="height:3cm">Diperiksa Oleh,</p>
+										<p>Quality Control</p>
+									</td>
+									<td style="text-align:right">
+										<p style="height:3cm">Dibuat Oleh,</p>
+										<p>Pelaksana</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+					</div>
+				</t>
+				<t t-call="report.internal_layout">
+					<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+									</td>
+									<td colspan="8" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>INSPEKSI SEBELUM PENGIRIMAN PRODUK <br/> SILO MOBILE</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+										<center></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="8" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif : <t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No Dokumen</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Tanggal Efektif</strong></center>
+									</td>
+									<td colspan="2" rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Uraian</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<center><strong><br/>Kriteria</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Toleransi</strong></center>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<center><strong>Hasil Pemeriksaan</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Keterangan</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>I</strong></center>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>II</strong></center>
+									</td>
+								</tr>
+								<tr t-foreach="produk_silo_mobile_ids" t-as="l">
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="l_index +1"/></center>
+									</td>
+									<td  style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.reference.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.reference.tanggal_efektif"/>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.uraian_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.kriteria_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.toleransi"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.hasil_1"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<t t-esc="l.hasil_2"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<t t-esc="l.keterangan"/>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										
+									</td>
+									<td colspan="9" style="border-left:1px solid black;border-right:2px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<center><strong>Aksesoris Silo Mobile</strong></center>
+									</td>
+								</tr>
+								<tr t-foreach="aksesoris_silo_mobile_ids" t-as="a">
+									<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+									</td>
+									<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<t t-esc="a.reference.name"/>
+									</td>
+									<td style="border-left:2px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<t t-esc="a.reference.tanggal_efektif"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<t t-esc="a_index +1"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.uraian_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.kriteria_id"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.toleransi"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.hasil_1"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.hasil_2"/>
+									</td>
+									<td style="border-left:1px solid black;border-right:2px solid black;border-bottom:1px solid black;border-top:1px solid black;">
+										<span t-field="a.keterangan"/>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:right">
+										<p>.......................</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:left">
+										<p style="height:3cm">Disetujui Oleh,</p>
+										<p>Supervisi Produksi</p>
+									</td>
+									<td style="text-align:center">
+										<p style="height:3cm">Diperiksa Oleh,</p>
+										<p>Quality Control</p>
+									</td>
+									<td style="text-align:right">
+										<p style="height:3cm">Dibuat Oleh,</p>
+										<p>Pelaksana</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+					</div>
+				</t>
+				<t t-call="report.internal_layout">
+					<div class="page">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center; max-height:80px;width:100;"/>
+									</td>
+									<td colspan="8" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+										<center><strong>FORM <br/>INSPEKSI SEBELUM PENGIRIMAN<br/> AKSESORIS DRUM MIXER</strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>No. Dokumen :</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+										<center></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Revisi :</strong> </center>
+									</td>
+									<td colspan="8" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Tanggal Efektif : <t t-esc="tanggal_efektif"/></strong></center>
+									</td>
+									<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>Hal : </strong> </center>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>No Dokumen</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Tanggal Efektif</strong></center>
+									</td>
+									<td colspan="2" rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Uraian</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Kriteria</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Toleransi</strong></center>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<center><strong>Hasil Pemeriksaan</strong></center>
+									</td>
+									<td rowspan="2" style="border-left:1px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong><br/>Keterangan</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>I</strong></center>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+										<center><strong>II</strong></center>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="10" style="border-right:2px solid black;border-left:2px solid black;border-bottom:2px solid black;">
+										<strong><center>TANGKI AIR, SPARK BOARD, HOPPER, CHUTE, SUB CHUTE 1-2, PAGAR PENGAMAN</center></strong>
+									</td>
+								</tr>
+								<tr t-foreach="aksesoris_drum_mixer_ids" t-as="m">
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="m_index +1"/></center>
+									</td>
+									<td style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="m.reference.name"/></center>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<center><t t-esc="m.reference.tanggal_efektif"/></center>
+									</td>
+									<td colspan="2" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="m.uraian_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="m.kriteria_id.name"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="m.toleransi"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="m.hasil_1"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:1px solid black;">
+										<span t-field="m.hasil_2"/>
+									</td>
+									<td style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;border-right:2px solid black;">
+										<span t-field="m.keterangan"/>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:right">
+										<p>.......................</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+						<table class="table" style="margin-top:-20px">
+							<tr>
+								<center>
+									<td style="text-align:left">
+										<p style="height:3cm">Disetujui Oleh,</p>
+										<p>Supervisi Produksi</p>
+									</td>
+									<td style="text-align:center">
+										<p style="height:3cm">Diperiksa Oleh,</p>
+										<p>Quality Control</p>
+									</td>
+									<td style="text-align:right">
+										<p style="height:3cm">Dibuat Oleh,</p>
+										<p>Pelaksana</p>
+									</td>
+								</center>
+							</tr>
+						</table>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template> 
+	<menuitem id="hasil_pemeriksaan_inspeksi_pengiriman"
+	        name="Inspeksi Pengiriman"
+	        action="action_view_adh_mrp_pengiriman_wizard"
+	        parent="stock.menu_warehouse_report"
+	        sequence="151"/>
+	</data>
+</odoo>
+
+
+
+

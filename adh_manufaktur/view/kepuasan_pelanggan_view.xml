@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_kepuasan_pelanggan_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.kepuasan.pelanggan.form</field>
+			<field name="model">adhimix.mrp.kepuasan.pelanggan</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Pengelolaan Kepuasan Pelanggan">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="tanggal_efektif"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Pengelolaan Kepuasan Pelanggan">
+									<group>
+										<field name="pengelolaan_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="permasalahan_id"/>
+												<field name="tindakan_pencegahan"/>
+												<field name="pic_terkait"/>
+												<field name="target_waktu"/>
+												<field name="status"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_kepuasan_pelanggan_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.kepuasan.pelanggan.tree</field>
+			<field name="model">adhimix.mrp.kepuasan.pelanggan</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Pengelolaan Kepuasan Pelanggan">
+					<field name="name"/>
+					<field name="tanggal_efektif"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

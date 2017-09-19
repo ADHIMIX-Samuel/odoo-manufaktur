@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<record id="action_view_adh_mrp_pengiriman_form" model="ir.actions.act_window">
+	<record id="action_view_adh_mrp_pengiriman_form" model="ir.actions.act_window">
             <field name="name">Inspeksi Pengiriman</field>
             <field name="res_model">adhimix.mrp.pengiriman</field>
             <field name="view_type">form</field>
@@ -15,11 +15,11 @@
         </record>
         
 
-		<menuitem id="menu_mrp_pengiriman"
-		            name="Inspeksi Pengiriman"
-		            action="action_view_adh_mrp_pengiriman_form"
-		            parent="stock.menu_stock_warehouse_mgmt"
-		            sequence="0"/>
+	<menuitem id="menu_mrp_pengiriman"
+	            name="Inspeksi Pengiriman"
+	            action="action_view_adh_mrp_pengiriman_form"
+	            parent="stock.menu_stock_warehouse_mgmt"
+	            sequence="0"/>
 
 	</data>
 </odoo>

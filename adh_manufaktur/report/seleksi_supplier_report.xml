@@ -1,0 +1,681 @@
+<odoo>
+	<data>
+		<report
+			id="report_seleksi_supplier_id"
+			string="Seleksi Supplier"
+			model="adhimix.mrp.seleksi.supplier"
+			report_type="qweb-pdf"
+			file="adh_manufaktur.report_seleksi_supplier"
+			name="adh_manufaktur.report_seleksi_supplier"
+		/>
+
+		<template id="report_seleksi_supplier">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_manufaktur.adh_mrp_seleksi_supplier_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="adh_mrp_seleksi_supplier_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+							</td>
+							<td colspan="4" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+								<center><strong>FORM <br/>SELEKSI SUPPLIER</strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>No. Dokumen :</strong></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+								<center><t t-esc="doc.name"/></center>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Revisi :</strong> </center>
+							</td>
+							<td colspan="4" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
+							</td>
+							<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+								<center><strong>Hal : </strong> </center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px">
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Nama Vendor</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-bottom:1px solid black;">
+							<t t-esc="doc.nama_vendor"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Alamat</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-bottom:1px solid black;">
+							<t t-esc="doc.alamat"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Contact Person</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-bottom:1px solid black;">
+							<t t-esc="doc.contact_person"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Telepon</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-bottom:1px solid black;">
+							<t t-esc="doc.telepon"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Fax</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-bottom:1px solid black;">
+							<t t-esc="doc.fax"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Supply</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							<strong>Material</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+								<!-- <t t-esc="doc.supply_material"/> -->
+								<center><t t-if="doc.supply_material==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">						
+						</td>
+						<td style="border-bottom:1px solid white;">							
+						</td>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							<strong>Peralatan</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+								<!-- <t t-esc="doc.supply_peralatan"/> -->
+								<center><t t-if="doc.supply_peralatan==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							<strong>Keterangan</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td  colspan="4" style="border-bottom:1px solid white;">
+							<t t-esc="doc.keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+		
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<strong>Peralatan konstruksi</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.peralatan_konstruksi"/> -->
+							<center><t t-if="doc.peralatan_konstruksi==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+		
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<strong>Peralatan ringan</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.peralatan_ringan"/> -->
+							<center><t t-if="doc.peralatan_ringan==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+		
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-bottom:1px solid white;">
+							<strong>Peralatan Transportasi/Investasi</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.peralatan_transportasi"/> -->
+							<center><t t-if="doc.peralatan_transportasi==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="border-top:2px solid black;margin-top:-15px">
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:-10px;">
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;border-top:1px solid white">
+							Untuk Material dan Peralatan
+						</td>
+						<!-- <td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;border-top:1px solid white">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Ya</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Tidak</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Keterangan</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Pemenuhan terhadap spesifikasi
+						</td>
+					<!-- 	<td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.pemenuhan_terhadap_spesifikasi_ya"/> -->
+							<center><t t-if="doc.pemenuhan_terhadap_spesifikasi_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.pemenuhan_terhadap_spesifikasi_tidak"/> -->
+							<center><t t-if="doc.pemenuhan_terhadap_spesifikasi_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.pemenuhan_terhadap_spesifikasi_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Kapasitas produksi / penyediaan
+						</td>
+						<!-- <td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kapasitas_produksi_ya"/> -->
+							<center><t t-if="doc.kapasitas_produksi_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kapasitas_produksi_tidak"/> -->
+							<center><t t-if="doc.kapasitas_produksi_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kapasitas_produksi_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Kemampuan supply
+						</td>
+				<!-- 		<td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kemampuan_supply_ya"/> -->
+							<center><t t-if="doc.kemampuan_supply_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kemampuan_supply_tidak"/> -->
+							<center><t t-if="doc.kemampuan_supply_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kemampuan_supply_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Ketepatan pengiriman barang (delivery)
+						</td>
+						<!-- <td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.ketepatan_pengiriman_barang_ya"/> -->
+							<center><t t-if="doc.ketepatan_pengiriman_barang_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.ketepatan_pengiriman_barang_tidak"/> -->
+							<center><t t-if="doc.ketepatan_pengiriman_barang_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.ketepatan_pengiriman_barang_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Jumlah armada
+						</td>
+						<!-- <td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.jumlah_armada_ya"/> -->
+							<center><t t-if="doc.jumlah_armada_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.jumlah_armada_tidak"/> -->
+							<center><t t-if="doc.jumlah_armada_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.jumlah_armada_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border-bottom:1px solid white;">
+							• Produsen / Trader
+						</td>
+						<!-- <td>
+						</td> -->
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.produsen_ya"/> -->
+							<center><t t-if="doc.produsen_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.produsen_tidak"/> -->
+							<center><t t-if="doc.produsen_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.produsen_keterangan"/>
+						</td>
+					</tr>	
+				</table>
+				<table class="table table-condensed" style="border-top:2px solid black;margin-top:-15px">
+					<tr>
+						<td style="border-bottom:1px solid white;" >
+							
+						</td>
+					</tr>
+				</table>				
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							Untuk Peralatan
+						</td>
+						<td style="border-bottom:1px solid white; border-top:1px solid white">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;border-top:1px solid white">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Ya</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Tidak</strong>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<strong>Keterangan</strong>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							• Popularitas di dunia
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.popularitas_ya"/> -->
+							<center><t t-if="doc.popularitas_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.popularitas_tidak"/> -->
+							<center><t t-if="doc.popularitas_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.popularitas_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							• Pelayanan Purna Jual
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.pelayanan_purna_jual_ya"/> -->
+							<center><t t-if="doc.pelayanan_purna_jual_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.pelayanan_purna_jual_tidak"/> -->
+							<center><t t-if="doc.pelayanan_purna_jual_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.pelayanan_purna_jual_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							• Kesediaan Suku Cadang
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kesediaan_suku_cadang_ya"/> -->
+							<center><t t-if="doc.kesediaan_suku_cadang_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kesediaan_suku_cadang_tidak"/> -->
+							<center><t t-if="doc.kesediaan_suku_cadang_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kesediaan_suku_cadang_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							• Kemudahan Perbaikan
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kemudahan_perbaikan_ya"/> -->
+							<center><t t-if="doc.kemudahan_perbaikan_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kemudahan_perbaikan_tidak"/> -->
+							<center><t t-if="doc.kemudahan_perbaikan_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kemudahan_perbaikan_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							• Kondisi Umum Alat
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td colspan="4" style="border-bottom:1px solid white;">
+
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kondisi_umum_ya"/> -->
+							<center><t t-if="doc.kondisi_umum_ya==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.kondisi_umum_tidak"/> -->
+							<center><t t-if="doc.kondisi_umum_tidak==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<t t-esc="doc.kondisi_umum_keterangan"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							Kualitas
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid white;">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td style="border-bottom:1px solid white;">
+							Sertifikasi
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.sertifikasi_iso_9001"/> -->
+							<center><t t-if="doc.sertifikasi_iso_9001==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 9001(Quality)
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.sertifikasi_smk3"/> -->
+							<center><t t-if="doc.sertifikasi_smk3==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO SMK3 (HSE)
+						</td>
+					</tr>
+
+					<tr>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.sertifikasi_iso_9002"/> -->
+							<center><t t-if="doc.sertifikasi_iso_9002==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white; border-top:1px solid black">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 9002(Quality)
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid black">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.sertifikasi_ohsas_18001"/> -->
+							<center><t t-if="doc.sertifikasi_ohsas_18001==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							OHSAS 18001 (HSE)
+						</td>
+					</tr>
+					<tr>
+						<td style="border-bottom:1px solid white;">
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+												
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO ........
+						</td>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.sertifikasi_iso_14000"/> -->
+							<center><t t-if="doc.sertifikasi_iso_14000==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid black">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							ISO 14000 (ENVIRONMENT)
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="border-top:2px solid black;margin-top:-15px">
+					<tr>
+						<td style="border-bottom:1px solid white;">
+							
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px;">
+					<tr>
+						<td style="border-top:1px solid white;">
+						</td>							
+						<td style="border-top:1px solid white;">
+							Hasil
+						</td>
+						<td style="border-top:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.hasil_lulus"/> -->
+							<center><t t-if="doc.hasil_lulus==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-top:1px solid white;">
+							
+						</td>
+						<td style="border-top:1px solid white;">
+							Lulus
+						</td>
+					</tr>
+					<tr>
+						<td style="border-top:1px solid white;">
+						</td>							
+						<td style="border-top:1px solid white;">
+							
+						</td>
+						<td style="border-top:1px solid white;">
+							
+						</td>
+						<td style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;">
+							<!-- <t t-esc="doc.hasil_tidak_lulus"/> -->
+							<center><t t-if="doc.hasil_tidak_lulus==True"><input type="checkbox" checked="True"/></t></center>
+						</td>
+						<td style="border-top:1px solid white;">
+							
+						</td>
+						<td style="border-top:1px solid white;">
+							Tidak Lulus
+						</td>
+					</tr>
+				</table>
+				<table class="table" style="border-top:2px solid black;margin-top:-20px">
+					<tr>
+						<td>		
+						</td>
+						<td>
+						</td>
+						<td style="text-align:right">
+							<p>...........,..........</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left;border-bottom:1px solid white;border-top:1px solid white">
+							<strong>Penyaji Data</strong>
+						</td>
+						<td style="border-bottom:1px solid white;border-top:1px solid white">
+							:
+						</td>
+						<td style="border-bottom:1px solid black;border-top:1px solid white">
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<strong>Penilai Data</strong>
+						</td>
+						<td style="border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-bottom:1px solid black;">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>
