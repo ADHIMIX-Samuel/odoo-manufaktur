@@ -153,6 +153,33 @@
                 </p>
             </field>
         </record>
+        <record id="action_view_adh_mrp_perbaikan_alat_form" model="ir.actions.act_window">
+            <field name="name">Pelaksanaan Perbaikan Alat</field>
+            <field name="res_model">adhimix.mrp.perbaikan.alat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+        <record id="action_view_adh_mrp_ketidaksesuain_produk_form" model="ir.actions.act_window">
+            <field name="name">Ketidaksesuain Produk</field>
+            <field name="res_model">adhimix.mrp.ketidaksesuaian.produk</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a data
+                </p>
+            </field>
+        </record>
+
 
          <!-- Menu Inspeksi Instalasi -->
         <record id="action_view_adh_mrp_instalasi_inspeksi_form" model="ir.actions.act_window">
@@ -226,8 +253,8 @@
                         parent="menu_manufaktur_id"
                         sequence="10"/>
 
-        <menuitem id="menu_mrp_logistic"
-                        name="Logistik"
+        <menuitem id="menu_mrp_pengadaan"
+                        name="Pengadaan"
                         parent="menu_manufaktur_id"
                         sequence="30"/>
 
@@ -265,29 +292,35 @@
                     parent="menu_mrp_report"
                     sequence="20"/>
 
-         <menuitem id="menu_klaim_wizard"
+        <menuitem id="menu_klaim_wizard"
                     name="Klaim Pelanggan"
                     action="action_view_adh_mrp_klaim_wizard"
                     parent="menu_mrp_report"
                     sequence="30"/>
 
         <menuitem id="inspeksi_pengiriman"
-            name="Inspeksi Pengiriman"
-            action="action_view_adh_mrp_pengiriman_wizard"
-            parent="menu_mrp_report"
-            sequence="40"/>
+                    name="Inspeksi Pengiriman"
+                    action="action_view_adh_mrp_pengiriman_wizard"
+                    parent="menu_mrp_report"
+                    sequence="40"/>
 
         <menuitem id="menu_kesiapan_alat_wizard"
-                name="Kesiapan Alat Dan Bahan"
-                action="action_view_adh_mrp_kesiapan_alat_wizard"
-                parent="menu_mrp_report"
-                sequence="50"/>
+                    name="Kesiapan Alat Dan Bahan"
+                    action="action_view_adh_mrp_kesiapan_alat_wizard"
+                    parent="menu_mrp_report"
+                    sequence="50"/>
 
         <menuitem id="menu_kesiapan_pondasi_wizard"
-                name="Kesiapan Pondasi Produk"
-                action="action_view_adh_mrp_kesiapan_pondasi_wizard"
-                parent="menu_mrp_report"
-                sequence="60"/>
+                    name="Kesiapan Pondasi Produk"
+                    action="action_view_adh_mrp_kesiapan_pondasi_wizard"
+                    parent="menu_mrp_report"
+                    sequence="60"/>
+
+       <menuitem id="menu_ketidaksesuain_produk_wizard"
+                    name="Ketidaksesuain Produk"
+                    action="action_view_adh_mrp_ketidaksesuaian_produk_wizard"
+                    parent="menu_mrp_report"
+                    sequence="70"/>
 
         <!--Menu Pemasaran  -->
         <menuitem id="menu_mrp_perencanaan_pemasaran"
@@ -322,35 +355,82 @@
 
         <menuitem id="menu_mrp_pengelolaan_pelanggan"
                     name="Kepuasan Pelanggan"
-                    action="action_view_adh_mrp_pengelolaan_pelanggan_form"
+                    action="action_view_adh_mrp_perencanaan_pemasaran_form"
                     parent="menu_mrp_pemasaran"
                     sequence="60"/>
 
-        <!--Menu Logistik  -->
+        <menuitem id="menu_mrp_customer"
+                    name="Customer"
+                    action="base.action_partner_form"
+                    parent="menu_mrp_pemasaran"
+                    sequence="70"/>
+
+        <!--Menu Pengadaan  -->
         <menuitem id="menu_mrp_seleksi_supplier"
                     name="Seleksi Supplier"
                     action="action_view_adh_mrp_seleksi_supplier"
-                    parent="menu_mrp_logistic"
+                    parent="menu_mrp_pengadaan"
                     sequence="10"/>
 
         <menuitem id="menu_mrp_seleksi_subkontraktor"
                         name="Seleksi Sub Kontraktor"
                         action="action_view_adh_mrp_seleksi_subkontraktor"
-                        parent="menu_mrp_logistic"
+                        parent="menu_mrp_pengadaan"
                         sequence="20"/>
 
+        <menuitem id="menu_mrp_supplier"
+                        name="Supplier"
+                        action="base.action_partner_supplier_form"
+                        parent="menu_mrp_pengadaan"
+                        sequence="30"/>
+
         <!-- Menu Produksi -->
+         <menuitem id="menu_manufacturing_order"
+                name="Manufacturing Order"
+                action="mrp.mrp_production_action"
+                parent="menu_mrp_produksi"
+                sequence="10"/>
+
+        <menuitem id="menu_bom"
+                name="Bill of Materials"
+                action="mrp.mrp_bom_form_action"
+                parent="menu_mrp_produksi"
+                sequence="20"/>
+
+        <menuitem id="menu_products"
+                name="Products"
+                action="mrp.product_template_action"
+                parent="menu_mrp_produksi"
+                sequence="30"/>
+
         <menuitem id="menu_mrp_pemeriksaan_kerusakan_alat"
                     name="Pemeriksaan Kerusakan Alat"
                     action="action_view_adh_mrp_pemeriksaan_alat_form"
                     parent="menu_mrp_produksi"
-                    sequence="10"/>
+                    sequence="40"/>
+
+        <menuitem id="menu_mrp_pelaksanaan_perbaikan_alat"
+                    name="Perbaikan Alat"
+                    action="action_view_adh_mrp_perbaikan_alat_form"
+                    parent="menu_mrp_produksi"
+                    sequence="50"/>
+
+         <menuitem id="menu_mrp_ketidaksesuaian_produk"
+                    name="Ketidaksesuain Produk"
+                    action="action_view_adh_mrp_ketidaksesuain_produk_form"
+                    parent="menu_mrp_produksi"
+                    sequence="60"/>
+
+
+        
 
         <menuitem id="menu_mrp_pengiriman"
                 name="Inspeksi Pengiriman"
                 action="action_view_adh_mrp_pengiriman_form"
                 parent="menu_mrp_produksi"
                 sequence="80"/>
+
+       
 
         <!-- Inspeksi Instalasi/Parent -->
         <menuitem id="menu_mrp_instalasi_inspeksi"

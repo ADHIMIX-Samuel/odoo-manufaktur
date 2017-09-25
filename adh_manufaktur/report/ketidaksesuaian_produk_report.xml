@@ -1,0 +1,324 @@
+<odoo>
+	<data>
+		<report
+			id="report_ketidaksesuaian_produk_id"
+			string="Ketidaksesuaian Produk Print"
+			model="adhimix.mrp.ketidaksesuaian.produk"
+			report_type="qweb-pdf"
+			file="adh_manufaktur.report_ketidaksesuaian"
+			name="adh_manufaktur.report_ketidaksesuaian"
+		/>
+
+		<template id="report_ketidaksesuaian">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="adh_manufaktur.report_ketidaksesuaian_produk_document"/>
+				</t>
+			</t>
+		</template>
+		<template id="report_ketidaksesuaian_produk_document">
+			<div class="page">
+				<table class="table table-bordered">
+					<tr>
+						<td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center; max-height:80px;width:100;"/>
+						</td>
+						<td colspan="6" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+							<center><strong>FORM <br/>KETIDAKSESUAIAN PRODUK</strong></center>
+						</td>
+						<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							<center><strong>No. Dokumen :</strong></center>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+							<center><span t-field="doc.name"/></center>
+						</td>
+					</tr>
+					<tr>
+						<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							<center><strong>Revisi :</strong> </center>
+						</td>
+						<td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							<center><strong>Tanggal Efektif :<span t-field="doc.tanggal_efektif" t-field-options='{"format": "d MMMM y "}'/></strong></center>
+						</td>
+						<td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+							<center><strong>Hal : </strong> </center>
+						</td>
+					</tr>
+				</table>
+				<table class="table table-condensed" style="margin-top:-20px">
+					<tr>
+						<td  style="border-left:2px solid black;border-top:1px solid white;border-bottom:2px solid black;">
+							<strong>NO NC:  </strong><span t-field="doc.no_nc"/>
+						</td>
+						<td colspan="6" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Tanggal NC</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-top:1px solid white;border-bottom:2px solid white;">
+							<span t-field="doc.tanggal_nc"/>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Tanggal Realisasi Produk</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">	<span t-field="doc.tanggal_realisasi_produk"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Nama Pekerjaan</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.nama_pekerjaan"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Nama Pelanggan</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.nama_pelanggan"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Ketidaksesuaian Produk</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							<span t-field="doc.ketidaksesuaian_produk"/>
+						</td>
+						<td colspan="3" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>PIC</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							<span t-field="doc.pic"/>
+						</td>
+						<td colspan="3" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Penjelasan</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.penjelasan"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Ketidaksesuaian</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.ketidaksesuaian"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+							<center><strong>PENYEBAB MASALAH</strong></center>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Penyebab</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.penyebab"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Ketidaksesuaian</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.ketidaksesuaian_penyebab"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Kesimpulan<br/>Ketidaksesuaian</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.kesimpulan_ketidaksesuian"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+							<center><strong>RENCANA TINDAK LANJUT</strong></center>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Rencana Tindak Lanjut</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.rencana_tindak_lanjut"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Penjelasan Tindak<br/>Lanjut</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.penjelasan_tindak_lanjut"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Rencana Selesai</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.rencana_selesai"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>PIC</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.pic_rencana_tindak_lanjut"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Tindakan Pencegahan <br/>(Jika Ada)</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.tindakan_pencegahan"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" style="border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;border-right:2px solid black;background-color:#C0C0C0">
+							<center><strong>PENYELESAIAN MASALAH</strong></center>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Realisasi Penyelesaian</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.realisasi_penyelesaian"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Tanggal Penyelesaian</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.tanggal_penyelesaian"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;">
+							<strong>Biaya Yang Timbul</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:1px solid white;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+							<span t-field="doc.biaya_yg_timbul"/>
+						</td>
+					</tr>
+					<tr>
+						<td coslpan="2" style="border-left:2px solid black;border-top:1px solid white;border-bottom:2px solid black;">
+							<strong>Status</strong>
+						</td>
+						<td style="border-top:1px solid white;border-bottom:2px solid black;">
+							:
+						</td>
+						<td colspan="4" style="border-top:1px solid white;border-bottom:2px solid black;border-right:2px solid black">
+							<span t-field="doc.status"/>
+						</td>
+					</tr>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:right;border-bottom:1px solid white;border-top:solid white">
+								<p>..........,...............</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+				<table class="table" style="margin-top:-20px">
+					<tr>
+						<center>
+							<td style="text-align:left;border-bottom:1px solid white;border-top:solid white;margin-left:-200px">
+								<p style="height:3cm">Menyetujui :</p>
+								<p>(Supervisor Produksi)</p>
+							</td>								
+							<td style="text-align:right;border-bottom:1px solid white;border-top:solid white;margin-right:-200px">
+								<p style="height:3cm">Dibuat Oleh:</p>
+								<p>(Pelaksana)</p>
+							</td>
+						</center>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</data>
+</odoo>

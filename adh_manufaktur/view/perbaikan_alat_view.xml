@@ -1,0 +1,96 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_perbaikan_alat_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.perbaikan.alat.form</field>
+			<field name="model">adhimix.mrp.perbaikan.alat</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Pelaksanaan Perbaikan Alat">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="nama_pekerjaan"/>
+								<field name="no_identitas_alat"/>
+								<field name="tipe_alat"/>
+							</group>
+							<group>
+								<field name="company_id"/>
+								<field name="tanggal_masuk"/>
+								<field name="tanggal_checklist_eng"/>
+								<field name="tanggal_checklist_qc"/>
+							</group>
+						</group>
+						<group>
+							<notebook>
+								<page string="Bagian Cabin">
+									<group>
+										<field name="bagian_cabin_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="bagian_yg_dikerjakan_cabin"/>
+												<field name="kriteria_cabin"/>
+												<field name="qty_cabin" />
+												<field name="hasil_1_cabin"/>
+												<field name="hasil_2_cabin"/>
+												<field name="bobot_cabin"/>
+												<field name="tindak_lanjut_cabin"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Bagian Drum Mixer">
+									<group>
+										<field name="chassis_drummixer_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="bagian_yg_dikerjakan_chassis"/>
+												<field name="kriteria_chassis"/>
+												<field name="qty_chassis" />
+												<field name="hasil_1_chassis"/>
+												<field name="hasil_2_chassis"/>
+												<field name="bobot_chassis"/>
+												<field name="tindak_lanjut_chassis"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+								<page string="Aksesoris Drum Mixer">
+									<group>
+										<field name="aksesoris_drummixer_ids" nolabel="1">
+											<tree editable="bottom">
+												<field name="bagian_yg_dikerjakan_aksesoris"/>
+												<field name="kriteria_aksesoris"/>
+												<field name="qty_aksesoris" />
+												<field name="hasil_1_aksesoris"/>
+												<field name="hasil_2_aksesoris"/>
+												<field name="bobot_aksesoris"/>
+												<field name="tindak_lanjut_aksesoris"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_perbaikan_alat_tre" model="ir.ui.view">
+			<field name="name">adhimix.mrp.perbaikan.alat.tree</field>
+			<field name="model">adhimix.mrp.perbaikan.alat</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Pelaksanaan Perbaikan Alat">
+					<field name="name"/>
+					<field name="nama_pekerjaan"/>
+					<field name="no_identitas_alat"/>
+					<field name="tipe_alat"/>
+					<field name="tanggal_masuk"/>
+					<field name="tanggal_checklist_eng"/>
+					<field name="tanggal_checklist_qc"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

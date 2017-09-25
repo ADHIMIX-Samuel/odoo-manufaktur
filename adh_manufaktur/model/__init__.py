@@ -18,3 +18,6 @@ import kesiapan_alat_report
 import kesiapan_pondasi_produk_report
 import cost_control
 import maintenance
+import perbaikan_alat
+import ketidaksesuaian_produk
+import ketidaksesuaian_produk_report

@@ -1,0 +1,193 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_ketidaksesuaian_produk_wizard" model="ir.ui.view">
+            <field name="name">adhimix.mrp.ketidaksesuaian.produk.wizard</field>
+            <field name="model">ketidaksesuaian.produk.wizard</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Ketidaksesuaian Produk">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record> 
+        <record id="action_view_adh_mrp_ketidaksesuaian_produk_wizard" model="ir.actions.act_window">
+            <field name="name">Ketidaksesuaian Produk</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ketidaksesuaian.produk.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_adhimix_mrp_ketidaksesuaian_produk_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <report
+            id="report_ketidaksesuaian_produk_menu"
+            string="Ketidaksesuaian Produk"
+            model="adhimix.mrp.ketidaksesuaian.produk"
+            report_type="qweb-pdf"
+            file="adhimix.mrp.ketidaksesuaian.produk"
+            name="adh_manufaktur.report_ketidaksesuain_produk"
+        />
+        <template id="report_ketidaksesuain_produk">
+            <t t-call="report.html_container">              
+                <t t-call="report.internal_layout">
+                    <div class="page">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                        <img t-if="company_id" t-att-src="'data:image/png;base64,%s' %company_id" style="text-align:center;max-height:100px; max-width:80px;"/>
+                                    </td>
+                                    <td colspan="13" rowspan="2" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+                                        <center><strong>FORM <br/>DAFTAR KETIDAKSESUAIAN PRODUK</strong></center>
+                                    </td>
+                                    <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                        <center><strong>No. Dokumen : </strong></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+                                        <!-- <center><t t-esc="nomor_info"/></center> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                        <center><strong>Revisi :</strong> </center>
+                                    </td>
+                                    <td colspan="13" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                        <center><strong>Tanggal Efektif :<t t-esc="tanggal_efektif"/> </strong></center>
+                                    </td>
+                                    <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                        <center><strong>Hal : </strong> </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-condensed" style="margin-top:-20px">
+                            <tr>
+                                <td>
+                                    <strong>Periode :</strong>
+                                     <span t-esc="tanggal_efektif" t-field-options='{"format": "dd MMMM YYYY"}'/>
+                                     
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td style="border-left:2px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <center><strong>NO.</strong></center>
+                                    </td>
+                                    <td style="border-left:1px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <center><strong>Tanggal</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>NOMOR NC</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>TANGGAL<br/> PENERIMAAN</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>NAMA PEKERJAAN</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>NAMA<br/>PELANGGAN</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>JENIS NC</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <center><strong>PIC</strong></center>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <center><strong>STATUS</strong></center>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ket_produk_ids" t-as="k">
+                                    <td style="border-left:2px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k_index +1"/>
+                                    </td>
+                                    <td style="border-left:1px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.tanggal_nc"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.no_nc"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.tanggal_realisasi_produk"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.nama_pekerjaan"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.nama_pelanggan.name"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.jenis_nc"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:1px solid black;border-bottom:2px solid black;">
+                                       <t t-esc="k.pic"/>
+                                    </td>
+                                    <td  style="border-left:1px solid black;border-top:2px solid black;border-right:2px solid black;border-bottom:2px solid black;">
+                                        <t t-esc="k.status"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table" style="margin-top:-15px;">
+                            <tr>
+                                <center>
+                                    <td style="text-align:left;border-bottom:1px solid white;border-top:solid white">
+                                        <p>Catatan:</p>
+                                    </td>
+                                     <td style="text-align:right;border-bottom:1px solid white;border-top:solid white">
+                                        <p>..........,..............</p>
+                                    </td>
+                                </center>
+                            </tr>
+                        </table>
+                        <table class="table" style="margin-top:-20px;">
+                            <tr>
+                                <center>
+                                    <td style="text-align:left;border-bottom:1px solid white;border-top:solid white">
+                                        <p>Jenis Nc:</p>
+                                        <p>1 Alat</p>
+                                        <p>2 Bahan</p>
+                                        <p>3 Lingkungan</p>
+                                        <p>4 Metode</p>
+                                        <p>5 SDM</p>
+                                        <p>6 Lainnya</p>
+                                    </td>
+                                    <td style="text-align:center;border-bottom:1px solid white;border-top:solid white">
+                                        <p>Status Diisi dengan :</p>
+                                        <p>Open</p>
+                                        <p>Close</p>
+                                    </td>
+                                    <td style="text-align:center;border-bottom:1px solid white;border-top:solid white">
+                                        <p style="height:3cm">Disetujui Oleh,</p>
+                                        <p>(......................)</p>
+                                        <p>Supervisor Produksi</p>
+                                    </td>
+                                    <td style="text-align:right;border-bottom:1px solid white;border-top:solid white">
+                                       <p style="height:3cm">Dibuat Oleh,</p>
+                                        <p>(......................)</p>
+                                        <p>Pelaksana</p>
+                                    </td>
+                                </center>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,77 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_ketidaksesuain_produk_form" model="ir.ui.view">
+			<field name="name">adhimix.mrp.ketidaksesuain.produk.form</field>
+			<field name="model">adhimix.mrp.ketidaksesuaian.produk</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Ketidaksesuaian Produk">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="no_nc"/>
+								<field name="nama_pekerjaan"/>
+								<field name="nama_pelanggan"/>
+								<field name="tanggal_nc"/>
+								<field name="tanggal_realisasi_produk"/>
+							</group>
+							<group>
+								<field name="company_id"/>	
+								<field name="ketidaksesuaian_produk"/>
+								<field name="pic"/>	
+								<field name="jenis_nc"/>
+								<field name="penjelasan"/>
+								<field name="ketidaksesuaian"/>	
+							</group>
+						</group>
+						<group>
+							<group string="Penyebab Masalah">
+								<field name="penyebab"/>	
+								<field name="ketidaksesuaian_penyebab"/>
+								<field name="kesimpulan_ketidaksesuian"/>
+							</group>
+							<group string="Rencana Tindak Lanjut">
+								<field name="rencana_tindak_lanjut"/>	
+								<field name="penjelasan_tindak_lanjut"/>
+								<field name="rencana_selesai"/>
+								<field name="pic_rencana_tindak_lanjut"/>
+								<field name="tindakan_pencegahan"/>
+							</group>
+						</group>
+						<group>
+							<group string="Penyelesaian Masalah">
+								<field name="realisasi_penyelesaian"/>	
+								<field name="tanggal_penyelesaian"/>
+								<field name="biaya_yg_timbul"/>
+								<field name="status"/>
+							</group>
+						</group>	
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_adhimix_mrp_ketidaksesuain_produk_tree" model="ir.ui.view">
+			<field name="name">adhimix.mrp.ketidaksesuain.produk.tree</field>
+			<field name="model">adhimix.mrp.ketidaksesuaian.produk</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Ketidaksesuaian Produk">
+					<field name="name"/>
+					<field name="no_nc"/>
+					<field name="nama_pekerjaan"/>
+					<field name="nama_pelanggan"/>
+					<field name="tanggal_nc"/>
+					<field name="tanggal_realisasi_produk"/>
+					<field name="ketidaksesuaian_produk"/>
+					<field name="pic"/>	
+					<field name="jenis_nc"/>
+					<field name="penjelasan"/>
+					<field name="ketidaksesuaian"/>
+				</tree>
+			</field>
+		</record>	
+	</data>
+</odoo>
