@@ -1,0 +1,17 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_mrp_bom" model="ir.ui.view">
+	    	<field name="name">adhimix.mrp.bom</field>
+	    	<field name="model">mrp.bom</field>
+	    	<field name="type">form</field>
+	    	<field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+	    	<field name="priority" eval="8"/>
+	    	<field name="arch" type="xml">
+	        	<field name="product_tmpl_id" position="after">
+	          		<field name="dibuat_oleh"/>
+	          		<field name="created_date"/>
+	        	</field>
+	      	</field>
+	    </record>
+	</data>
+</odoo>
