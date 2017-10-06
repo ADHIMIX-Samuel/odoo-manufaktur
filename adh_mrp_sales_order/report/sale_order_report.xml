@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="sale_order_report" inherit_id="sale.report_saleorder_document">
+
+
+            <xpath expr="//div[@class='page']" position="replace">
+                <div class="page">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td rowspan="2" class="img-responsive" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                    <img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center;max-height:100px; max-width:80px;"/>
+                                </td>
+                                    <td colspan="6" rowspan="2" style="border-top:2px solid     black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
+                                    <center><strong>FORM <br/>CHECKLIST KERUSAKAN ALAT <br/> 
+                                    (INTERNAL)</strong></center>
+                                    </td>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                    <center><strong>No. Dokumen :</strong></center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black; vertical-align:middle;">
+                                    <strong><center><t t-esc="doc.name"/></center></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                    <center><strong>Revisi :</strong> </center>
+                                </td>
+                                <td colspan="6" style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                    <center><strong>Tanggal Efektif :<span t-field="doc.date_order" t-field-options='{"format": "d MMMM y"}'/></strong></center>
+                                </td>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
+                                    <center><strong>Hal : </strong> </center>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table" style="margin-top:-20px">
+                        <tr>
+                            <td style="border-top:1px solid white;border-bottom:1px solid white;border-left:2px solid black;border-right:2px solid black;text-align:right">
+                                ...........,<span t-field="doc.date_order" t-field-options='{"format": "d MMMM y"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-condensed" style="margin-top:-20px">
+                        <tr>
+                            <td  style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                Nomor:  <span t-field="doc.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                Kepada Yth,
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                <span t-field="doc.partner_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                <span t-field="doc.partner_id.street"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                Telp/Fax :  <span t-field="doc.partner_id.phone"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-condensed" style="margin-top:-20px">
+                        <tr>
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                <strong>Perihal:</strong><span t-field="doc.perihal"/>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black;text-align:left">
+                                Dengan Hormat,
+                            </td>
+                        </tr>
+                        <tr >
+                            <td style="border-left:2px solid black;border-top:1px solid white;border-bottom:1px solid white;border-right:2px solid black">
+                                Sehubungan dengan adanya pekerjaan tersebut diatas, maka bersama ini kami sampaikan penawaran harga <span t-field="doc.amount_total" /> <p>dengan rincian sebagai berikut :</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered" style="margin-top:-20px">
+                        <thead>
+                            <tr>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black">
+                                    <strong><center>No</center></strong>
+                                </td>
+                                <td colspan="2" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black">
+                                    <strong><center>Nama Pekerjaan</center></strong>
+                                </td>
+                                <td colspan="2" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black">
+                                    <strong><center>Volume</center></strong>
+                                </td>
+                                <td colspan="2" style="border-top:2px solid black;border-left:1px solid black;border-bottom:2px solid black;border-right:2px solid black">
+                                    <strong><center>Harga Satuan</center></strong>
+                                </td>
+                                <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black">
+                                    <strong><center>Jumlah Harga (Rp.)</center></strong>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.order_line" t-as="l">
+                                <td style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:2px solid black">
+                                    <t t-esc="l_index +1"/>
+                                </td>
+                                <td colspan="2" style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black">
+                                    <span t-field="l.product_id"/>
+                                </td>
+                                <td colspan="2" style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black">
+                                    <span t-field="l.product_uom_qty"/>
+                                </td>
+                                <td colspan="2" style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black">
+                                    <span t-field="l.price_unit"/>
+                                </td>
+                                <td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black">
+                                    <span t-field="l.price_subtotal"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7" style="border-top:1px solid black;border-left:2px solid black;border-bottom:1px solid black;border-right:1px solid black">
+                                </td>
+                                <td style="border-top:1px solid black;border-left:1px solid black;border-bottom:1px solid black;border-right:2px solid black">
+                                    <span t-field="doc.amount_total"/>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-condensed" style="margin-top:-20px">
+                        <tr>
+                            <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                                Terbilang :  <span t-field="doc.terbilang"/>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                                Kondisi Penawaran Sebagai Berikut:
+                            </td>
+                        </tr>
+                        <tr t-foreach="doc.kondisi_penawaran_ids" t-as="k">
+                             <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                                <t t-esc="k_index +1"/>
+                                <span t-field="k.uraian_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                             <td style="border-left:2px solid black;border-bottom:1px solid white;border-top:1px solid white;border-right:2px solid black">
+                                Demikian penawaran harga ini kami sampaikan, atas perhatian dan kesempatan yang diberikan kami sampaikan terima kasih.
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table" style="margin-top:-20px">
+                        <tr>
+                            <td style="border-left:2px solid black;border-bottom:2px solid black;border-top:1px solid white;border-right:2px solid black;text-align:right">
+                               <p style="height:2cm;"> Hormat Kami,</p>
+                               <p>(..........................)</p>
+                               <p>Spv Engineering</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p t-field="doc.note"/>
+                    <p t-if="doc.payment_term_id.note">
+                        <span t-field="doc.payment_term_id.note"/>
+                    </p>
+                    <p id="fiscal_position_remark" t-if="doc.fiscal_position_id and doc.fiscal_position_id.note">
+                        <strong>Fiscal Position Remark:</strong>
+                        <span t-field="doc.fiscal_position_id.note"/>
+                    </p>
+                    <div class="oe_structure"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+
+                            
+
+
+

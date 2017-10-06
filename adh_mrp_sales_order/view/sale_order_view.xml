@@ -1,0 +1,32 @@
+<odoo>
+	<data>
+		<record id="view_adhimix_sale_order" model="ir.ui.view">
+	    	<field name="name">adhimix.sale.order</field>
+	    	<field name="model">sale.order</field>
+	    	<field name="type">form</field>
+	    	<field name="inherit_id" ref="sale.view_order_form"/>
+	    	<field name="priority" eval="8"/>
+	    	<field name="arch" type="xml">
+	        	<field name="payment_term_id" position="after">
+	          		<field name="company_id"/>
+	          		<!-- <field name="amount_to_text"/> -->
+	        	</field>
+	        	<field name="partner_id" position="after">
+	          		<field name="perihal"/>
+	          	</field>
+	        	 <xpath expr="/form/sheet/notebook/page[2]" position="after">
+	        		<page string="Kondisi Penawaran">
+						<group>
+							<field name="kondisi_penawaran_ids" nolabel="1">
+								<tree editable="bottom">
+									<!-- <field name="sequence" widget="handle"/> -->
+									<field name="uraian_id"/>
+								</tree>
+							</field>
+						</group>
+					</page>
+				</xpath>
+	      	</field>
+	    </record>
+	</data>
+</odoo>
