@@ -1,5 +1,5 @@
 {
-	"name": "Manufactur", 
+	"name": "Manufactur-Sales Order", 
 	"version": "1.0", 
 	"depends": [
 		"base",

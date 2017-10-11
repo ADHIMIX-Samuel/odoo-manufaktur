@@ -14,8 +14,7 @@
                                     <img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="text-align:center;max-height:100px; max-width:80px;"/>
                                 </td>
                                     <td colspan="6" rowspan="2" style="border-top:2px solid     black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;vertical-align:middle;">
-                                    <center><strong>FORM <br/>CHECKLIST KERUSAKAN ALAT <br/> 
-                                    (INTERNAL)</strong></center>
+                                    <center><strong>FORM <br/>SURAT PENAWARAN</strong></center>
                                     </td>
                                 <td style="border-top:2px solid black;border-left:2px solid black;border-bottom:2px solid black;border-right:2px solid black;">
                                     <center><strong>No. Dokumen :</strong></center>
